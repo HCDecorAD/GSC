@@ -591,4 +591,31 @@ window.addEventListener("resize",()=>{const v=document.getElementById("viewer");
 if(window.visualViewport) visualViewport.addEventListener("resize",()=>{const v=document.getElementById("viewer");if(v&&v.style.display!=="none")refitMobileVideoV62()},{passive:true});
 </script>
 
+
+  <style id="GSC_V7_EXPERIENCE">
+  #gscStoryBtn{position:fixed;right:18px;bottom:18px;z-index:7000;border:1px solid rgba(255,255,255,.28);background:rgba(9,13,18,.84);backdrop-filter:blur(14px);color:#fff;border-radius:999px;padding:11px 16px;font:600 12px Segoe UI,sans-serif;letter-spacing:.06em;box-shadow:0 8px 30px #0008}
+  #gscStory{position:fixed;inset:0;z-index:8000;background:rgba(4,7,10,.82);backdrop-filter:blur(16px);display:none;color:#fff;font-family:Segoe UI,sans-serif}
+  #gscStory.on{display:flex;align-items:center;justify-content:center}
+  .gscCard{width:min(720px,calc(100vw - 28px));padding:clamp(22px,5vw,54px);box-sizing:border-box;border:1px solid #ffffff2b;border-radius:22px;background:linear-gradient(145deg,#111820f2,#080c11f5);box-shadow:0 30px 100px #000c;position:relative}
+  .gscStep{font-size:11px;letter-spacing:.18em;color:#c9ad76;text-transform:uppercase}.gscTitle{font-size:clamp(26px,5vw,52px);margin:12px 0 10px;line-height:1.05}.gscText{font-size:clamp(14px,2.2vw,18px);line-height:1.6;color:#d7dce1;max-width:600px}
+  .gscActions{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px}.gscActions button{border:1px solid #ffffff2d;background:#ffffff0e;color:#fff;padding:11px 16px;border-radius:999px;min-height:44px}.gscActions .primary{background:#c9ad76;color:#111;border-color:#c9ad76;font-weight:700}
+  #gscClose{position:absolute;right:14px;top:12px;border:0;background:transparent;color:#fff;font-size:25px}
+  @media(max-width:600px){#gscStoryBtn{right:12px;bottom:calc(12px + env(safe-area-inset-bottom));padding:10px 13px}.gscCard{border-radius:18px}.gscActions button{flex:1}}
+  </style>
+  <button id="gscStoryBtn" type="button">▶ GIỚI THIỆU DỰ ÁN</button>
+  <section id="gscStory" aria-modal="true" role="dialog"><div class="gscCard"><button id="gscClose" aria-label="Đóng">×</button><div class="gscStep" id="gscStep"></div><div class="gscTitle" id="gscTitle"></div><div class="gscText" id="gscText"></div><div class="gscActions"><button id="gscPrev">← Trước</button><button class="primary" id="gscNext">Tiếp tục →</button></div></div></section>
+  <script>
+  (()=>{const data=[
+    ["01 · Ấn tượng","GSC Senior Living & Wellness","Nơi tuổi vàng bắt đầu một chương mới. Một không gian sống, chăm sóc sức khỏe và kết nối được tổ chức như một hành trình trọn vẹn."],
+    ["02 · Hiểu dự án","Một hệ sinh thái sống dành cho tuổi vàng","Khám phá quy hoạch tổng thể, hai tháp 36 tầng, cảnh quan và các không gian dịch vụ – chăm sóc được kết nối trong toàn dự án."],
+    ["03 · Khám phá","Chạm để khám phá từng không gian","Từ cổng chính, hồ Koi, khu vận động, hồ bơi đến sân thượng: các hotspot trên Digital Twin đưa bạn trực tiếp đến từng trải nghiệm."],
+    ["04 · Tin tưởng","Chăm sóc, an toàn và tiện nghi","Nhà thuốc, vật lý trị liệu, y tế, tiện ích và không gian cộng đồng tạo nên nền tảng cho cuộc sống chủ động và được hỗ trợ."],
+    ["05 · Hành động","Bắt đầu khám phá GSC","Đóng phần giới thiệu để tự do pan, pinch zoom và chạm vào các hotspot. Nội dung hình ảnh và video sẽ được cập nhật liên tục."]
+  ];let i=0;const q=x=>document.getElementById(x),modal=q("gscStory");
+  function draw(){q("gscStep").textContent=data[i][0];q("gscTitle").textContent=data[i][1];q("gscText").textContent=data[i][2];q("gscPrev").style.visibility=i?"visible":"hidden";q("gscNext").textContent=i===data.length-1?"Khám phá ngay":"Tiếp tục →"}
+  function open(){i=0;draw();modal.classList.add("on")} function close(){modal.classList.remove("on")}
+  q("gscStoryBtn").onclick=open;q("gscClose").onclick=close;q("gscPrev").onclick=()=>{if(i){i--;draw()}};q("gscNext").onclick=()=>{if(i<data.length-1){i++;draw()}else close()};modal.addEventListener("click",e=>{if(e.target===modal)close()});document.addEventListener("keydown",e=>{if(e.key==="Escape"&&modal.classList.contains("on"))close()});
+  })();
+  </script>
+  
 </body></html>

@@ -612,4 +612,14 @@ if(window.visualViewport) visualViewport.addEventListener("resize",()=>{const v=
   })();
   </script>
   
+
+  <style id="GSC_CLEAN_NAV_FIX">
+  /* Target the legacy top navigation container only; preserve map, hotspots and Admin */
+  #gscLegacyNavMask{position:fixed;z-index:6800;left:0;right:0;top:0;height:92px;background:#030b0a;pointer-events:none}
+  #gscIntroStable{z-index:6900!important}
+  @media(max-width:700px){#gscLegacyNavMask{height:105px}}
+  </style>
+  <div id="gscLegacyNavMask" aria-hidden="true"></div>
+  <script>/* GSC_CLEAN_NAV_FIX: mask is intentionally visual-only to avoid DOM regressions */</script>
+  
 </body></html>

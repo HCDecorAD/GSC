@@ -654,4 +654,27 @@ if(window.visualViewport) visualViewport.addEventListener("resize",()=>{const v=
   })();
   </script>
   
+
+  <style id="GSC_V73_STUDIO_PRO">
+  #studioProps{position:absolute;right:12px;top:66px;width:190px;background:#10161df2;border:1px solid #ffffff20;border-radius:12px;padding:10px;z-index:5;display:none}
+  #studioProps.on{display:block}#studioProps label{display:block;font-size:10px;color:#aeb6bf;margin:7px 0 3px}#studioProps input,#studioProps select{width:100%;box-sizing:border-box;background:#080c11;color:#fff;border:1px solid #ffffff25;border-radius:7px;padding:7px}
+  .studioItem.selected{outline:2px solid #c9ad76;outline-offset:2px}.studioItem .resizeGrip{position:absolute;width:16px;height:16px;right:-8px;bottom:-8px;border-radius:50%;background:#c9ad76;border:2px solid #111;cursor:nwse-resize}
+  .studioTools{display:flex;gap:6px;margin-top:8px}.studioTools button{flex:1;padding:7px!important;text-align:center!important}.studioHint{font-size:10px;color:#87919c;line-height:1.4;margin:8px 0}
+  </style>
+  <script>
+  (()=>{const GSC_V73_STUDIO_PRO=true,studio=document.getElementById("gscStudio"),page=document.getElementById("studioPage");if(!studio||!page)return;
+  const side=studio.querySelector(".studioSide");side.insertAdjacentHTML("beforeend",'<div class="studioHint">Chọn đối tượng để chỉnh thuộc tính. Double-click để sửa chữ.</div><div class="studioTools"><button id="stDup">Nhân bản</button><button id="stDel">Xóa</button></div><button id="stPreview">Xem trước</button>');
+  studio.insertAdjacentHTML("beforeend",'<div id="studioProps"><b>THUỘC TÍNH</b><label>Cỡ chữ</label><input id="spSize" type="number" min="8" max="120" value="24"><label>Màu chữ</label><input id="spColor" type="color" value="#ffffff"><label>Màu nền</label><input id="spBg" type="color" value="#111820"><label>Độ trong suốt</label><input id="spOpacity" type="range" min="10" max="100" value="100"><label>Căn chữ</label><select id="spAlign"><option>left</option><option>center</option><option>right</option></select></div>');
+  const props=document.getElementById("studioProps");let sel=null;
+  function select(el){if(sel)sel.classList.remove("selected");sel=el;if(!el){props.classList.remove("on");return}el.classList.add("selected");props.classList.add("on");if(!el.querySelector(".resizeGrip")){let g=document.createElement("i");g.className="resizeGrip";el.appendChild(g);resize(g,el)}sync()}
+  function sync(){if(!sel)return;spSize.value=parseInt(getComputedStyle(sel).fontSize)||24;spColor.value=rgbhex(getComputedStyle(sel).color);spBg.value=rgbhex(getComputedStyle(sel).backgroundColor);spOpacity.value=Math.round((parseFloat(getComputedStyle(sel).opacity)||1)*100);spAlign.value=getComputedStyle(sel).textAlign}
+  function rgbhex(c){let m=c.match(/\d+/g);if(!m||m.length<3)return"#ffffff";return"#"+m.slice(0,3).map(x=>(+x).toString(16).padStart(2,"0")).join("")}
+  function resize(g,el){g.onpointerdown=e=>{e.stopPropagation();let x=e.clientX,y=e.clientY,w=el.offsetWidth,h=el.offsetHeight;g.setPointerCapture(e.pointerId);g.onpointermove=v=>{el.style.width=Math.max(60,w+v.clientX-x)+"px";el.style.height=Math.max(32,h+v.clientY-y)+"px"};g.onpointerup=()=>g.onpointermove=null}}
+  page.addEventListener("pointerdown",e=>{let el=e.target.closest(".studioItem");if(el)select(el);else select(null)});
+  document.getElementById("spSize").oninput=e=>sel&&(sel.style.fontSize=e.target.value+"px");document.getElementById("spColor").oninput=e=>sel&&(sel.style.color=e.target.value);document.getElementById("spBg").oninput=e=>sel&&(sel.style.background=e.target.value);document.getElementById("spOpacity").oninput=e=>sel&&(sel.style.opacity=e.target.value/100);document.getElementById("spAlign").onchange=e=>sel&&(sel.style.textAlign=e.target.value);
+  document.getElementById("stDel").onclick=()=>{if(sel){sel.remove();select(null)}};document.getElementById("stDup").onclick=()=>{if(!sel)return;let n=sel.cloneNode(true);n.style.left=(sel.offsetLeft+20)+"px";n.style.top=(sel.offsetTop+20)+"px";let g=n.querySelector(".resizeGrip");if(g)g.remove();page.appendChild(n);select(n)};
+  document.getElementById("stPreview").onclick=()=>{props.classList.remove("on");document.querySelectorAll(".studioItem").forEach(x=>x.classList.remove("selected"));};
+  })();
+  </script>
+  
 </body></html>

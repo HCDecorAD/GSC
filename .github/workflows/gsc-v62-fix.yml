@@ -1,0 +1,79 @@
+name: GSC V6.2 mobile rotation fix
+on:
+  push:
+    paths:
+      - '.github/workflows/gsc-v62-fix.yml'
+permissions:
+  contents: write
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Patch rotation-safe mobile video
+        shell: python
+        run: |
+          from pathlib import Path
+          p=Path("index.html")
+          s=p.read_text(encoding="utf-8")
+          marker="GSC_V62_ROTATION_FIX"
+          if marker in s:
+              print("Already patched")
+              raise SystemExit(0)
+          patch=r"""
+          <script id="GSC_V62_ROTATION_FIX">
+          function fitMobileVideo(){
+            const v=document.getElementById("viewer");
+            if(!v || v.style.display==="none") return;
+            const vv=window.visualViewport;
+            const vw=Math.max(1,Math.round((vv&&vv.width)||window.innerWidth||document.documentElement.clientWidth));
+            const vh=Math.max(1,Math.round((vv&&vv.height)||window.innerHeight||document.documentElement.clientHeight));
+            v.style.setProperty("position","fixed","important");
+            v.style.setProperty("left","0","important"); v.style.setProperty("top","0","important");
+            v.style.setProperty("width",vw+"px","important"); v.style.setProperty("height",vh+"px","important");
+            v.style.setProperty("display","flex","important"); v.style.setProperty("align-items","center","important"); v.style.setProperty("justify-content","center","important");
+            const box=v.firstElementChild;
+            if(box){
+              const w=Math.min(vw,vh*16/9), h=w*9/16;
+              box.style.setProperty("width",Math.round(w)+"px","important");
+              box.style.setProperty("height",Math.round(h)+"px","important");
+              box.style.setProperty("max-width",vw+"px","important");
+              box.style.setProperty("max-height",vh+"px","important");
+              box.style.setProperty("margin","auto","important");
+              box.style.setProperty("position","relative","important");
+            }
+            const media=v.querySelector("iframe,video");
+            if(media){
+              media.style.setProperty("position","absolute","important");
+              media.style.setProperty("inset","0","important");
+              media.style.setProperty("width","100%","important");
+              media.style.setProperty("height","100%","important");
+              media.style.setProperty("aspect-ratio","16 / 9","important");
+              media.style.setProperty("object-fit","contain","important");
+            }
+          }
+          function refitMobileVideoV62(){[0,80,180,360,650].forEach(ms=>setTimeout(fitMobileVideo,ms));}
+          window.addEventListener("orientationchange",refitMobileVideoV62,{passive:true});
+          window.addEventListener("resize",()=>{const v=document.getElementById("viewer");if(v&&v.style.display!=="none")refitMobileVideoV62()},{passive:true});
+          if(window.visualViewport) visualViewport.addEventListener("resize",()=>{const v=document.getElementById("viewer");if(v&&v.style.display!=="none")refitMobileVideoV62()},{passive:true});
+          </script>
+          """
+          s=s.replace("</body>",patch+"\n</body>")
+          p.write_text(s,encoding="utf-8")
+      - name: Regression checks
+        shell: python
+        run: |
+          from pathlib import Path
+          s=Path("index.html").read_text(encoding="utf-8")
+          required=["GSC_V62_ROTATION_FIX","visualViewport","orientationchange","touchstart","touchmove","gsc-config.json","drive.google.com"]
+          missing=[x for x in required if x not in s]
+          assert not missing, f"Missing: {missing}"
+          print("Regression checks passed")
+      - name: Commit fix
+        run: |
+          git config user.name "ChatGPT GSC Updater"
+          git config user.email "actions@users.noreply.github.com"
+          git add index.html
+          git diff --cached --quiet && exit 0
+          git commit -m "Fix mobile video rotation in GSC V6.2"
+          git push

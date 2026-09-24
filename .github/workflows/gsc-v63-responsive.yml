@@ -1,0 +1,60 @@
+name: GSC V6.3 responsive QA
+on:
+  push:
+    paths: ['.github/workflows/gsc-v63-responsive.yml']
+permissions:
+  contents: write
+jobs:
+  responsive:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Apply mobile/tablet adaptive layer
+        shell: python
+        run: |
+          from pathlib import Path
+          p=Path("index.html"); s=p.read_text(encoding="utf-8")
+          marker="GSC_V63_RESPONSIVE"
+          if marker not in s:
+            patch=r"""
+            <style id="GSC_V63_RESPONSIVE">
+            html,body{overscroll-behavior:none;-webkit-text-size-adjust:100%}
+            #viewer{padding-left:env(safe-area-inset-left)!important;padding-right:env(safe-area-inset-right)!important;padding-top:env(safe-area-inset-top)!important;padding-bottom:env(safe-area-inset-bottom)!important;box-sizing:border-box!important}
+            #viewer .close,#viewer [class*="close"],#viewer button[aria-label*="lose"]{z-index:99999!important;touch-action:manipulation}
+            @media (pointer:coarse){
+              .hotspot{min-width:42px!important;min-height:42px!important;touch-action:manipulation}
+              button,.tab,.admin-btn{min-height:42px}
+            }
+            @media (max-width:767px) and (orientation:portrait){
+              #viewer>div{max-width:100vw!important;max-height:calc(100dvh - env(safe-area-inset-top) - env(safe-area-inset-bottom))!important}
+            }
+            @media (orientation:landscape) and (max-height:600px){
+              #viewer{background:#000!important}
+              #viewer>div{max-width:calc(100vw - env(safe-area-inset-left) - env(safe-area-inset-right))!important;max-height:calc(100dvh - env(safe-area-inset-top) - env(safe-area-inset-bottom))!important}
+            }
+            </style>
+            <script>
+            (()=>{const m=document.querySelector('meta[name="viewport"]');if(m)m.content='width=device-width,initial-scale=1,viewport-fit=cover,maximum-scale=5';})();
+            </script>
+            """
+            s=s.replace("</head>",patch+"\n</head>")
+            p.write_text(s,encoding="utf-8")
+      - name: Static regression QA
+        shell: python
+        run: |
+          from pathlib import Path
+          s=Path("index.html").read_text(encoding="utf-8")
+          required=["GSC_V63_RESPONSIVE","GSC_V62_ROTATION_FIX","visualViewport","orientationchange","touchstart","touchmove","gsc-config.json","viewport-fit=cover","safe-area-inset"]
+          missing=[x for x in required if x not in s]
+          assert not missing, f"Regression failure: {missing}"
+          assert s.count("GSC_V63_RESPONSIVE")==1
+          print("Responsive regression QA passed")
+      - name: Commit tested update
+        run: |
+          git config user.name "ChatGPT GSC Updater"
+          git config user.email "actions@users.noreply.github.com"
+          git add index.html
+          git diff --cached --quiet && exit 0
+          git commit -m "GSC V6.3 adaptive mobile and tablet UI"
+          git pull --rebase origin main
+          git push

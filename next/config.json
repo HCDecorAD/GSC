@@ -1,0 +1,40 @@
+{
+  "version": "next-2",
+  "droneScenes": [
+    {
+      "id": "gate",
+      "title": "Cổng chính",
+      "src": "https://drive.google.com/file/d/18r8ADfI6NKrLKOkTheuJ91fBnifbYgNJ/preview"
+    },
+    {
+      "id": "reception",
+      "title": "Reception",
+      "src": "https://drive.google.com/file/d/1ZAhZ67i4lBJsu3fVxPQNYd8AKJ9L3sKF/preview"
+    },
+    {
+      "id": "koi",
+      "title": "Hồ Koi",
+      "src": "https://drive.google.com/file/d/1cZVjsaQUPYN89IEI4u0L-wt9-ndaKzmN/preview"
+    },
+    {
+      "id": "wellness",
+      "title": "Wellness",
+      "src": "https://drive.google.com/file/d/1lqFuUTKKf9A0w4g04F2aB2OpRJdT42N8/preview"
+    },
+    {
+      "id": "pool",
+      "title": "Hồ bơi",
+      "src": "https://drive.google.com/file/d/1OgiVVHld9esVkVO2QgwCNdVMKmhVzcSF/preview"
+    },
+    {
+      "id": "towers",
+      "title": "Hai tháp",
+      "src": "https://drive.google.com/file/d/1BMgtO93Kwr90AdS9uH0ueGAv5DHdX0E4/preview"
+    },
+    {
+      "id": "rooftop",
+      "title": "Sân thượng",
+      "src": "https://drive.google.com/file/d/1g0mAVPZzEMeLk1QSDyX6gLhwMIqg-Qfm/preview"
+    }
+  ]
+}

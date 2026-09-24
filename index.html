@@ -472,56 +472,64 @@ document.addEventListener("keydown",e=>{if(e.key==="Escape")exitMobileVideoMode(
 document.addEventListener("fullscreenchange",()=>{if(!document.fullscreenElement){try{screen.orientation?.unlock?.()}catch(e){}}});
 
 
-// ===== v5.3.1 MOBILE PINCH ZOOM — reuses existing wheel zoom =====
+// ===== V6.1 MOBILE HOME GESTURES — FIXED =====
+// The real homepage surface is #view. Previous V6 looked for #project/#stage,
+// so the gesture listeners never attached on this build.
 (function(){
-  const surface=document.getElementById("project")||document.getElementById("stage");
+  const surface=document.getElementById("view");
   if(!surface) return;
-  let lastDist=0;
+  surface.style.touchAction="none";
 
-  function dist(t){
-    const dx=t[0].clientX-t[1].clientX;
-    const dy=t[0].clientY-t[1].clientY;
-    return Math.hypot(dx,dy);
+  let pinch=false, lastDist=0, lastCx=0, lastCy=0;
+  let pan=false, panX=0, panY=0;
+
+  function distance(t){
+    return Math.hypot(t[0].clientX-t[1].clientX,t[0].clientY-t[1].clientY);
   }
-  function center(t){
-    return {
-      x:(t[0].clientX+t[1].clientX)/2,
-      y:(t[0].clientY+t[1].clientY)/2
-    };
+  function midpoint(t){
+    return {x:(t[0].clientX+t[1].clientX)/2,y:(t[0].clientY+t[1].clientY)/2};
   }
 
   surface.addEventListener("touchstart",function(e){
+    if(e.target.closest('.hs,.top,.ctrl,#modal,#viewer,#manager,#adminPanel,#pageModal')) return;
     if(e.touches.length===2){
-      lastDist=dist(e.touches);
+      pinch=true; pan=false;
+      lastDist=distance(e.touches);
+      const c=midpoint(e.touches); lastCx=c.x; lastCy=c.y;
       e.preventDefault();
+    } else if(e.touches.length===1){
+      pan=true; pinch=false;
+      panX=e.touches[0].clientX-x;
+      panY=e.touches[0].clientY-y;
     }
   },{passive:false});
 
   surface.addEventListener("touchmove",function(e){
-    if(e.touches.length!==2 || !lastDist) return;
-    const d=dist(e.touches);
-    const c=center(e.touches);
-    const ratio=d/lastDist;
-    // Send small wheel deltas into the existing v5.3 zoom handler.
-    const deltaY=ratio>1 ? -55 : 55;
-    surface.dispatchEvent(new WheelEvent("wheel",{
-      deltaY:deltaY,
-      clientX:c.x,
-      clientY:c.y,
-      bubbles:true,
-      cancelable:true
-    }));
-    lastDist=d;
-    e.preventDefault();
+    if(pinch && e.touches.length===2){
+      const d=distance(e.touches); if(!lastDist) return;
+      const c=midpoint(e.touches);
+      const r=surface.getBoundingClientRect();
+      // Continuous scale ratio, centered exactly between the two fingers.
+      zoomAt(d/lastDist,c.x-r.left,c.y-r.top);
+      // Follow movement of the pinch center as well as scale.
+      x += c.x-lastCx; y += c.y-lastCy; apply();
+      lastDist=d; lastCx=c.x; lastCy=c.y;
+      e.preventDefault();
+    } else if(pan && e.touches.length===1){
+      x=e.touches[0].clientX-panX;
+      y=e.touches[0].clientY-panY;
+      apply(); e.preventDefault();
+    }
   },{passive:false});
 
   surface.addEventListener("touchend",function(e){
-    if(e.touches.length<2) lastDist=0;
-  },{passive:true});
-
-  surface.addEventListener("touchcancel",function(){
-    lastDist=0;
-  },{passive:true});
+    if(e.touches.length<2){pinch=false;lastDist=0;}
+    if(e.touches.length===0) pan=false;
+    if(e.touches.length===1 && !pinch){
+      pan=true; panX=e.touches[0].clientX-x; panY=e.touches[0].clientY-y;
+    }
+  },{passive:false});
+  surface.addEventListener("touchcancel",function(){pinch=false;pan=false;lastDist=0;},{passive:true});
 })();
 
 </script></body></html>

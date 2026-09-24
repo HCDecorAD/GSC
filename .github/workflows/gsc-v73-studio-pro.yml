@@ -47,7 +47,7 @@ jobs:
           s=Path("index.html").read_text(encoding="utf-8")
           req=["GSC_V73_STUDIO_PRO","GSC_V72_STUDIO","GSC_V71_MEDIA","GSC_V7_EXPERIENCE","GSC_V63_RESPONSIVE","GSC_V62_ROTATION_FIX","resizeGrip","stDup","stDel","spOpacity","gsc-config.json","touchstart"]
           miss=[x for x in req if x not in s]; assert not miss,miss
-          assert s.count("GSC_V73_STUDIO_PRO")==1
+          assert s.count('id="GSC_V73_STUDIO_PRO"')==1
           print("V7.3 regression QA passed")
       - name: Commit
         run: |

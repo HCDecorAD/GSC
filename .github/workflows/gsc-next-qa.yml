@@ -1,0 +1,49 @@
+name: GSC Next QA Promote
+on:
+  push:
+    paths: ['.github/workflows/gsc-next-qa.yml']
+permissions:
+  contents: write
+jobs:
+  qa:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Static QA
+        shell: python
+        run: |
+          from pathlib import Path
+          import json
+          h=Path("next/index.html").read_text(encoding="utf-8")
+          c=json.loads(Path("next/config.json").read_text(encoding="utf-8"))
+          assert len(c["droneScenes"])==7
+          assert all(x["id"] and x["title"] and x["src"] for x in c["droneScenes"])
+          for t in ["Drone Warp Tour","Digital Twin","GSC Admin","Giới thiệu dự án","Preview & Publish"]: assert t in h
+          assert "rawDriveUrl" not in h and "<html" in h.lower()
+          print("STATIC_QA_OK")
+      - name: Browser QA
+        run: |
+          python3 -m http.server 4173 >/tmp/gsc.log 2>&1 &
+          npx --yes playwright@1.55.0 install chromium --with-deps >/dev/null 2>&1
+          cat > /tmp/qa.js <<'EOF'
+          const { chromium } = require('playwright');
+          (async()=>{const b=await chromium.launch({headless:true}); const p=await b.newPage({viewport:{width:390,height:844}});
+          await p.goto('http://127.0.0.1:4173/next/',{waitUntil:'domcontentloaded'});
+          if(!(await p.getByText('Nơi tuổi vàng bắt đầu một chương mới.').isVisible())) throw Error('home');
+          await p.getByText('BẮT ĐẦU DRONE WARP').click();
+          if(!(await p.getByText('Drone Warp Tour').isVisible())) throw Error('tour');
+          const n=await p.locator('.scene').count(); if(n!==7) throw Error('scenes '+n);
+          await p.locator('[data-v="admin"]').click(); if(!(await p.getByText('GSC Admin').isVisible())) throw Error('admin');
+          await p.locator('[data-v="story"]').click(); if(!(await p.getByText('Giới thiệu dự án').isVisible())) throw Error('story');
+          await b.close(); console.log('BROWSER_QA_OK')})().catch(e=>{console.error(e);process.exit(1)})
+          EOF
+          NODE_PATH="$(npm root -g)" npx --yes -p playwright@1.55.0 node /tmp/qa.js
+      - name: Mark QA
+        run: |
+          printf "next-2 QA: static + Chromium mobile PASS\n" > next/QA-PASS.txt
+          git config user.name "ChatGPT GSC QA"
+          git config user.email "actions@users.noreply.github.com"
+          git add next/QA-PASS.txt
+          git commit -m "QA GSC Next mobile preview"
+          git pull --rebase origin next
+          git push origin HEAD:next

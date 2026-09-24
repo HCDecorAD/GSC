@@ -77,3 +77,5 @@ jobs:
           git diff --cached --quiet && exit 0
           git commit -m "Fix mobile video rotation in GSC V6.2"
           git push
+
+# trigger retry

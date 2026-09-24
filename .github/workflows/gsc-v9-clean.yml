@@ -1,0 +1,69 @@
+name: GSC V9 UX Cleanup
+on:
+  push:
+    paths: ['.github/workflows/gsc-v9-clean.yml']
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Apply clean UX layer
+        shell: python
+        run: |
+          from pathlib import Path
+          p=Path("index.html"); s=p.read_text(encoding="utf-8")
+          if "GSC_V9_UX_CLEAN" not in s:
+            patch=r"""
+            <style id="GSC_V9_UX_CLEAN">
+            .gsc-v9-hidden{display:none!important}
+            #gscStoryBtn{left:14px!important;right:auto!important;top:calc(14px + env(safe-area-inset-top))!important;bottom:auto!important;z-index:7000!important}
+            body.gsc-v9-admin-open #gscStoryBtn{display:none!important}
+            @media(max-width:700px){
+              #gscStoryBtn{left:12px!important;top:12px!important;padding:10px 14px!important;font-size:12px!important;max-width:230px!important}
+              #stage,#view,.stage,.view{margin-top:0!important}
+            }
+            </style>
+            <script>
+            (()=>{const GSC_V9_UX_CLEAN=true;
+            const norm=v=>(v||"").replace(/\s+/g," ").trim().toUpperCase();
+            function visible(el){if(!el)return false;const c=getComputedStyle(el),r=el.getBoundingClientRect();return c.display!=="none"&&c.visibility!=="hidden"&&r.width>250&&r.height>250}
+            function legacy(){
+              document.querySelectorAll("button,a,div,span").forEach(el=>{
+                const t=norm(el.textContent);
+                if(el.children.length<=2&&(t==="TOÀN CẢNH"||t==="ANIMATION"||t==="+")) el.classList.add("gsc-v9-hidden");
+                if(el.children.length===0&&((t.includes("KÉO ĐỂ DI CHUYỂN")&&t.includes("ZOOM"))||(t.includes("CLICK HOTSPOT")&&t.includes("VIDEO"))))el.classList.add("gsc-v9-hidden");
+              });
+            }
+            function adminState(){
+              let open=false;
+              document.querySelectorAll("div,section,aside").forEach(el=>{if(open||!visible(el))return;const t=norm(el.textContent);if(t.includes("SIMPLE ADMIN")&&t.includes("XUẤT CẤU HÌNH")&&t.includes("ĐĂNG XUẤT"))open=true});
+              document.body.classList.toggle("gsc-v9-admin-open",open);
+            }
+            function run(){legacy();adminState()}
+            run();setTimeout(run,150);setTimeout(run,700);
+            new MutationObserver(run).observe(document.body,{childList:true,subtree:true,attributes:true,attributeFilter:["class","style"]});
+            })();
+            </script>
+            """
+            s=s.replace("</body>",patch+"\n</body>")
+            p.write_text(s,encoding="utf-8")
+      - name: Regression QA
+        shell: python
+        run: |
+          from pathlib import Path
+          s=Path("index.html").read_text(encoding="utf-8")
+          req=["GSC_V9_UX_CLEAN","gsc-v9-hidden","gsc-v9-admin-open","SIMPLE ADMIN","XUẤT CẤU HÌNH","GSC_V8_PUBLIC","GSC_V73_STUDIO_PRO","gsc-config.json","touchstart"]
+          miss=[x for x in req if x not in s]; assert not miss,miss
+          assert s.count('id="GSC_V9_UX_CLEAN"')==1
+          print("V9 UX regression QA passed")
+      - name: Commit
+        run: |
+          git config user.name "ChatGPT GSC Updater"
+          git config user.email "actions@users.noreply.github.com"
+          git add index.html
+          git diff --cached --quiet && exit 0
+          git commit -m "GSC V9 clean public and admin UX"
+          git pull --rebase origin main
+          git push

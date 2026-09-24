@@ -1,0 +1,26 @@
+[
+  {
+    "id": "intro",
+    "name": "Giới thiệu",
+    "icon": "◆",
+    "url": "",
+    "mode": "iframe",
+    "enabled": false
+  },
+  {
+    "id": "amenities",
+    "name": "Tiện ích",
+    "icon": "◇",
+    "url": "",
+    "mode": "iframe",
+    "enabled": false
+  },
+  {
+    "id": "contact",
+    "name": "Liên hệ",
+    "icon": "○",
+    "url": "",
+    "mode": "iframe",
+    "enabled": false
+  }
+]

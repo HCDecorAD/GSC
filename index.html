@@ -619,4 +619,39 @@ if(window.visualViewport) visualViewport.addEventListener("resize",()=>{const v=
   })();
   </script>
   
+
+  <style id="GSC_V72_STUDIO">
+  /* public: hide legacy top tabs; story CTA at TOP */
+  body:not(.gsc-admin-mode) .topbar,body:not(.gsc-admin-mode) #topbar,body:not(.gsc-admin-mode) [class*="topbar"]{display:none!important}
+  #gscStoryBtn{top:calc(12px + env(safe-area-inset-top))!important;bottom:auto!important;right:14px!important;z-index:7600!important}
+  .gsc-admin-mode #gscStoryBtn{top:70px!important}
+  #gscStudio{display:none;position:fixed;inset:0;z-index:12000;background:#0b0f14;color:#fff;font-family:Segoe UI,sans-serif}
+  .gsc-admin-mode #gscStudio.on{display:grid;grid-template-columns:220px 1fr;grid-template-rows:54px 1fr}
+  .studioHead{grid-column:1/-1;display:flex;align-items:center;gap:10px;padding:0 14px;border-bottom:1px solid #ffffff1c;background:#10161d}.studioHead b{flex:1}.studioHead button,.studioSide button{border:1px solid #ffffff25;background:#ffffff0b;color:#fff;border-radius:9px;padding:9px 11px}
+  .studioSide{padding:12px;border-right:1px solid #ffffff1c;overflow:auto}.studioSide button{width:100%;margin-bottom:8px;text-align:left}
+  .studioCanvas{position:relative;overflow:hidden;background:#161b22}.studioPage{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:min(900px,88%);aspect-ratio:16/9;background:#070b10;border:1px solid #ffffff20;box-shadow:0 20px 70px #000;overflow:hidden}
+  .studioItem{position:absolute;min-width:80px;min-height:36px;padding:8px;border:1px dashed #c9ad76;cursor:move;touch-action:none;box-sizing:border-box}.studioItem img{width:100%;height:100%;object-fit:cover;pointer-events:none}.studioItem[contenteditable=true]{outline:none}
+  @media(max-width:700px){.gsc-admin-mode #gscStudio.on{grid-template-columns:110px 1fr}.studioSide{padding:7px}.studioHead{font-size:12px}.studioPage{width:96%}}
+  </style>
+  <section id="gscStudio"><div class="studioHead"><b>GSC ADMIN STUDIO</b><span>Kéo thả nội dung</span><button id="studioClose">Đóng</button></div><aside class="studioSide"><button data-add="text">＋ Văn bản</button><button data-add="title">＋ Tiêu đề</button><button data-add="image">＋ Hình ảnh</button><button data-add="button">＋ Nút</button><button data-add="box">＋ Khối</button><button id="studioSave">Lưu bố cục</button><button id="studioReset">Khôi phục</button></aside><main class="studioCanvas"><div class="studioPage" id="studioPage"></div></main></section>
+  <script>
+  (()=>{const S="gsc-studio-layout-v1",q=x=>document.getElementById(x),studio=q("gscStudio"),page=q("studioPage");
+  function adminOn(){document.body.classList.add("gsc-admin-mode")}
+  /* existing Admin unlock is detected without changing its password flow */
+  const obs=new MutationObserver(()=>{if(document.querySelector('[class*="admin"][class*="open"],[class*="admin"][style*="display: block"],.admin-panel.show,.admin-modal.show'))adminOn()});obs.observe(document.body,{subtree:true,attributes:true,attributeFilter:["class","style"]});
+  document.addEventListener("click",e=>{const t=e.target.closest("button");if(t&&/admin/i.test(t.textContent||""))setTimeout(()=>{if(document.querySelector('input[type="password"]')===null)adminOn()},400)});
+  function make(type,data={}){let d=document.createElement("div");d.className="studioItem";d.dataset.type=type;d.style.left=data.left||"10%";d.style.top=data.top||"10%";d.style.width=data.width||"30%";d.style.height=data.height||"auto";
+    if(type==="image")d.innerHTML='<div style="height:100%;display:grid;place-items:center;background:#222">HÌNH ẢNH</div>';else{d.contentEditable="true";d.textContent=data.text||(type==="title"?"TIÊU ĐỀ DỰ ÁN":type==="button"?"NÚT HÀNH ĐỘNG":type==="box"?"KHỐI NỘI DUNG":"Nhập nội dung...")}
+    drag(d);page.appendChild(d);return d}
+  function drag(el){let sx,sy,l,t;el.addEventListener("pointerdown",e=>{if(e.target===el&&el.isContentEditable)return;sx=e.clientX;sy=e.clientY;l=el.offsetLeft;t=el.offsetTop;el.setPointerCapture(e.pointerId);el.onpointermove=v=>{el.style.left=(l+v.clientX-sx)+"px";el.style.top=(t+v.clientY-sy)+"px"};el.onpointerup=()=>el.onpointermove=null})}
+  document.querySelectorAll("#gscStudio [data-add]").forEach(b=>b.onclick=()=>make(b.dataset.add));q("studioClose").onclick=()=>studio.classList.remove("on");
+  q("studioSave").onclick=()=>{const a=[...page.children].map(x=>({type:x.dataset.type,left:x.style.left,top:x.style.top,width:x.style.width,height:x.style.height,text:x.textContent}));localStorage.setItem(S,JSON.stringify(a));alert("Đã lưu bố cục trên thiết bị này")};
+  q("studioReset").onclick=()=>{localStorage.removeItem(S);page.innerHTML=""};
+  try{(JSON.parse(localStorage.getItem(S)||"[]")).forEach(x=>make(x.type,x))}catch(e){}
+  const oldAdmin=document.querySelector("#adminBtn,.admin-btn,[data-admin]");if(oldAdmin)oldAdmin.addEventListener("click",()=>setTimeout(()=>{if(document.body.classList.contains("gsc-admin-mode"))studio.classList.add("on")},500));
+  /* double click/tap ADMIN after successful login opens studio */
+  document.addEventListener("gsc-admin-authenticated",()=>{adminOn();studio.classList.add("on")});
+  })();
+  </script>
+  
 </body></html>

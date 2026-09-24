@@ -1,0 +1,154 @@
+{
+  "hotspots": {
+    "1": {
+      "id": 1,
+      "name": "Mặt tiền – Cổng vào",
+      "x": 50,
+      "y": 88,
+      "enabled": true
+    },
+    "2": {
+      "id": 2,
+      "name": "Khu đánh cờ – Thư giãn",
+      "x": 31,
+      "y": 67,
+      "enabled": true
+    },
+    "3": {
+      "id": 3,
+      "name": "Khu tập ngoài trời",
+      "x": 70,
+      "y": 67,
+      "enabled": true
+    },
+    "4": {
+      "id": 4,
+      "name": "Hồ cá Koi",
+      "x": 50,
+      "y": 64,
+      "enabled": true
+    },
+    "5": {
+      "id": 5,
+      "name": "Cổng chính tòa nhà",
+      "x": 50,
+      "y": 51,
+      "enabled": true
+    },
+    "6": {
+      "id": 6,
+      "name": "Hoạt động ngoài trời tầng 3",
+      "x": 70.5,
+      "y": 45.5,
+      "enabled": true
+    },
+    "7": {
+      "id": 7,
+      "name": "Hai tháp đôi",
+      "x": 50,
+      "y": 36,
+      "enabled": true
+    },
+    "8": {
+      "id": 8,
+      "name": "Hồ bơi",
+      "x": 68,
+      "y": 16,
+      "enabled": true
+    },
+    "9": {
+      "id": 9,
+      "name": "Trồng trọt – Tâm linh",
+      "x": 72,
+      "y": 7.5,
+      "enabled": true
+    },
+    "10": {
+      "id": 10,
+      "name": "Bãi xe",
+      "x": 40,
+      "y": 10.5,
+      "enabled": true
+    },
+    "11": {
+      "id": 11,
+      "name": "Sân thượng",
+      "x": 61.5,
+      "y": 31,
+      "enabled": true
+    }
+  },
+  "videos": {
+    "1": {
+      "name": "Mặt tiền – Cổng vào",
+      "url": "https://drive.google.com/file/d/1i9utBhQ9oQotJOxm6ORpWGwiPCCfDIz7/view?usp=sharing"
+    },
+    "2": {
+      "name": "Khu đánh cờ – Thư giãn",
+      "url": "https://drive.google.com/file/d/10ucS4VQeHpWCgrefvWx1TGZYcUg0aHaC/view?usp=sharing"
+    },
+    "3": {
+      "name": "Khu tập ngoài trời",
+      "url": "https://drive.google.com/file/d/1lqFuUTKKf9A0w4g04F2aB2OpRJdT42N8/view?usp=sharing"
+    },
+    "4": {
+      "name": "Hồ cá Koi",
+      "url": "https://drive.google.com/file/d/1cZVjsaQUPYN89IEI4u0L-wt9-ndaKzmN/view?usp=sharing"
+    },
+    "5": {
+      "name": "Cổng chính tòa nhà",
+      "url": "https://drive.google.com/file/d/1ZAhZ67i4lBJsu3fVxPQNYd8AKJ9L3sKF/view?usp=sharing"
+    },
+    "6": {
+      "name": "Hoạt động ngoài trời tầng 3",
+      "url": "https://drive.google.com/file/d/1g0mAVPZzEMeLk1QSDyX6gLhwMIqg-Qfm/view?usp=sharing"
+    },
+    "7": {
+      "name": "Hai tháp đôi",
+      "url": "https://drive.google.com/file/d/1BMgtO93Kwr90AdS9uH0ueGAv5DHdX0E4/view?usp=sharing"
+    },
+    "8": {
+      "name": "Hồ bơi",
+      "url": "https://drive.google.com/file/d/1OgiVVHld9esVkVO2QgwCNdVMKmhVzcSF/view?usp=sharing"
+    },
+    "9": {
+      "name": "Trồng trọt – Tâm linh",
+      "url": "https://drive.google.com/file/d/1urOJaD3rrcx5rmhlJh10EsHMTQoaIk5_/view?usp=sharing"
+    },
+    "10": {
+      "name": "Bãi xe",
+      "url": "https://drive.google.com/file/d/1-bqRC1kpnICxd8Yn6NquCGCt4dybqzYu/view?usp=sharing"
+    },
+    "11": {
+      "name": "Sân thượng",
+      "url": ""
+    }
+  },
+  "pages": [
+    {
+      "id": "intro",
+      "name": "Giới thiệu",
+      "icon": "◆",
+      "url": "",
+      "mode": "iframe",
+      "enabled": false
+    },
+    {
+      "id": "amenities",
+      "name": "Tiện ích",
+      "icon": "◇",
+      "url": "",
+      "mode": "iframe",
+      "enabled": false
+    },
+    {
+      "id": "contact",
+      "name": "Liên hệ",
+      "icon": "○",
+      "url": "",
+      "mode": "iframe",
+      "enabled": false
+    }
+  ],
+  "exportedAt": "2026-09-24T11:11:44.813Z"
+}

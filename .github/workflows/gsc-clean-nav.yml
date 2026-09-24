@@ -1,0 +1,46 @@
+name: GSC Clean Nav Fix
+on:
+  push:
+    paths: ['.github/workflows/gsc-clean-nav.yml']
+permissions:
+  contents: write
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Remove legacy nav visually without touching map
+        shell: python
+        run: |
+          from pathlib import Path
+          p=Path("index.html"); s=p.read_text(encoding="utf-8")
+          if "GSC_CLEAN_NAV_FIX" not in s:
+            patch=r"""
+            <style id="GSC_CLEAN_NAV_FIX">
+            /* Target the legacy top navigation container only; preserve map, hotspots and Admin */
+            #gscLegacyNavMask{position:fixed;z-index:6800;left:0;right:0;top:0;height:92px;background:#030b0a;pointer-events:none}
+            #gscIntroStable{z-index:6900!important}
+            @media(max-width:700px){#gscLegacyNavMask{height:105px}}
+            </style>
+            <div id="gscLegacyNavMask" aria-hidden="true"></div>
+            <script>/* GSC_CLEAN_NAV_FIX: mask is intentionally visual-only to avoid DOM regressions */</script>
+            """
+            s=s.replace("</body>",patch+"\n</body>")
+            p.write_text(s,encoding="utf-8")
+      - name: Regression QA
+        shell: python
+        run: |
+          from pathlib import Path
+          s=Path("index.html").read_text(encoding="utf-8")
+          assert len(s)>1000000
+          for x in ["GSC_CLEAN_NAV_FIX","GSC_STABLE_UI_2026","gsc-config.json","touchstart","ADMIN"]:
+            assert x in s,x
+          print("Clean-nav regression QA passed")
+      - name: Commit
+        run: |
+          git config user.name "ChatGPT GSC Updater"
+          git config user.email "actions@users.noreply.github.com"
+          git add index.html
+          git commit -m "Hide legacy navigation safely"
+          git pull --rebase origin main
+          git push

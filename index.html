@@ -741,4 +741,23 @@ if(window.visualViewport) visualViewport.addEventListener("resize",()=>{const v=
   })();
   </script>
   
+
+  <style id="GSC_V82_HOME_RECOVERY">
+  /* Recovery: never hide structural containers when removing old nav */
+  body:not(.gsc-admin-mode) .gsc-v82-hide{display:none!important}
+  #project,#stage,#view,.project,.stage,.view{visibility:visible!important;opacity:1!important}
+  </style>
+  <script>
+  (()=>{const GSC_V82_HOME_RECOVERY=true,n=s=>(s||"").replace(/\s+/g," ").trim().toUpperCase();
+  function recover(){
+    document.querySelectorAll(".gsc-v81-hide,.gsc-public-hidden").forEach(x=>x.classList.remove("gsc-v81-hide","gsc-public-hidden"));
+    if(document.body.classList.contains("gsc-admin-mode"))return;
+    document.querySelectorAll("button,a").forEach(el=>{const t=n(el.textContent);if(t==="TOÀN CẢNH"||t==="ANIMATION"||t==="+")el.classList.add("gsc-v82-hide")});
+    document.querySelectorAll("div,span,p").forEach(el=>{const t=n(el.textContent);if(el.children.length===0&&((t.includes("KÉO ĐỂ DI CHUYỂN")&&t.includes("ZOOM"))||(t.includes("CLICK HOTSPOT")&&t.includes("VIDEO"))))el.classList.add("gsc-v82-hide")});
+  }
+  recover();setTimeout(recover,100);setTimeout(recover,700);
+  new MutationObserver(recover).observe(document.body,{childList:true,subtree:true});
+  })();
+  </script>
+  
 </body></html>

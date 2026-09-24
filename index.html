@@ -591,4 +591,25 @@ window.addEventListener("resize",()=>{const v=document.getElementById("viewer");
 if(window.visualViewport) visualViewport.addEventListener("resize",()=>{const v=document.getElementById("viewer");if(v&&v.style.display!=="none")refitMobileVideoV62()},{passive:true});
 </script>
 
+
+  <style id="GSC_STABLE_UI_2026">
+  /* Stable public cleanup: presentation-ready viewer without touching core map/video logic */
+  .gsc-clean-hide{display:none!important}
+  #gscIntroStable{position:fixed;left:16px;top:calc(14px + env(safe-area-inset-top));z-index:6900;border:1px solid #d8bd7045;background:#08110fe8;color:#f5f5f2;border-radius:999px;padding:12px 17px;font:700 13px/1 Segoe UI,Arial;letter-spacing:.03em;backdrop-filter:blur(10px);box-shadow:0 10px 30px #0005}
+  #gscIntroStable:hover{border-color:#d8bd7088}
+  #gscIntroModal{display:none;position:fixed;inset:0;z-index:23000;background:#050a09f4;color:#fff;align-items:center;justify-content:center;padding:18px}
+  #gscIntroModal.on{display:flex}.gscIntroBox{width:min(900px,100%);border:1px solid #d8bd7033;background:#0a1412;border-radius:20px;padding:clamp(22px,5vw,48px);box-shadow:0 30px 90px #0009;position:relative}.gscIntroBox small{color:#d8bd70;letter-spacing:.18em}.gscIntroBox h1{font-size:clamp(28px,6vw,56px);line-height:1.02;margin:12px 0}.gscIntroBox p{color:#b9c4c0;max-width:650px;font-size:clamp(14px,2.5vw,18px)}.gscIntroClose{position:absolute;right:14px;top:14px;border:1px solid #ffffff22;background:#ffffff08;color:#fff;border-radius:50%;width:42px;height:42px;font-size:20px}.gscIntroGo{margin-top:18px;border:1px solid #d8bd7055;background:#d8bd7014;color:#e7ce87;border-radius:10px;padding:11px 15px}
+  body.gsc-admin-open #gscIntroStable{display:none!important}
+  @media(max-width:600px){#gscIntroStable{left:10px;top:10px;padding:10px 13px;font-size:11px}.gscIntroBox{border-radius:15px}}
+  </style>
+  <button id="gscIntroStable">▶ GIỚI THIỆU DỰ ÁN</button>
+  <section id="gscIntroModal"><div class="gscIntroBox"><button class="gscIntroClose" aria-label="Đóng">×</button><small>GSC SENIOR LIVING & WELLNESS</small><h1>Nơi tuổi vàng bắt đầu một chương mới.</h1><p>Digital Twin tương tác kết nối không gian sống, chăm sóc sức khỏe, cảnh quan và các tiện ích dành cho người cao tuổi. Chạm vào các hotspot trên tổng thể dự án để khám phá từng không gian.</p><button class="gscIntroGo">KHÁM PHÁ DIGITAL TWIN</button></div></section>
+  <script>
+  (()=>{const GSC_STABLE_UI_2026=true,n=x=>(x||"").replace(/\s+/g," ").trim().toUpperCase(),intro=document.getElementById("gscIntroStable"),modal=document.getElementById("gscIntroModal");
+  function cleanup(){document.querySelectorAll("button,a").forEach(el=>{const t=n(el.textContent);if(t==="TOÀN CẢNH"||t==="ANIMATION"||t==="+")el.classList.add("gsc-clean-hide")});document.querySelectorAll("div,span,p").forEach(el=>{if(el.children.length)return;const t=n(el.textContent);if((t.includes("KÉO ĐỂ DI CHUYỂN")&&t.includes("ZOOM"))||(t.includes("CLICK HOTSPOT")&&t.includes("VIDEO")))el.classList.add("gsc-clean-hide")})}
+  intro.onclick=()=>modal.classList.add("on");modal.querySelector(".gscIntroClose").onclick=()=>modal.classList.remove("on");modal.querySelector(".gscIntroGo").onclick=()=>modal.classList.remove("on");modal.onclick=e=>{if(e.target===modal)modal.classList.remove("on")};
+  cleanup();new MutationObserver(cleanup).observe(document.body,{childList:true,subtree:true});
+  })();
+  </script>
+  
 </body></html>

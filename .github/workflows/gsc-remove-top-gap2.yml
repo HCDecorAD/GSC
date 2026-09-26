@@ -1,4 +1,4 @@
-name: GSC Remove Top Gap 2
+name: GSC Remove Top Strip Final
 on:
   push:
     paths: ['.github/workflows/gsc-remove-top-gap2.yml']
@@ -37,3 +37,4 @@ body>.topbar,body>#topbar,body>header:empty{display:none!important;height:0!impo
           git commit -m "Remove empty top strip from viewer"
           git pull --rebase origin main
           git push
+\n# trigger

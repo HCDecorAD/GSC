@@ -1,0 +1,39 @@
+name: GSC Remove Top Gap 2
+on:
+  push:
+    paths: ['.github/workflows/gsc-remove-top-gap2.yml']
+permissions:
+  contents: write
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Remove reserved top strip
+        shell: python
+        run: |
+          from pathlib import Path
+          p=Path("index.html"); s=p.read_text(encoding="utf-8")
+          if "GSC_REMOVE_TOP_GAP_20260926" not in s:
+            css='''<style id="GSC_REMOVE_TOP_GAP_20260926">
+html,body{margin:0!important;padding:0!important}
+body>.topbar,body>#topbar,body>header:empty{display:none!important;height:0!important;min-height:0!important;padding:0!important;margin:0!important;border:0!important}
+#app,.app,.viewer,.stage,.canvas-wrap,.workspace,main{margin-top:0!important}
+</style>'''
+            s=s.replace("</head>",css+"</head>")
+            p.write_text(s,encoding="utf-8")
+      - name: QA
+        shell: python
+        run: |
+          from pathlib import Path
+          s=Path("index.html").read_text(encoding="utf-8")
+          assert len(s)>1000000 and "GSC_REMOVE_TOP_GAP_20260926" in s and "gsc-config.json" in s
+          print("PASS")
+      - name: Commit
+        run: |
+          git config user.name "ChatGPT GSC Updater"
+          git config user.email "actions@users.noreply.github.com"
+          git add index.html
+          git commit -m "Remove empty top strip from viewer"
+          git pull --rebase origin main
+          git push

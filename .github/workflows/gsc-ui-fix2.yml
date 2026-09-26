@@ -1,6 +1,7 @@
 name: GSC UI Fix Intro Video Close 2
 on:
-  workflow_dispatch:
+  push:
+    paths: ['.github/workflows/gsc-ui-fix2.yml']
 permissions:
   contents: write
 jobs:

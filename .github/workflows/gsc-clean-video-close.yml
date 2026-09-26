@@ -1,0 +1,47 @@
+name: GSC Clean Video Close
+on:
+  push:
+    paths: ['.github/workflows/gsc-clean-video-close.yml']
+permissions:
+  contents: write
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Remove top-gap patches and keep floating video X only
+        shell: python
+        run: |
+          from pathlib import Path
+          import re
+          p=Path("index.html"); s=p.read_text(encoding="utf-8")
+          # Remove prior top-strip CSS entirely.
+          s=re.sub(r'<style id="GSC_REMOVE_TOP_GAP_20260926">.*?</style>','',s,flags=re.S)
+          # Replace prior UI fix style with only floating X + intro CTA positioning; no bars/containers.
+          s=re.sub(r'<style id="GSC_UI_FIX_20260926">.*?</style>','',s,flags=re.S)
+          css='''<style id="GSC_VIDEO_X_ONLY_20260926">
+#gscIntroStable{top:auto!important;left:auto!important;right:18px!important;bottom:18px!important;z-index:8500!important;max-width:calc(100vw - 36px)!important}
+#gscVideoUniversalClose{position:fixed!important;right:16px!important;top:16px!important;width:42px!important;height:42px!important;border-radius:50%!important;border:1px solid rgba(255,255,255,.45)!important;background:rgba(0,0,0,.58)!important;color:#fff!important;font:700 27px/38px Arial!important;text-align:center!important;padding:0!important;margin:0!important;z-index:2147483646!important;cursor:pointer!important;backdrop-filter:blur(6px);display:none}
+#gscVideoUniversalClose.on{display:block!important}
+@media(max-width:720px){#gscIntroStable{right:12px!important;bottom:12px!important}#gscVideoUniversalClose{right:10px!important;top:10px!important}}
+</style>'''
+          s=s.replace("</head>",css+"</head>")
+          p.write_text(s,encoding="utf-8")
+      - name: QA
+        shell: python
+        run: |
+          from pathlib import Path
+          s=Path("index.html").read_text(encoding="utf-8")
+          assert len(s)>1000000
+          assert "GSC_VIDEO_X_ONLY_20260926" in s
+          assert "GSC_REMOVE_TOP_GAP_20260926" not in s
+          assert "gscVideoUniversalClose" in s and "gsc-config.json" in s
+          print("VIDEO X ONLY QA PASS")
+      - name: Commit
+        run: |
+          git config user.name "ChatGPT GSC Updater"
+          git config user.email "actions@users.noreply.github.com"
+          git add index.html
+          git commit -m "Keep floating video close button without top bar"
+          git pull --rebase origin main
+          git push

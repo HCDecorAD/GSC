@@ -1,0 +1,35 @@
+name: GSC UI Fix Intro Video Close 2
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Patch
+        shell: python
+        run: |
+          from pathlib import Path
+          p=Path("index.html"); s=p.read_text(encoding="utf-8")
+          if "GSC_UI_FIX_20260926" not in s:
+            s=s.replace("</head>",'''<style id="GSC_UI_FIX_20260926">#gscIntroStable{top:auto!important;left:auto!important;right:18px!important;bottom:18px!important;z-index:8500!important;max-width:calc(100vw - 36px)!important}@media(max-width:720px){#gscIntroStable{right:12px!important;bottom:12px!important;left:auto!important;top:auto!important}}.gsc-video-x{position:fixed;right:14px;top:14px;width:44px;height:44px;border-radius:50%;border:1px solid #ffffff59;background:#000b;color:#fff;font:700 26px Arial;z-index:2147483646;cursor:pointer;display:none}.gsc-video-x.on{display:block}</style></head>''')
+            s=s.replace("</body>",'''<button id="gscVideoUniversalClose" class="gsc-video-x" aria-label="Đóng video">×</button><script>(function(){const x=document.getElementById("gscVideoUniversalClose"),q='iframe[src*="drive.google"],iframe[src*="youtube"],video';function v(e){if(!e)return false;const r=e.getBoundingClientRect(),c=getComputedStyle(e);return r.width>80&&r.height>80&&c.display!=="none"&&c.visibility!=="hidden"}function sync(){x.classList.toggle("on",[...document.querySelectorAll(q)].some(v))}x.onclick=()=>{const n=[...document.querySelectorAll('button,[role="button"],.close,[class*="close"]')].find(e=>e!==x&&v(e)&&(/^(×|x|đóng|close)$/i.test((e.textContent||"").trim())||/đóng|close/i.test(e.getAttribute("aria-label")||"")));if(n)n.click();else document.querySelectorAll(q).forEach(m=>{if(m.tagName==="VIDEO")m.pause();else m.src="about:blank"});x.classList.remove("on")};new MutationObserver(()=>requestAnimationFrame(sync)).observe(document.body,{subtree:true,childList:true,attributes:true,attributeFilter:["style","class","src"]});document.addEventListener("click",()=>setTimeout(sync,100),true);setInterval(sync,1200);sync()})();</script></body>''')
+            p.write_text(s,encoding="utf-8")
+      - name: QA
+        shell: python
+        run: |
+          from pathlib import Path
+          s=Path("index.html").read_text(encoding="utf-8")
+          assert len(s)>1000000
+          for x in ["GSC_UI_FIX_20260926","gscVideoUniversalClose","gscIntroStable","gsc-config.json"]: assert x in s
+          print("PASS")
+      - name: Commit
+        run: |
+          git config user.name "ChatGPT GSC Updater"
+          git config user.email "actions@users.noreply.github.com"
+          git add index.html
+          git commit -m "Fix intro overlap and add video close"
+          git pull --rebase origin main
+          git push

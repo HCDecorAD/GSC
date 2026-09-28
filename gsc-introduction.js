@@ -152,7 +152,8 @@
 
   function init(options) {
     root = d.getElementById('gsc-intro-root');
-    if (!root) return;
+    if (!root || root.__gscIntroInitialized) return;
+    root.__gscIntroInitialized = true;
     var o = options || w.GSC_INTRO_CONFIG || {};
     cfg.links = o.links || {};
     cfg.onAction = o.onAction || null;

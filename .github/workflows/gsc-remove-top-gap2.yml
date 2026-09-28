@@ -1,5 +1,5 @@
 name: GSC Remove Top Strip Final
-on:
+'on':
   push:
     paths: ['.github/workflows/gsc-remove-top-gap2.yml']
 permissions:

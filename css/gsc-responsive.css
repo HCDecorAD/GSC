@@ -1,0 +1,85 @@
+[Reading 81 lines from start (total: 81 lines, 0 remaining)]
+
+/* GSC Introduction — responsive layer (load after gsc-introduction.css) */
+@media(max-width:1024px){
+  .gsc-intro-split{grid-template-columns:1fr}
+  .gsc-intro-fig{aspect-ratio:16/10}
+  .gsc-intro-grid{grid-template-columns:repeat(2,1fr)}
+  .gsc-intro-list{grid-template-columns:repeat(2,1fr)}
+  .gsc-intro-track{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:640px){
+  .gsc-intro-brand b{font-size:32px}
+  .gsc-intro-hero__body{padding-bottom:max(40px,env(safe-area-inset-bottom))}
+  .gsc-intro-btn{width:100%}
+  .gsc-intro-stats{margin-top:36px}
+  .gsc-intro-stats>div:nth-child(even){padding-left:18px}
+  .gsc-intro-fig{aspect-ratio:4/5}
+  .gsc-intro-wide{aspect-ratio:4/3;margin-top:32px}
+  .gsc-intro-list{grid-template-columns:1fr}
+  .gsc-intro-grid{grid-template-columns:1fr;margin-top:36px}
+  .gsc-intro-card{display:grid;grid-template-columns:1fr;gap:4px;padding:22px 20px}
+  .gsc-intro-strip{aspect-ratio:16/9}
+  .gsc-intro-golden{min-height:70svh}
+  .gsc-intro-golden::before{background:linear-gradient(180deg,rgba(7,12,22,.5),rgba(7,12,22,.9))}
+  .gsc-intro-map{aspect-ratio:1/1}
+  .gsc-intro-track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;padding:0 var(--pad);-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .gsc-intro-track::-webkit-scrollbar{display:none}
+  .gsc-intro-tile{flex:0 0 78%;aspect-ratio:3/4;scroll-snap-align:center}
+  .gsc-intro-actions{flex-direction:column}
+  .gsc-intro-slogan{letter-spacing:.2em;line-height:1.8}
+}
+@media(orientation:landscape) and (max-height:520px){
+  .gsc-intro-hero{min-height:auto;padding-top:80px}
+  .gsc-intro-hero__title{font-size:clamp(32px,6vw,56px)}
+  .gsc-intro-hero__body::before{display:none}
+}
+@media(prefers-reduced-motion:reduce){
+  .gsc-intro *,.gsc-intro *::before,.gsc-intro *::after{animation:none!important;transition:none!important}
+  .gsc-intro.is-js .gsc-intro-reveal{opacity:1;transform:none}
+  .gsc-intro-hero__bg{transform:none!important}
+}
+@media(max-width:1024px){
+  .gsc-intro-nav__links{display:none}
+  .gsc-intro-nav__logo{margin-left:auto}
+  .gsc-intro-feat--rev .gsc-intro-fig{order:0}
+  .gsc-intro-feat .gsc-intro-fig{aspect-ratio:16/10}
+}
+@media(max-width:640px){
+  .gsc-intro-nav{gap:12px}
+  .gsc-intro-nav__logo{font-size:20px}
+  .gsc-intro-feat .gsc-intro-fig{aspect-ratio:4/3}
+  .gsc-intro-list1 li{font-size:20px}
+  .gsc-intro-chips li{font-size:13px;padding:8px 14px}
+}
+@media(orientation:landscape) and (max-height:520px){.gsc-intro-nav{position:absolute}}
+@media(max-width:640px){.gsc-intro-hero__title{font-size:clamp(32px,9.4vw,44px);margin:22px 0 16px}}
+@media(max-width:1024px){
+  .gsc-intro-nav__toggle{display:inline-flex}
+  .gsc-intro-nav__logo{margin-left:0;margin-right:auto}
+  .gsc-intro-nav__back{order:-1}
+  .gsc-intro-nav__toggle{order:2}
+  .gsc-intro-nav__links{display:flex;flex-direction:column;align-items:stretch;gap:0;position:fixed;inset:0;z-index:-1;padding:calc(84px + env(safe-area-inset-top)) var(--pad) max(32px,env(safe-area-inset-bottom));background:rgba(7,12,22,.99);overflow-y:auto;visibility:hidden;opacity:0;transition:opacity .3s,visibility .3s}
+  .gsc-intro-nav.is-open .gsc-intro-nav__links{visibility:visible;opacity:1}
+  .gsc-intro-nav__links a{display:block;padding:16px 0;font-family:var(--serif);font-size:26px;letter-spacing:.04em;color:var(--white);border-bottom:1px solid var(--line)}
+  .gsc-intro-nav__more{display:list-item}
+  .gsc-intro-nav.is-open,.gsc-intro-nav.is-solid{background:rgba(7,12,22,.99);-webkit-backdrop-filter:none;backdrop-filter:none}
+  .gsc-intro-agrid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:640px){
+  .gsc-intro-facts{grid-template-columns:1fr}
+  .gsc-intro-facts li{padding:18px 0 0}
+  .gsc-intro-agrid{grid-template-columns:1fr;gap:28px}
+  .gsc-intro-story{flex-direction:column;gap:10px}
+  .gsc-intro-story li+li::before{display:none}
+  .gsc-intro-vid--film{aspect-ratio:4/3}
+  .gsc-intro-nav__links a{font-size:24px}
+}
+@media(orientation:landscape) and (max-height:520px){
+  .gsc-intro-nav__links{padding-top:64px}
+  .gsc-intro-nav__links a{padding:10px 0;font-size:20px}
+  .gsc-intro-hero__body{padding-top:72px}
+}
+@media(prefers-reduced-motion:reduce){.gsc-intro-vid video{animation:none}}
+
+[executed on device: HOCUONG (a318a9bd-cfd6-4540-bf01-3ab9fb7f587a)]

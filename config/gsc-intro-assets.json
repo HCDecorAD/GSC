@@ -1,0 +1,27 @@
+[Reading 23 lines from start (total: 23 lines, 0 remaining)]
+
+{
+  "logo": "",
+  "logoAlt": "GSC Senior Living & Wellness",
+  "links": { "home": "index.html", "panorama": "index.html", "contact": "" },
+  "assets": {
+    "hero": "", "overview": "", "masterplan": "", "architecture": "", "seniorliving": "",
+    "wellness": "", "healthcare": "", "active": "", "nature": "", "community": "",
+    "daily": "", "amenities": "", "location": "", "golden": "",
+    "experience": ["", "", "", "", "", ""]
+  },
+  "alts": {
+    "hero": "Phối cảnh tổng thể dự án GSC",
+    "overview": "Phối cảnh dự án GSC",
+    "masterplan": "Mặt bằng tổng thể dự án GSC",
+    "architecture": "Phối cảnh hai tháp GSC",
+    "location": "Bản đồ vị trí dự án GSC"
+  },
+  "videos": {
+    "hero": { "src": "", "webm": "", "poster": "", "autoplay": true, "loop": true, "label": "" },
+    "golden": { "src": "", "webm": "", "poster": "", "autoplay": true, "loop": true, "label": "" },
+    "experience": { "src": "", "webm": "", "poster": "", "autoplay": false, "loop": false, "label": "Video khám phá GSC" }
+  }
+}
+
+[executed on device: HOCUONG (a318a9bd-cfd6-4540-bf01-3ab9fb7f587a)]

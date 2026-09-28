@@ -2,6 +2,7 @@ name: GSC Responsive Safe Patch
 on:
   push:
     paths: ['.github/workflows/gsc-responsive-safe.yml']
+  workflow_dispatch:
 permissions:
   contents: write
 jobs:
@@ -50,6 +51,10 @@ button,[role="button"],.hotspot{touch-action:manipulation}
           git config user.name "ChatGPT GSC Updater"
           git config user.email "actions@users.noreply.github.com"
           git add index.html
+          if git diff --cached --quiet; then
+            echo "No responsive change required"
+            exit 0
+          fi
           git commit -m "Improve GSC responsive mobile and landscape behavior"
           git pull --rebase origin main
           git push origin HEAD:main

@@ -1,4 +1,4 @@
-[Reading 206 lines from start (total: 206 lines, 0 remaining)]
+[Reading 106 lines from start (total: 106 lines, 0 remaining)]
 
 <!DOCTYPE html>
 <html lang="vi">
@@ -8,7 +8,8 @@
 <title>Giới thiệu dự án | GSC Senior Living &amp; Wellness</title>
 <meta name="description" content="GSC Senior Living &amp; Wellness — Where golden years begin a new chapter.">
 <meta name="theme-color" content="#070c16">
-<link rel="stylesheet" href="gsc-introduction.css">
+<link rel="stylesheet" href="css/gsc-introduction.css">
+<link rel="stylesheet" href="css/gsc-responsive.css">
 </head>
 <body class="gsc-intro-body">
 <a class="gsc-intro-skip" href="#gsc-intro-main">Bỏ qua điều hướng</a>
@@ -17,17 +18,13 @@
 <nav class="gsc-intro-nav" id="gsc-intro-nav" aria-label="Điều hướng giới thiệu dự án">
   <a class="gsc-intro-nav__back" href="index.html" data-gsc-action="home">← TOÀN CẢNH</a>
   <a class="gsc-intro-nav__logo" href="#gsc-intro-hero" data-gsc-logo aria-label="GSC Senior Living &amp; Wellness — về đầu trang"><b>GSC</b></a>
-  <ul class="gsc-intro-nav__links">
-    <li><a href="#gsc-intro-overview">Tổng quan</a></li>
-    <li><a href="#gsc-intro-architecture">Kiến trúc</a></li>
-    <li><a href="#gsc-intro-wellness">Wellness</a></li>
-    <li><a href="#gsc-intro-location">Vị trí</a></li>
-    <li><a href="#gsc-intro-gallery">Khám phá</a></li>
-  </ul>
+  <button class="gsc-intro-nav__toggle" type="button" aria-expanded="false" aria-controls="gsc-intro-menu"><span class="gsc-intro-nav__bars" aria-hidden="true"></span><span class="gsc-intro-sr">Mục lục</span></button>
+  <ul class="gsc-intro-nav__links" id="gsc-intro-menu"><li><a href="#gsc-intro-overview">Tổng quan</a></li><li class="gsc-intro-nav__more"><a href="#gsc-intro-vision">Vision</a></li><li><a href="#gsc-intro-masterplan">Masterplan</a></li><li><a href="#gsc-intro-architecture">Kiến trúc</a></li><li class="gsc-intro-nav__more"><a href="#gsc-intro-seniorliving">Senior Living</a></li><li><a href="#gsc-intro-wellness">Wellness</a></li><li class="gsc-intro-nav__more"><a href="#gsc-intro-healthcare">Healthcare</a></li><li class="gsc-intro-nav__more"><a href="#gsc-intro-active">Active Living</a></li><li class="gsc-intro-nav__more"><a href="#gsc-intro-nature">Nature</a></li><li class="gsc-intro-nav__more"><a href="#gsc-intro-community">Community</a></li><li class="gsc-intro-nav__more"><a href="#gsc-intro-daily">Daily Living</a></li><li><a href="#gsc-intro-amenities">Tiện ích</a></li><li><a href="#gsc-intro-location">Vị trí</a></li><li><a href="#gsc-intro-gallery">Khám phá</a></li><li class="gsc-intro-nav__more"><a href="#gsc-intro-golden">Golden Years</a></li></ul>
 </nav>
 
 <header class="gsc-intro-hero" id="gsc-intro-hero">
   <div class="gsc-intro-hero__bg gsc-intro-ph" data-gsc-asset="hero" data-gsc-label="Ảnh hero — phối cảnh tổng thể" data-gsc-eager></div>
+  <div class="gsc-intro-vid" data-gsc-video="hero" hidden aria-hidden="true"></div>
   <div class="gsc-intro-hero__shade"></div>
   <div class="gsc-intro-hero__body">
     <p class="gsc-intro-brand"><b data-gsc-logo>GSC</b><span>SENIOR LIVING &amp; WELLNESS</span></p>
@@ -38,172 +35,75 @@
 </header>
 
 <main id="gsc-intro-main">
+<section class="gsc-intro-sec gsc-intro-overview" id="gsc-intro-overview"><div class="gsc-intro-wrap gsc-intro-split">
+<div class="gsc-intro-reveal"><h2 class="gsc-intro-h2">MỘT CHƯƠNG MỚI<br>CHO TUỔI VÀNG</h2>
+<dl class="gsc-intro-stats"><div><dt>Tổng diện tích</dt><dd><span data-gsc-count="20000">20.000</span> m²</dd></div><div><dt>Tháp</dt><dd><span data-gsc-count="2" data-gsc-pad="2">02</span></dd></div><div><dt>Tầng / tháp</dt><dd><span data-gsc-count="36">36</span></dd></div><div><dt>Quy mô tầng</dt><dd>G + 35</dd></div></dl>
+<p class="gsc-intro-note">Khu đất khoảng 110 × 182 m, tiếp giáp QL51.</p></div>
+<figure class="gsc-intro-fig gsc-intro-ph gsc-intro-reveal" data-gsc-asset="overview" data-gsc-label="Phối cảnh dự án" role="img" aria-label="Phối cảnh dự án GSC"></figure></div></section>
 
-<section class="gsc-intro-sec gsc-intro-overview" id="gsc-intro-overview">
-  <div class="gsc-intro-wrap gsc-intro-split">
-    <div class="gsc-intro-reveal">
-      <h2 class="gsc-intro-h2">MỘT CHƯƠNG MỚI<br>CHO TUỔI VÀNG</h2>
-      <dl class="gsc-intro-stats">
-        <div><dt>Tổng diện tích</dt><dd><span data-gsc-count="20000">20.000</span> m²</dd></div>
-        <div><dt>Tháp</dt><dd><span data-gsc-count="2" data-gsc-pad="2">02</span></dd></div>
-        <div><dt>Tầng / tháp</dt><dd><span data-gsc-count="36">36</span></dd></div>
-        <div><dt>Quy mô tầng</dt><dd>G + 35</dd></div>
-      </dl>
-      <p class="gsc-intro-note">Khu đất khoảng 110 × 182 m, tiếp giáp QL51.</p>
-    </div>
-    <figure class="gsc-intro-fig gsc-intro-ph gsc-intro-reveal" data-gsc-asset="overview" data-gsc-label="Phối cảnh dự án" role="img" aria-label="Phối cảnh dự án GSC"></figure>
-  </div>
-</section>
+<section class="gsc-intro-sec gsc-intro-vision" id="gsc-intro-vision"><div class="gsc-intro-wrap">
+<h2 class="gsc-intro-h2 gsc-intro-reveal">SỐNG KHÔNG<br>CHỈ LÀ Ở</h2>
+<p class="gsc-intro-lead gsc-intro-reveal">Một cộng đồng dành cho tuổi vàng, nơi đời sống thường nhật được đặt giữa thiên nhiên, tiện ích và sự chăm sóc chu đáo.</p>
+<ul class="gsc-intro-words gsc-intro-reveal"><li>Senior Living</li><li>Wellness</li><li>Community</li><li>Nature</li><li>Healthcare</li><li>Active Lifestyle</li></ul></div></section>
 
-<section class="gsc-intro-sec gsc-intro-vision" id="gsc-intro-vision">
-  <div class="gsc-intro-wrap">
-    <h2 class="gsc-intro-h2 gsc-intro-reveal">SỐNG KHÔNG<br>CHỈ LÀ Ở</h2>
-    <p class="gsc-intro-lead gsc-intro-reveal">Một cộng đồng dành cho tuổi vàng, nơi đời sống thường nhật được đặt giữa thiên nhiên, tiện ích và sự chăm sóc chu đáo.</p>
-    <ul class="gsc-intro-words gsc-intro-reveal">
-      <li>Senior Living</li><li>Wellness</li><li>Community</li><li>Nature</li><li>Healthcare</li><li>Active Lifestyle</li>
-    </ul>
-  </div>
-</section>
+<section class="gsc-intro-sec gsc-intro-master" id="gsc-intro-masterplan"><div class="gsc-intro-wrap">
+<h2 class="gsc-intro-h2 gsc-intro-reveal">MASTERPLAN</h2>
+<p class="gsc-intro-lead gsc-intro-reveal">Hai tháp, khối đế và các không gian ngoài trời được tổ chức trên một khu đất.</p>
+<figure class="gsc-intro-wide gsc-intro-ph gsc-intro-reveal" data-gsc-asset="masterplan" data-gsc-label="Mặt bằng tổng thể 16:9" role="img" aria-label="Mặt bằng tổng thể dự án GSC"></figure>
+<ul class="gsc-intro-facts gsc-intro-reveal"><li><b>20.000 m²</b><span>Diện tích khu đất</span></li><li><b>110 × 182 m</b><span>Kích thước khoảng</span></li><li><b>QL51</b><span>Tiếp giáp</span></li></ul>
+</div></section>
 
-<section class="gsc-intro-sec gsc-intro-arch" id="gsc-intro-architecture">
-  <div class="gsc-intro-wrap">
-    <h2 class="gsc-intro-h2 gsc-intro-reveal">KIẾN TRÚC &amp;<br>KHÔNG GIAN SỐNG</h2>
-    <figure class="gsc-intro-wide gsc-intro-ph gsc-intro-reveal" data-gsc-asset="architecture" data-gsc-label="Phối cảnh kiến trúc 16:9" role="img" aria-label="Phối cảnh hai tháp GSC"></figure>
-    <ul class="gsc-intro-list gsc-intro-reveal">
-      <li>Hai tháp 36 tầng (G + 35)</li><li>Khối đế liên kết hai tháp</li><li>Không gian xanh</li>
-      <li>Các khu hoạt động ngoài trời</li><li>Cảnh quan</li><li>Hồ bơi và hồ Koi</li>
-      <li>Lối đi bộ</li><li>Khu thư giãn</li><li>Không gian ngoài trời tầng 3</li>
-    </ul>
-  </div>
-</section>
+<section class="gsc-intro-sec gsc-intro-arch" id="gsc-intro-architecture"><div class="gsc-intro-wrap">
+<h2 class="gsc-intro-h2 gsc-intro-reveal">KIẾN TRÚC &amp;<br>KHÔNG GIAN SỐNG</h2>
+<figure class="gsc-intro-wide gsc-intro-ph gsc-intro-reveal" data-gsc-asset="architecture" data-gsc-label="Phối cảnh kiến trúc 16:9" role="img" aria-label="Phối cảnh hai tháp GSC"></figure>
+<ul class="gsc-intro-list gsc-intro-reveal"><li>Hai tháp 36 tầng (G + 35)</li><li>Khối đế liên kết hai tháp</li><li>Không gian xanh</li><li>Các khu hoạt động ngoài trời</li><li>Cảnh quan</li><li>Hồ bơi và hồ Koi</li><li>Lối đi bộ</li><li>Khu thư giãn</li><li>Không gian ngoài trời tầng 3</li></ul></div></section>
+<section class="gsc-intro-sec gsc-intro-feat" id="gsc-intro-seniorliving"><div class="gsc-intro-wrap gsc-intro-split"><figure class="gsc-intro-fig gsc-intro-ph gsc-intro-reveal" data-gsc-asset="seniorliving" data-gsc-label="Ảnh Senior Living" role="img" aria-label="Không gian Senior Living tại GSC"></figure><div class="gsc-intro-reveal"><h2 class="gsc-intro-h2">SENIOR<br>LIVING</h2><p class="gsc-intro-copy">Hai tháp 36 tầng đặt trong khuôn viên xanh, gắn liền với các tiện ích ngay tại chỗ.</p><ul class="gsc-intro-list1"><li>Hai tháp, G + 35</li><li>Khối đế liên kết</li><li>Cảnh quan và không gian xanh</li></ul></div></div></section>
+<section class="gsc-intro-sec gsc-intro-well" id="gsc-intro-wellness"><div class="gsc-intro-wrap">
+<h2 class="gsc-intro-h2 gsc-intro-reveal">HỆ SINH THÁI WELLNESS</h2>
+<div class="gsc-intro-grid"><article class="gsc-intro-card gsc-intro-reveal"><h3>HEALTHCARE</h3><p>Phòng y tế · Nhà thuốc · Vật lý trị liệu</p></article><article class="gsc-intro-card gsc-intro-reveal"><h3>ACTIVE LIVING</h3><p>Thể dục · Đi bộ · Hoạt động ngoài trời</p></article><article class="gsc-intro-card gsc-intro-reveal"><h3>RELAXATION</h3><p>Hồ Koi · Công viên · Không gian thư giãn</p></article><article class="gsc-intro-card gsc-intro-reveal"><h3>COMMUNITY</h3><p>Nhà hàng · Cafe · Khu sinh hoạt</p></article><article class="gsc-intro-card gsc-intro-reveal"><h3>NATURE</h3><p>Cây xanh · Trồng trọt · Không gian ngoài trời</p></article><article class="gsc-intro-card gsc-intro-reveal"><h3>DAILY CONVENIENCE</h3><p>Siêu thị · Dịch vụ thiết yếu</p></article></div>
+<div class="gsc-intro-strip gsc-intro-ph gsc-intro-reveal" data-gsc-asset="wellness" data-gsc-label="Ảnh hệ sinh thái wellness" role="img" aria-label="Hệ sinh thái wellness GSC"></div>
+</div></section>
+<section class="gsc-intro-sec gsc-intro-feat gsc-intro-feat--rev" id="gsc-intro-healthcare"><div class="gsc-intro-wrap gsc-intro-split"><figure class="gsc-intro-fig gsc-intro-ph gsc-intro-reveal" data-gsc-asset="healthcare" data-gsc-label="Ảnh Healthcare" role="img" aria-label="Khu vực chăm sóc tại GSC"></figure><div class="gsc-intro-reveal"><h2 class="gsc-intro-h2">HEALTHCARE</h2><p class="gsc-intro-copy">Các tiện ích chăm sóc được bố trí ngay trong khuôn viên dự án.</p><ul class="gsc-intro-list1"><li>Nhà thuốc</li><li>Vật lý trị liệu</li><li>Phòng y tế / cấp cứu</li></ul></div></div></section>
+<section class="gsc-intro-sec gsc-intro-feat" id="gsc-intro-active"><div class="gsc-intro-wrap gsc-intro-split"><figure class="gsc-intro-fig gsc-intro-ph gsc-intro-reveal" data-gsc-asset="active" data-gsc-label="Ảnh Active Living" role="img" aria-label="Không gian sống năng động ngoài trời"></figure><div class="gsc-intro-reveal"><h2 class="gsc-intro-h2">ACTIVE<br>LIVING</h2><p class="gsc-intro-copy">Không gian vận động nhẹ nhàng và các khu sinh hoạt ngoài trời cho một nhịp sống chủ động.</p><ul class="gsc-intro-list1"><li>Khu tập ngoài trời</li><li>Đường dạo</li><li>Khu đánh cờ</li><li>Không gian ngoài trời tầng 3</li></ul></div></div></section>
+<section class="gsc-intro-sec gsc-intro-feat gsc-intro-feat--rev" id="gsc-intro-nature"><div class="gsc-intro-wrap gsc-intro-split"><figure class="gsc-intro-fig gsc-intro-ph gsc-intro-reveal" data-gsc-asset="nature" data-gsc-label="Ảnh Nature &amp; Landscape" role="img" aria-label="Cảnh quan và thiên nhiên trong dự án"></figure><div class="gsc-intro-reveal"><h2 class="gsc-intro-h2">NATURE &amp;<br>LANDSCAPE</h2><p class="gsc-intro-copy">Cảnh quan xanh, mặt nước và những góc thư giãn kết nối kiến trúc với thiên nhiên.</p><ul class="gsc-intro-list1"><li>Hồ Koi</li><li>Hồ bơi</li><li>Công viên</li><li>Khu trồng trọt</li><li>Khu tâm linh</li></ul></div></div></section>
+<section class="gsc-intro-sec gsc-intro-feat" id="gsc-intro-community"><div class="gsc-intro-wrap gsc-intro-split"><figure class="gsc-intro-fig gsc-intro-ph gsc-intro-reveal" data-gsc-asset="community" data-gsc-label="Ảnh Community" role="img" aria-label="Không gian cộng đồng và sinh hoạt chung"></figure><div class="gsc-intro-reveal"><h2 class="gsc-intro-h2">COMMUNITY</h2><p class="gsc-intro-copy">Nơi gặp gỡ, trò chuyện và chia sẻ mỗi ngày, từ bàn ăn đến góc cafe ngoài trời.</p><ul class="gsc-intro-list1"><li>Nhà hàng</li><li>Cafe ngoài trời</li><li>Khu đánh cờ</li><li>Công viên</li></ul></div></div></section>
+<section class="gsc-intro-sec gsc-intro-feat gsc-intro-feat--rev" id="gsc-intro-daily"><div class="gsc-intro-wrap gsc-intro-split"><figure class="gsc-intro-fig gsc-intro-ph gsc-intro-reveal" data-gsc-asset="daily" data-gsc-label="Ảnh Daily Living" role="img" aria-label="Tiện ích đời sống hằng ngày"></figure><div class="gsc-intro-reveal"><h2 class="gsc-intro-h2">DAILY<br>LIVING</h2><p class="gsc-intro-copy">Những nhu cầu thiết yếu của một ngày nằm gọn trong khuôn viên.</p><ul class="gsc-intro-list1"><li>Reception</li><li>Siêu thị</li><li>Nhà hàng</li><li>Cafe ngoài trời</li><li>Bãi xe</li></ul></div></div></section>
+<section class="gsc-intro-sec gsc-intro-amen" id="gsc-intro-amenities"><div class="gsc-intro-wrap">
+<h2 class="gsc-intro-h2 gsc-intro-reveal">TIỆN ÍCH<br>DỰ ÁN</h2>
+<figure class="gsc-intro-wide gsc-intro-ph gsc-intro-reveal" data-gsc-asset="amenities" data-gsc-label="Ảnh tiện ích 16:9" role="img" aria-label="Tổng quan tiện ích dự án GSC"></figure>
+<div class="gsc-intro-agrid"><div class="gsc-intro-agrp gsc-intro-reveal"><h3>Chăm sóc</h3><ul class=""><li>Reception</li><li>Nhà thuốc</li><li>Vật lý trị liệu</li><li>Phòng y tế / cấp cứu</li></ul></div><div class="gsc-intro-agrp gsc-intro-reveal"><h3>Đời sống</h3><ul class=""><li>Siêu thị</li><li>Nhà hàng</li><li>Cafe ngoài trời</li><li>Bãi xe</li></ul></div><div class="gsc-intro-agrp gsc-intro-reveal"><h3>Vận động &amp; thư giãn</h3><ul class=""><li>Khu tập ngoài trời</li><li>Khu đánh cờ</li><li>Công viên</li><li>Đường dạo</li></ul></div><div class="gsc-intro-agrp gsc-intro-reveal"><h3>Thiên nhiên &amp; tâm linh</h3><ul class=""><li>Hồ Koi</li><li>Hồ bơi</li><li>Khu trồng trọt</li><li>Khu tâm linh</li><li>Không gian ngoài trời tầng 3</li></ul></div></div></div></section>
 
-<section class="gsc-intro-sec gsc-intro-master" id="gsc-intro-masterplan">
-  <div class="gsc-intro-wrap">
-    <h2 class="gsc-intro-h2 gsc-intro-reveal">MẶT BẰNG<br>TỔNG THỂ</h2>
-    <p class="gsc-intro-lead gsc-intro-reveal">Hai tháp, khối đế và các không gian ngoài trời được tổ chức trên khu đất khoảng 20.000 m².</p>
-    <figure class="gsc-intro-wide gsc-intro-ph gsc-intro-reveal" data-gsc-asset="masterplan" data-gsc-label="Mặt bằng tổng thể 16:9" role="img" aria-label="Mặt bằng tổng thể dự án GSC"></figure>
-    <ul class="gsc-intro-chips gsc-intro-reveal" aria-label="Các nhóm tiện ích trong dự án">
-      <li>Reception</li><li>Nhà thuốc</li><li>Vật lý trị liệu</li><li>Phòng y tế / cấp cứu</li><li>Siêu thị</li><li>Nhà hàng</li>
-      <li>Cafe ngoài trời</li><li>Hồ Koi</li><li>Hồ bơi</li><li>Khu tập ngoài trời</li><li>Khu đánh cờ</li><li>Công viên</li>
-      <li>Đường dạo</li><li>Khu trồng trọt</li><li>Khu tâm linh</li><li>Bãi xe</li><li>Không gian ngoài trời tầng 3</li>
-    </ul>
-  </div>
-</section>
-
-<section class="gsc-intro-sec gsc-intro-well" id="gsc-intro-wellness">
-  <div class="gsc-intro-wrap">
-    <h2 class="gsc-intro-h2 gsc-intro-reveal">HỆ SINH THÁI WELLNESS</h2>
-    <div class="gsc-intro-grid">
-      <article class="gsc-intro-card gsc-intro-reveal"><h3>HEALTHCARE</h3><p>Phòng y tế · Nhà thuốc · Vật lý trị liệu</p></article>
-      <article class="gsc-intro-card gsc-intro-reveal"><h3>ACTIVE LIVING</h3><p>Thể dục · Đi bộ · Hoạt động ngoài trời</p></article>
-      <article class="gsc-intro-card gsc-intro-reveal"><h3>RELAXATION</h3><p>Hồ Koi · Công viên · Không gian thư giãn</p></article>
-      <article class="gsc-intro-card gsc-intro-reveal"><h3>COMMUNITY</h3><p>Nhà hàng · Cafe · Khu sinh hoạt</p></article>
-      <article class="gsc-intro-card gsc-intro-reveal"><h3>NATURE</h3><p>Cây xanh · Trồng trọt · Không gian ngoài trời</p></article>
-      <article class="gsc-intro-card gsc-intro-reveal"><h3>DAILY CONVENIENCE</h3><p>Siêu thị · Dịch vụ thiết yếu</p></article>
-    </div>
-  </div>
-</section>
-
-<section class="gsc-intro-sec gsc-intro-feat" id="gsc-intro-healthcare">
-  <div class="gsc-intro-wrap gsc-intro-split">
-    <figure class="gsc-intro-fig gsc-intro-ph gsc-intro-reveal" data-gsc-asset="healthcare" data-gsc-label="Ảnh Healthcare &amp; Daily Living" role="img" aria-label="Không gian tiện ích chăm sóc và đời sống hằng ngày"></figure>
-    <div class="gsc-intro-reveal">
-      <h2 class="gsc-intro-h2">HEALTHCARE &amp;<br>DAILY LIVING</h2>
-      <p class="gsc-intro-copy">Những tiện ích thiết yếu được đặt ngay trong khuôn viên, để nhu cầu hằng ngày luôn ở gần.</p>
-      <ul class="gsc-intro-list1"><li>Reception</li><li>Nhà thuốc</li><li>Vật lý trị liệu</li><li>Phòng y tế / cấp cứu</li><li>Siêu thị</li></ul>
-    </div>
-  </div>
-</section>
-
-<section class="gsc-intro-sec gsc-intro-feat gsc-intro-feat--rev" id="gsc-intro-active">
-  <div class="gsc-intro-wrap gsc-intro-split">
-    <figure class="gsc-intro-fig gsc-intro-ph gsc-intro-reveal" data-gsc-asset="active" data-gsc-label="Ảnh Active Living" role="img" aria-label="Không gian sống năng động ngoài trời"></figure>
-    <div class="gsc-intro-reveal">
-      <h2 class="gsc-intro-h2">ACTIVE<br>LIVING</h2>
-      <p class="gsc-intro-copy">Không gian vận động nhẹ nhàng và các khu sinh hoạt ngoài trời cho một nhịp sống chủ động.</p>
-      <ul class="gsc-intro-list1"><li>Khu tập ngoài trời</li><li>Đường dạo</li><li>Khu đánh cờ</li><li>Không gian ngoài trời tầng 3</li></ul>
-    </div>
-  </div>
-</section>
-
-<section class="gsc-intro-sec gsc-intro-feat" id="gsc-intro-nature">
-  <div class="gsc-intro-wrap gsc-intro-split">
-    <figure class="gsc-intro-fig gsc-intro-ph gsc-intro-reveal" data-gsc-asset="nature" data-gsc-label="Ảnh Nature &amp; Landscape" role="img" aria-label="Cảnh quan và thiên nhiên trong dự án"></figure>
-    <div class="gsc-intro-reveal">
-      <h2 class="gsc-intro-h2">NATURE &amp;<br>LANDSCAPE</h2>
-      <p class="gsc-intro-copy">Cảnh quan xanh, mặt nước và những góc thư giãn kết nối kiến trúc với thiên nhiên.</p>
-      <ul class="gsc-intro-list1"><li>Hồ Koi</li><li>Hồ bơi</li><li>Công viên</li><li>Khu trồng trọt</li><li>Khu tâm linh</li></ul>
-    </div>
-  </div>
-</section>
-
-<section class="gsc-intro-sec gsc-intro-feat gsc-intro-feat--rev" id="gsc-intro-community">
-  <div class="gsc-intro-wrap gsc-intro-split">
-    <figure class="gsc-intro-fig gsc-intro-ph gsc-intro-reveal" data-gsc-asset="community" data-gsc-label="Ảnh Community" role="img" aria-label="Không gian cộng đồng và sinh hoạt chung"></figure>
-    <div class="gsc-intro-reveal">
-      <h2 class="gsc-intro-h2">COMMUNITY</h2>
-      <p class="gsc-intro-copy">Nơi gặp gỡ, trò chuyện và chia sẻ mỗi ngày, từ bàn ăn đến góc cafe ngoài trời.</p>
-      <ul class="gsc-intro-list1"><li>Nhà hàng</li><li>Cafe ngoài trời</li><li>Khu đánh cờ</li><li>Công viên</li></ul>
-    </div>
-  </div>
-</section>
-
-<section class="gsc-intro-sec gsc-intro-golden" id="gsc-intro-golden">
-  <div class="gsc-intro-golden__bg gsc-intro-ph" data-gsc-asset="golden" data-gsc-label="Ảnh cảm xúc — Golden Years"></div>
-  <div class="gsc-intro-wrap gsc-intro-golden__body gsc-intro-reveal">
-    <h2 class="gsc-intro-huge">GOLDEN YEARS.<br>NEW EXPERIENCES.</h2>
-    <p class="gsc-intro-lead">Một không gian để sống,<br>kết nối và tận hưởng mỗi ngày.</p>
-  </div>
-</section>
-
-<section class="gsc-intro-sec gsc-intro-loc" id="gsc-intro-location">
-  <div class="gsc-intro-wrap gsc-intro-split">
-    <div class="gsc-intro-reveal">
-      <h2 class="gsc-intro-h2">VỊ TRÍ KẾT NỐI</h2>
-      <p class="gsc-intro-road">Tiếp giáp QL51</p>
-      <ul class="gsc-intro-dist">
-        <li><span>Cái Mép</span><b>khoảng 10 km</b></li>
-        <li><span>Vũng Tàu</span><b>khoảng 30 km</b></li>
-        <li><span>TP.HCM</span><b>khoảng 80 km</b></li>
-      </ul>
-    </div>
-    <figure class="gsc-intro-fig gsc-intro-map gsc-intro-ph gsc-intro-reveal" data-gsc-asset="location" data-gsc-label="[ MAP / LOCATION IMAGE ]" role="img" aria-label="Bản đồ vị trí dự án"></figure>
-  </div>
-</section>
+<section class="gsc-intro-sec gsc-intro-loc" id="gsc-intro-location"><div class="gsc-intro-wrap gsc-intro-split">
+<div class="gsc-intro-reveal"><h2 class="gsc-intro-h2">VỊ TRÍ KẾT NỐI</h2><p class="gsc-intro-road">Tiếp giáp QL51</p>
+<ul class="gsc-intro-dist"><li><span>Cái Mép</span><b>khoảng 10 km</b></li><li><span>Vũng Tàu</span><b>khoảng 30 km</b></li><li><span>TP.HCM</span><b>khoảng 80 km</b></li></ul></div>
+<figure class="gsc-intro-fig gsc-intro-map gsc-intro-ph gsc-intro-reveal" data-gsc-asset="location" data-gsc-label="[ MAP / LOCATION IMAGE ]" role="img" aria-label="Bản đồ vị trí dự án"></figure></div></section>
 
 <section class="gsc-intro-sec gsc-intro-exp" id="gsc-intro-gallery">
-  <div class="gsc-intro-wrap">
-    <h2 class="gsc-intro-h2 gsc-intro-reveal">KHÁM PHÁ GSC</h2>
-  </div>
-  <div class="gsc-intro-track" tabindex="0" role="region" aria-label="Thư viện hình ảnh, vuốt ngang để xem thêm">
-    <figure class="gsc-intro-tile gsc-intro-ph" data-gsc-asset="experience" data-gsc-label="Ảnh: Cổng chính"><figcaption>Cổng chính</figcaption></figure>
-    <figure class="gsc-intro-tile gsc-intro-ph" data-gsc-asset="experience" data-gsc-label="Ảnh: Hồ Koi"><figcaption>Hồ Koi</figcaption></figure>
-    <figure class="gsc-intro-tile gsc-intro-ph" data-gsc-asset="experience" data-gsc-label="Ảnh: Không gian ngoài trời"><figcaption>Không gian ngoài trời</figcaption></figure>
-    <figure class="gsc-intro-tile gsc-intro-ph" data-gsc-asset="experience" data-gsc-label="Ảnh: Hồ bơi"><figcaption>Hồ bơi</figcaption></figure>
-    <figure class="gsc-intro-tile gsc-intro-ph" data-gsc-asset="experience" data-gsc-label="Ảnh: Sân thượng"><figcaption>Sân thượng</figcaption></figure>
-    <figure class="gsc-intro-tile gsc-intro-ph" data-gsc-asset="experience" data-gsc-label="Ảnh: Hai tháp GSC"><figcaption>Hai tháp GSC</figcaption></figure>
-  </div>
-</section>
+<div class="gsc-intro-wrap"><h2 class="gsc-intro-h2 gsc-intro-reveal">KHÁM PHÁ GSC</h2>
+<div class="gsc-intro-vid gsc-intro-vid--film" data-gsc-video="experience" hidden aria-hidden="true"></div></div>
+<div class="gsc-intro-track" tabindex="0" role="region" aria-label="Thư viện hình ảnh, vuốt ngang để xem thêm"><figure class="gsc-intro-tile gsc-intro-ph" data-gsc-asset="experience" data-gsc-label="Ảnh: Cổng chính"><figcaption>Cổng chính</figcaption></figure><figure class="gsc-intro-tile gsc-intro-ph" data-gsc-asset="experience" data-gsc-label="Ảnh: Hồ Koi"><figcaption>Hồ Koi</figcaption></figure><figure class="gsc-intro-tile gsc-intro-ph" data-gsc-asset="experience" data-gsc-label="Ảnh: Không gian ngoài trời"><figcaption>Không gian ngoài trời</figcaption></figure><figure class="gsc-intro-tile gsc-intro-ph" data-gsc-asset="experience" data-gsc-label="Ảnh: Hồ bơi"><figcaption>Hồ bơi</figcaption></figure><figure class="gsc-intro-tile gsc-intro-ph" data-gsc-asset="experience" data-gsc-label="Ảnh: Sân thượng"><figcaption>Sân thượng</figcaption></figure><figure class="gsc-intro-tile gsc-intro-ph" data-gsc-asset="experience" data-gsc-label="Ảnh: Hai tháp GSC"><figcaption>Hai tháp GSC</figcaption></figure></div></section>
 
-<section class="gsc-intro-sec gsc-intro-final" id="gsc-intro-cta">
-  <div class="gsc-intro-wrap gsc-intro-reveal">
-    <p class="gsc-intro-brand gsc-intro-brand--c"><b data-gsc-logo>GSC</b><span>SENIOR LIVING &amp; WELLNESS</span></p>
-    <h2 class="gsc-intro-huge">WHERE GOLDEN YEARS<br>BEGIN A NEW CHAPTER</h2>
-    <div class="gsc-intro-actions">
-      <a class="gsc-intro-btn" href="index.html" data-gsc-action="panorama">KHÁM PHÁ TOÀN CẢNH</a>
-      <a class="gsc-intro-btn gsc-intro-btn--ghost" href="#gsc-intro-footer" data-gsc-action="contact">LIÊN HỆ</a>
-    </div>
-  </div>
-</section>
+<section class="gsc-intro-sec gsc-intro-golden" id="gsc-intro-golden">
+<div class="gsc-intro-golden__bg gsc-intro-ph" data-gsc-asset="golden" data-gsc-label="Ảnh cảm xúc — Golden Years"></div>
+<div class="gsc-intro-vid" data-gsc-video="golden" hidden aria-hidden="true"></div>
+<div class="gsc-intro-wrap gsc-intro-golden__body gsc-intro-reveal">
+<h2 class="gsc-intro-huge">GOLDEN YEARS.<br>NEW EXPERIENCES.</h2>
+<p class="gsc-intro-lead">Một không gian để sống,<br>kết nối và tận hưởng mỗi ngày.</p>
+<ul class="gsc-intro-story"><li>Sống</li><li>Kết nối</li><li>Tận hưởng</li></ul></div></section>
+
+<section class="gsc-intro-sec gsc-intro-final" id="gsc-intro-cta"><div class="gsc-intro-wrap gsc-intro-reveal">
+<p class="gsc-intro-brand gsc-intro-brand--c"><b data-gsc-logo>GSC</b><span>SENIOR LIVING &amp; WELLNESS</span></p>
+<h2 class="gsc-intro-huge">WHERE GOLDEN YEARS<br>BEGIN A NEW CHAPTER</h2>
+<div class="gsc-intro-actions"><a class="gsc-intro-btn" href="index.html" data-gsc-action="panorama">KHÁM PHÁ TOÀN CẢNH</a><a class="gsc-intro-btn gsc-intro-btn--ghost" href="#gsc-intro-footer" data-gsc-action="contact">LIÊN HỆ</a></div></div></section>
 </main>
 
 <footer class="gsc-intro-footer" id="gsc-intro-footer">
-  <p class="gsc-intro-brand gsc-intro-brand--c"><b data-gsc-logo>GSC</b><span>SENIOR LIVING &amp; WELLNESS</span></p>
-  <p class="gsc-intro-slogan">WHERE GOLDEN YEARS BEGIN A NEW CHAPTER</p>
+<p class="gsc-intro-brand gsc-intro-brand--c"><b data-gsc-logo>GSC</b><span>SENIOR LIVING &amp; WELLNESS</span></p>
+<p class="gsc-intro-slogan">WHERE GOLDEN YEARS BEGIN A NEW CHAPTER</p>
 </footer>
-
 </div>
-<script src="gsc-introduction.js"></script>
+<script src="js/gsc-media.js"></script>
+<script src="js/gsc-introduction.js"></script>
 </body>
 </html>
 

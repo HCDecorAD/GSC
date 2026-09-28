@@ -1,6 +1,9 @@
 name: GSC Responsive Safe Patch
 
 on:
+  push:
+    paths:
+      - '.github/workflows/gsc-responsive-safe.yml'
   workflow_dispatch:
 
 permissions:

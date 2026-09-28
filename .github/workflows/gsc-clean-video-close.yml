@@ -1,5 +1,5 @@
 name: GSC Clean Video Close
-on:
+'on':
   push:
     paths: ['.github/workflows/gsc-clean-video-close.yml']
 permissions:

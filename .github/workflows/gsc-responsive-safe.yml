@@ -1,0 +1,55 @@
+name: GSC Responsive Safe Patch
+on:
+  push:
+    paths: ['.github/workflows/gsc-responsive-safe.yml']
+permissions:
+  contents: write
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Add safe responsive layer
+        shell: python
+        run: |
+          from pathlib import Path
+          import re
+          p=Path("index.html"); s=p.read_text(encoding="utf-8")
+          mark="GSC_RESPONSIVE_20260928"
+          s=re.sub(r'<style id="'+mark+r'">.*?</style>','',s,flags=re.S)
+          css=r'''<style id="GSC_RESPONSIVE_20260928">
+html,body{width:100%;max-width:100%;overflow:hidden;overscroll-behavior:none}
+img,video,iframe{max-width:100%}
+button,[role="button"],.hotspot{touch-action:manipulation}
+#gscVideoUniversalClose{right:max(10px,env(safe-area-inset-right))!important;top:max(10px,env(safe-area-inset-top))!important}
+@media(max-width:900px){
+  #gscIntroStable{right:12px!important;bottom:max(12px,env(safe-area-inset-bottom))!important;max-width:calc(100vw - 24px)!important}
+}
+@media(max-width:720px){
+  #gscVideoUniversalClose{width:44px!important;height:44px!important;font-size:28px!important}
+  iframe[src*="drive.google"],iframe[src*="youtube"],video{max-width:100vw!important;max-height:100dvh!important}
+}
+@media(orientation:landscape) and (max-height:600px){
+  #gscIntroStable{max-width:44vw!important;bottom:8px!important;right:8px!important}
+  #gscVideoUniversalClose{top:8px!important;right:8px!important}
+}
+</style>'''
+          s=s.replace("</head>",css+"</head>")
+          p.write_text(s,encoding="utf-8")
+      - name: Regression QA
+        shell: python
+        run: |
+          from pathlib import Path
+          s=Path("index.html").read_text(encoding="utf-8")
+          assert len(s)>1000000
+          for x in ["GSC_RESPONSIVE_20260928","GSC_VIDEO_X_ONLY_20260926","gscVideoUniversalClose","gsc-config.json","touchstart"]:
+            assert x in s,x
+          print("RESPONSIVE QA PASS")
+      - name: Commit responsive patch
+        run: |
+          git config user.name "ChatGPT GSC Updater"
+          git config user.email "actions@users.noreply.github.com"
+          git add index.html
+          git commit -m "Improve GSC responsive mobile and landscape behavior"
+          git pull --rebase origin main
+          git push origin HEAD:main

@@ -1,6 +1,16 @@
+settings:
+  content:
+    merge: true
+  commit:
+    identity: user
+    templates:
+      update: "CMS update: {path}"
+      create: "CMS create: {path}"
+      delete: "CMS delete: {path}"
+      rename: "CMS rename: {oldPath} -> {newPath}"
 media:
-  input: assets
-  output: /assets
+  input: assets/cms
+  output: /assets/cms
   categories: [image]
 
 content:
@@ -226,3 +236,5 @@ content:
           - { name: title, label: Tiêu đề, type: string }
           - { name: text, label: Nội dung, type: text }
           - { name: image, label: Hình ảnh, type: image }
+
+

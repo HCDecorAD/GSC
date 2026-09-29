@@ -198,3 +198,31 @@ content:
           - { name: mode, label: Chế độ, type: select, options: { values: [iframe] } }
           - { name: enabled, label: Hiển thị, type: boolean }
       - { name: exportedAt, label: Cập nhật kỹ thuật, type: string, readonly: true }
+
+  - name: introduction
+    label: Nội dung giới thiệu
+    type: file
+    path: config/intro.json
+    format: json
+    operations: { delete: false }
+    fields:
+      - name: hero
+        label: Hero / Mở đầu
+        type: object
+        fields:
+          - { name: title, label: Tiêu đề, type: string }
+          - { name: lead, label: Mô tả, type: text }
+      - name: sections
+        label: Section
+        type: object
+        list:
+          min: 1
+          max: 12
+          collapsible: { collapsed: true, summary: "{title}" }
+        fields:
+          - { name: id, label: ID kỹ thuật, type: string, readonly: true }
+          - { name: enabled, label: Hiển thị, type: boolean }
+          - { name: order, label: Thứ tự, type: number }
+          - { name: title, label: Tiêu đề, type: string }
+          - { name: text, label: Nội dung, type: text }
+          - { name: image, label: Hình ảnh, type: image }

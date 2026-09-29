@@ -1,13 +1,13 @@
-GSC DIGITAL TWIN — GitHub + Vercel + Google Drive
+GSC DIGITAL TWIN — GitHub Pages + Google Drive
 
 1. Upload index.html và videos.json lên GitHub repository.
-2. Import repository vào Vercel và Deploy.
+2. GitHub Pages publish trực tiếp từ branch main của repository.
 3. Trên Google Drive: mỗi video đặt quyền General access = Anyone with the link / Viewer.
 4. Mở website > QUẢN LÝ VIDEO > chọn hotspot > dán Google Drive Share Link > LƯU LINK.
 5. Kiểm tra bằng XEM THỬ.
 6. Bấm XUẤT videos.json.
 7. Trên GitHub, thay file videos.json cũ bằng file vừa xuất và Commit.
-8. Vercel tự deploy. Sau đó mọi người truy cập website sẽ thấy video mới.
+8. GitHub Pages tự deploy. Sau đó mọi người truy cập website sẽ thấy video mới.
 
 LƯU Ý:
 - Không lưu mật khẩu hoặc GitHub token trong index.html.

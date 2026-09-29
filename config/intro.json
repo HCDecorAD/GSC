@@ -4,11 +4,53 @@
     "lead": "Digital Twin tương tác kết nối không gian sống, chăm sóc sức khỏe, cảnh quan và các tiện ích dành cho người cao tuổi."
   },
   "sections": [
-    {"id":"gsc-intro-seniorliving","enabled":true,"order":1,"title":"SENIOR LIVING","text":"Hai tháp 36 tầng đặt trong khuôn viên xanh, gắn liền với các tiện ích ngay tại chỗ.","image":""},
-    {"id":"gsc-intro-healthcare","enabled":true,"order":2,"title":"HEALTHCARE","text":"Các tiện ích chăm sóc được bố trí ngay trong khuôn viên dự án.","image":""},
-    {"id":"gsc-intro-active","enabled":true,"order":3,"title":"ACTIVE LIVING","text":"Không gian vận động nhẹ nhàng và các khu sinh hoạt ngoài trời cho một nhịp sống chủ động.","image":""},
-    {"id":"gsc-intro-nature","enabled":true,"order":4,"title":"NATURE & LANDSCAPE","text":"Cảnh quan xanh, mặt nước và những góc thư giãn kết nối kiến trúc với thiên nhiên.","image":""},
-    {"id":"gsc-intro-community","enabled":true,"order":5,"title":"COMMUNITY","text":"Nơi gặp gỡ, trò chuyện và chia sẻ mỗi ngày.","image":""},
-    {"id":"gsc-intro-daily","enabled":true,"order":6,"title":"DAILY LIVING","text":"Những nhu cầu thiết yếu của một ngày nằm gần trong khuôn viên.","image":""}
+    {
+      "id": "gsc-intro-seniorliving",
+      "enabled": true,
+      "order": 1,
+      "title": "SENIOR LIVING",
+      "text": "Hai tháp 36 tầng đặt trong khuôn viên xanh, gắn liền với các tiện ích ngay tại chỗ.",
+      "image": ""
+    },
+    {
+      "id": "gsc-intro-healthcare",
+      "enabled": true,
+      "order": 2,
+      "title": "HEALTHCARE",
+      "text": "Các tiện ích chăm sóc được bố trí ngay trong khuôn viên dự án.",
+      "image": ""
+    },
+    {
+      "id": "gsc-intro-active",
+      "enabled": true,
+      "order": 3,
+      "title": "ACTIVE LIVING",
+      "text": "Không gian vận động nhẹ nhàng và các khu sinh hoạt ngoài trời cho một nhịp sống chủ động.",
+      "image": ""
+    },
+    {
+      "id": "gsc-intro-nature",
+      "enabled": true,
+      "order": 4,
+      "title": "NATURE & LANDSCAPE",
+      "text": "Cảnh quan xanh, mặt nước và những góc thư giãn kết nối kiến trúc với thiên nhiên.",
+      "image": ""
+    },
+    {
+      "id": "gsc-intro-community",
+      "enabled": true,
+      "order": 5,
+      "title": "COMMUNITY",
+      "text": "Nơi gặp gỡ, trò chuyện và chia sẻ mỗi ngày.",
+      "image": ""
+    },
+    {
+      "id": "gsc-intro-daily",
+      "enabled": true,
+      "order": 6,
+      "title": "DAILY LIVING",
+      "text": "Những nhu cầu thiết yếu của một ngày nằm gần trong khuôn viên.",
+      "image": ""
+    }
   ]
 }

@@ -1,33 +1,32 @@
 settings:
   content: { merge: true }
-  commit:
-    identity: user
+  commit: { identity: user }
 media:
   input: assets/cms
   output: /assets/cms
   categories: [image]
 content:
   - name: introduction
-    label: Nội dung giới thiệu
+    label: "Noi dung gioi thieu"
     type: file
     path: config/intro.json
     format: json
     operations: { delete: false }
     fields:
       - name: hero
-        label: Mở đầu
+        label: "Hero"
         type: object
         fields:
-          - { name: title, label: Tiêu đề, type: string }
-          - { name: lead, label: Mô tả, type: text }
+          - { name: title, label: "Tieu de", type: string }
+          - { name: lead, label: "Mo ta", type: text }
       - name: sections
-        label: Các section
+        label: "Cac section"
         type: object
         list: { min: 1, max: 12, collapsible: { collapsed: true, summary: "{title}" } }
         fields:
-          - { name: id, label: ID kỹ thuật, type: string, readonly: true }
-          - { name: enabled, label: Hiển thị, type: boolean }
-          - { name: order, label: Thứ tự, type: number }
-          - { name: title, label: Tiêu đề, type: string }
-          - { name: text, label: Nội dung, type: text }
-          - { name: image, label: Hình ảnh, type: image }
+          - { name: id, label: "ID ky thuat", type: string, readonly: true }
+          - { name: enabled, label: "Hien thi", type: boolean }
+          - { name: order, label: "Thu tu", type: number }
+          - { name: title, label: "Tieu de", type: string }
+          - { name: text, label: "Noi dung", type: text }
+          - { name: image, label: "Hinh anh", type: image }

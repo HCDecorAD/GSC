@@ -1,8 +1,8 @@
 {
-  "logo": "",
+  "logo": "assets/gsc-real/home-embedded-1.png",
   "logoAlt": "GSC Senior Living & Wellness",
-  "links": {"home":"index.html","digitaltwin":"index.html","contact":""},
-  "assets": {"hero":"","overview":"","masterplan":"","architecture":"","seniorliving":"","wellness":"","healthcare":"","active":"","nature":"","community":"","daily":"","amenities":"","location":"","golden":""},
+  "links": {"home":"index.html","digitaltwin":"index.html","contact":"#gsc-intro-final"},
+  "assets": {"hero":"assets/gsc-real/home-embedded-2.png","overview":"assets/gsc-real/home-embedded-2.png","masterplan":"assets/gsc-real/home-embedded-2.png","architecture":"","seniorliving":"","wellness":"","healthcare":"","active":"","nature":"","community":"","daily":"","amenities":"","location":"","golden":"assets/gsc-real/home-embedded-2.png"},
   "alts": {"hero":"Phối cảnh tổng thể dự án GSC","overview":"Phối cảnh dự án GSC","masterplan":"Mặt bằng tổng thể dự án GSC","architecture":"Phối cảnh hai tháp GSC","location":"Bản đồ vị trí dự án GSC"},
   "videos": {
     "hero":{"src":"","webm":"","poster":"","autoplay":true,"loop":true,"label":""},

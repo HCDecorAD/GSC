@@ -1,5 +1,3 @@
-[Reading 114 lines from start (total: 114 lines, 0 remaining)]
-
 /* GSC Introduction — media layer: lazy images, logo, video. Attaches to window.GSCIntro. */
 (function (w, d) {
   'use strict';

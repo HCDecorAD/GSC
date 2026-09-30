@@ -1,5 +1,3 @@
-[Reading 157 lines from start (total: 157 lines, 0 remaining)]
-
 /* GSC Introduction — core: init, nav, menu, reveal, counters, parallax, actions. API: window.GSCIntro */
 (function (w, d) {
   'use strict';

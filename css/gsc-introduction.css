@@ -189,3 +189,12 @@
 .gsc-intro-golden__body{z-index:2}
 
 [executed on device: HOCUONG (a318a9bd-cfd6-4540-bf01-3ab9fb7f587a)]
+/* Vietnamese-first typography: UTM family when installed/served; Unicode-safe fallbacks */
+:root{--utm-serif:"UTM Times","Times New Roman",Georgia,serif;--utm-sans:"UTM Avo","Arial",sans-serif}
+.gsc-intro{font-family:var(--utm-sans)}
+.gsc-intro-h2,.gsc-intro-huge,.gsc-intro-hero__title,.gsc-intro-card h3,.gsc-intro-list1 li,.gsc-intro-tile figcaption,.gsc-intro-brand b{font-family:var(--utm-serif)}
+.gsc-lang{display:flex;align-items:center;gap:4px;margin-left:auto;border:1px solid var(--line);padding:3px}
+.gsc-lang__btn{border:0;background:transparent;color:var(--mute);font-family:var(--utm-sans);font-size:11px;letter-spacing:.12em;padding:7px 9px;cursor:pointer}
+.gsc-lang__btn.is-active{background:var(--gold);color:#11100e}
+.gsc-lang__btn:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+@media(max-width:1024px){.gsc-lang{margin-left:auto}.gsc-intro-nav__toggle{margin-left:4px}}

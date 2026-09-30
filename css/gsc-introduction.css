@@ -189,8 +189,12 @@
 .gsc-intro-golden__body{z-index:2}
 
 [executed on device: HOCUONG (a318a9bd-cfd6-4540-bf01-3ab9fb7f587a)]
-/* Vietnamese-first typography: UTM family when installed/served; Unicode-safe fallbacks */
-:root{--utm-serif:"UTM Times","Times New Roman",Georgia,serif;--utm-sans:"UTM Avo","Arial",sans-serif}
+/* Self-hosted Vietnamese typography */
+@font-face{font-family:"UTM Times";src:url("../assets/fonts/UTMTimes-Regular.ttf") format("truetype");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"UTM Times";src:url("../assets/fonts/UTMTimes-Bold.ttf") format("truetype");font-weight:700;font-style:normal;font-display:swap}
+@font-face{font-family:"UTM Avo";src:url("../assets/fonts/UTMAvo-Regular.ttf") format("truetype");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"UTM Avo";src:url("../assets/fonts/UTMAvo-Bold.ttf") format("truetype");font-weight:700;font-style:normal;font-display:swap}
+:root{--utm-serif:"UTM Times","Times New Roman",Georgia,serif;--utm-sans:"UTM Avo",Arial,sans-serif}
 .gsc-intro{font-family:var(--utm-sans)}
 .gsc-intro-h2,.gsc-intro-huge,.gsc-intro-hero__title,.gsc-intro-card h3,.gsc-intro-list1 li,.gsc-intro-tile figcaption,.gsc-intro-brand b{font-family:var(--utm-serif)}
 .gsc-lang{display:flex;align-items:center;gap:4px;margin-left:auto;border:1px solid var(--line);padding:3px}

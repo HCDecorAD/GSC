@@ -1,0 +1,9 @@
+.git
+.github
+.wrangler
+docs
+CNAME
+wrangler.jsonc
+.assetsignore
+.pages.yml
+README*

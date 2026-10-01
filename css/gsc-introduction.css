@@ -256,3 +256,5 @@ html[data-gsc-theme="light"] .gsc-trust-grid article{background:#f7f3ea}
 html[data-gsc-theme="light"] .gsc-contact-panel{background:rgba(255,255,255,.72)}
 html[data-gsc-theme="light"] .gsc-ai-concept-note{color:#657080}
 @media(max-width:1024px){.gsc-theme-toggle{margin-left:auto}.gsc-lang{margin-left:0}}
+
+.gsc-intro-faq{padding:clamp(56px,8vw,110px) 0;border-top:1px solid var(--line)}.gsc-faq-list{max-width:900px;margin:36px auto 0}.gsc-faq-list details{border-top:1px solid var(--line);padding:20px 0}.gsc-faq-list details:last-child{border-bottom:1px solid var(--line)}.gsc-faq-list summary{cursor:pointer;font-weight:700;font-size:16px;list-style:none;padding-right:28px;position:relative}.gsc-faq-list summary::-webkit-details-marker{display:none}.gsc-faq-list summary:after{content:'+';position:absolute;right:0;color:var(--gold);font-size:22px}.gsc-faq-list details[open] summary:after{content:'−'}.gsc-faq-list details p{max-width:760px;color:var(--mute);line-height:1.8;margin:14px 0 0}

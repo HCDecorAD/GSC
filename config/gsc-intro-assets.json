@@ -1,5 +1,5 @@
 {
-  "logo": "assets/gsc-real/gsc-logo-master.png",
+  "logo": "assets/gsc-web/gsc-logo-header.jpg",
   "logoAlt": "GSC Senior Living & Wellness",
   "links": {
     "home": "index.html",
@@ -7,20 +7,20 @@
     "contact": "#gsc-intro-footer"
   },
   "assets": {
-    "hero": "",
-    "overview": "",
+    "hero": "assets/gsc-web/hero-blue-hour.png",
+    "overview": "assets/gsc-web/overview-aerial-day.png",
     "masterplan": "assets/gsc-real/home-embedded-2.png",
-    "architecture": "",
+    "architecture": "assets/gsc-web/overview-aerial-day.png",
     "seniorliving": "",
-    "wellness": "",
+    "wellness": "assets/gsc-web/wellness-pool.png",
     "healthcare": "",
     "active": "",
-    "nature": "",
+    "nature": "assets/gsc-web/main-gate-koi.png",
     "community": "",
     "daily": "",
-    "amenities": "",
+    "amenities": "assets/gsc-web/wellness-pool.png",
     "location": "",
-    "golden": ""
+    "golden": "assets/gsc-web/hero-blue-hour.png"
   },
   "alts": {
     "hero": "Phối cảnh tổng thể dự án GSC",
@@ -64,5 +64,13 @@
     },
     "alt": "",
     "caption": ""
-  }
+  },
+  "experience": [
+    "assets/gsc-web/main-gate-koi.png",
+    "assets/gsc-real/home-embedded-2.png",
+    "assets/gsc-web/overview-aerial-day.png",
+    "assets/gsc-web/wellness-pool.png",
+    "assets/gsc-web/hero-blue-hour.png",
+    "assets/gsc-web/overview-aerial-day.png"
+  ]
 }

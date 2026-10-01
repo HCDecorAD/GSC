@@ -6,6 +6,8 @@ echo [GSC DESIGN] START
 call "%~dp0gsc-ai-media-gate.bat"
 set "MEDIA_RC=%ERRORLEVEL%"
 if not "%MEDIA_RC%"=="0" echo [GSC DESIGN] MEDIA PENDING rc=%MEDIA_RC%
+call "%~dp0gsc-site-pages-gate.bat"
+if errorlevel 1 exit /b %ERRORLEVEL%
 call "%~dp0gsc-public-concept-gate.bat"
 if errorlevel 1 exit /b %ERRORLEVEL%
 if not "%MEDIA_RC%"=="0" exit /b %MEDIA_RC%

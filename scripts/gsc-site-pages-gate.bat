@@ -8,6 +8,8 @@ call "%~dp0gsc-seo-pages-gate.bat"
 if errorlevel 1 exit /b %ERRORLEVEL%
 call "%~dp0gsc-site-architecture-gate.bat"
 if errorlevel 1 exit /b %ERRORLEVEL%
+powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0qa-content-pages.ps1"
+if errorlevel 1 exit /b %ERRORLEVEL%
 powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0qa-site-pages.ps1" > "%QA%\site-pages.log" 2>&1
 set "RC=%ERRORLEVEL%"
 type "%QA%\site-pages.log"

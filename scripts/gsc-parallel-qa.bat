@@ -12,15 +12,19 @@ powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0qa-assets.ps1" > "%QA%
 set "E2=%ERRORLEVEL%"
 powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0qa-contact.ps1" > "%QA%\contact.log" 2>&1
 set "E3=%ERRORLEVEL%"
+powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0qa-accessibility.ps1" > "%QA%\accessibility.log" 2>&1
+set "E4=%ERRORLEVEL%"
 git status --short > "%QA%\git.log" 2>&1
 
 type "%QA%\html.log"
 type "%QA%\assets.log"
 type "%QA%\contact.log"
+type "%QA%\accessibility.log"
 type "%QA%\git.log"
 
 if not "%E1%"=="0" exit /b 12
 if not "%E2%"=="0" exit /b 15
 if not "%E3%"=="0" exit /b 16
+if not "%E4%"=="0" exit /b 17
 echo [GSC] PASS
 exit /b 0

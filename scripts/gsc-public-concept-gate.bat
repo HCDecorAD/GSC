@@ -13,5 +13,9 @@ powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0qa-architecture.ps1" >
 set "AR=%ERRORLEVEL%"
 type "%QA%\architecture.log"
 if not "%AR%"=="0" exit /b %AR%
-echo [GSC] PUBLIC CONCEPT + GITHUB PAGES ARCHITECTURE PASS
+powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0qa-theme.ps1" > "%QA%\theme.log" 2>&1
+set "TR=%ERRORLEVEL%"
+type "%QA%\theme.log"
+if not "%TR%"=="0" exit /b %TR%
+echo [GSC] PUBLIC CONCEPT + THEME + GITHUB PAGES ARCHITECTURE PASS
 exit /b 0

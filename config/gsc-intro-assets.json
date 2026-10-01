@@ -1,5 +1,5 @@
 {
-  "logo": "",
+  "logo": "assets/gsc-real/gsc-logo-master.png",
   "logoAlt": "GSC Senior Living & Wellness",
   "links": {
     "home": "index.html",
@@ -9,7 +9,7 @@
   "assets": {
     "hero": "",
     "overview": "",
-    "masterplan": "",
+    "masterplan": "assets/gsc-real/home-embedded-2.png",
     "architecture": "",
     "seniorliving": "",
     "wellness": "",

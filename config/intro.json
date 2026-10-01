@@ -1,7 +1,7 @@
 {
   "hero": {
     "title": "Nơi tuổi vàng bắt đầu một chương mới.",
-    "lead": "Digital Twin tương tác kết nối không gian sống, chăm sóc sức khỏe, cảnh quan và các tiện ích dành cho người cao tuổi."
+    "lead": "Trải nghiệm Digital Twin tương tác dành cho dự án GSC Senior Living & Wellness."
   },
   "sections": [
     {
@@ -9,7 +9,7 @@
       "enabled": true,
       "order": 1,
       "title": "SENIOR LIVING",
-      "text": "Hai tháp 36 tầng đặt trong khuôn viên xanh, gắn liền với các tiện ích ngay tại chỗ.",
+      "text": "GSC được định hướng là trải nghiệm Senior Living & Wellness trong quy mô dự án tháp đôi 36 tầng.",
       "image": ""
     },
     {
@@ -17,7 +17,7 @@
       "enabled": true,
       "order": 2,
       "title": "HEALTHCARE",
-      "text": "Các tiện ích chăm sóc được bố trí ngay trong khuôn viên dự án.",
+      "text": "Định hướng chăm sóc sức khỏe là một phần của hệ sinh thái Senior Living & Wellness; chi tiết sẽ được cập nhật theo hồ sơ dự án.",
       "image": ""
     },
     {
@@ -25,7 +25,7 @@
       "enabled": true,
       "order": 3,
       "title": "ACTIVE LIVING",
-      "text": "Không gian vận động nhẹ nhàng và các khu sinh hoạt ngoài trời cho một nhịp sống chủ động.",
+      "text": "Không gian vận động và sinh hoạt là một phần trong định hướng trải nghiệm sống chủ động tại GSC.",
       "image": ""
     },
     {
@@ -33,7 +33,7 @@
       "enabled": true,
       "order": 4,
       "title": "NATURE & LANDSCAPE",
-      "text": "Cảnh quan xanh, mặt nước và những góc thư giãn kết nối kiến trúc với thiên nhiên.",
+      "text": "Cảnh quan và không gian ngoài trời được định hướng như một phần của trải nghiệm sống tại dự án.",
       "image": ""
     },
     {
@@ -41,7 +41,7 @@
       "enabled": true,
       "order": 5,
       "title": "COMMUNITY",
-      "text": "Nơi gặp gỡ, trò chuyện và chia sẻ mỗi ngày.",
+      "text": "Không gian cộng đồng được định hướng để hỗ trợ kết nối và sinh hoạt chung.",
       "image": ""
     },
     {
@@ -49,7 +49,7 @@
       "enabled": true,
       "order": 6,
       "title": "DAILY LIVING",
-      "text": "Những nhu cầu thiết yếu của một ngày nằm gần trong khuôn viên.",
+      "text": "Các tiện ích đời sống sẽ được cập nhật theo hồ sơ dự án được xác minh.",
       "image": ""
     }
   ]

@@ -13,6 +13,8 @@
 .gsc-intro-ph{position:relative;background:radial-gradient(120% 90% at 20% 10%,#22345a 0%,transparent 55%),linear-gradient(155deg,#16233d 0%,#0b1424 55%,#2a1f14 100%);background-size:cover;background-position:center;overflow:hidden}
 .gsc-intro-ph[data-gsc-label]:not(.is-loaded)::after{content:attr(data-gsc-label);position:absolute;left:14px;bottom:12px;font-size:11px;letter-spacing:.14em;color:rgba(212,175,106,.7)}
 .gsc-intro-ph.is-loaded::after{content:none}
+.gsc-intro-ph.is-error{background-image:radial-gradient(120% 90% at 20% 10%,#22345a 0%,transparent 55%),linear-gradient(155deg,#16233d 0%,#0b1424 55%,#2a1f14 100%)!important}
+.gsc-intro-ph.is-error::after{content:"HÌNH ẢNH ĐANG ĐƯỢC CẬP NHẬT";position:absolute;left:14px;bottom:12px;font-size:10px;letter-spacing:.12em;color:var(--gold)}
 
 /* layout */
 .gsc-intro-wrap{width:100%;max-width:1320px;margin:0 auto;padding:0 var(--pad)}
@@ -235,4 +237,4 @@
 .gsc-contact-panel{max-width:1120px;margin:52px auto 0;padding:38px;border:1px solid var(--line);display:grid;grid-template-columns:1.2fr 1fr;gap:60px;text-align:left;background:rgba(11,20,36,.6)}.gsc-contact-panel h2{font:500 clamp(28px,3vw,44px)/1.15 var(--serif);margin:10px 0 14px;color:var(--white)}.gsc-contact-panel p{color:var(--mute)}.gsc-contact-links{display:grid}.gsc-contact-links a{padding:13px 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:18px}.gsc-contact-links span{color:var(--mute)}.gsc-contact-links b{color:var(--gold);font-weight:700}.gsc-social-row{display:flex;justify-content:center;flex-wrap:wrap;gap:12px 28px;margin:30px 0 8px}.gsc-social-row a{color:var(--gold);font-size:12px;letter-spacing:.12em;text-transform:uppercase}.gsc-mobile-cta{display:none}
 
 /* Gallery affordance */
-.gsc-intro-track .gsc-intro-tile.is-loaded{cursor:zoom-in;transition:transform .35s ease,filter .35s ease}.gsc-intro-track .gsc-intro-tile.is-loaded:hover{transform:translateY(-5px);filter:brightness(1.05)}
+.gsc-intro-track .gsc-intro-tile.is-loaded{cursor:default;transition:transform .35s ease,filter .35s ease}.gsc-intro-track .gsc-intro-tile.is-loaded:hover{transform:translateY(-5px);filter:brightness(1.05)}

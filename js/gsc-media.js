@@ -17,7 +17,7 @@
       el.classList.remove('is-error'); el.classList.add('is-loaded');
       if (alt) { el.setAttribute('role', 'img'); el.setAttribute('aria-label', alt); }
     };
-    img.onerror = function () { el.classList.add('is-error'); };
+    img.onerror = function () { el.style.backgroundImage = ''; el.classList.remove('is-loaded'); el.classList.add('is-error'); if (alt) el.setAttribute('aria-label', alt + ' — hình ảnh đang được cập nhật'); };
     img.src = url;
   }
   /* srcset-like: url may be a string or {avif, webp, src}; first format the browser can decode wins */
@@ -57,7 +57,7 @@
     if (!url) return;
     all('[data-gsc-logo]').forEach(function (el) {
       var img = d.createElement('img');
-      img.src = url; img.alt = alt || 'GSC Senior Living & Wellness'; img.decoding = 'async';
+      img.src = url; img.alt = alt || 'GSC Senior Living & Wellness'; img.decoding = 'async'; img.addEventListener('error', function () { img.hidden = true; el.classList.add('is-error'); });
       if (el.tagName === 'A') { el.textContent = ''; el.appendChild(img); }
       else if (el.parentNode) el.parentNode.replaceChild(img, el);
     });

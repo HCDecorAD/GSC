@@ -83,3 +83,14 @@
 /* GSC 2026 mobile contact/navigation */
 @media(max-width:1024px){.gsc-contactbar__social{display:none}.gsc-contact-panel{grid-template-columns:1fr;gap:22px}.gsc-intro-nav{top:34px}}
 @media(max-width:640px){.gsc-contactbar{height:30px}.gsc-contactbar__in{justify-content:center;padding:0 12px}.gsc-contactbar__in>a:nth-child(2){display:none}.gsc-contactbar__in>a:first-child{font-size:10px}.gsc-intro-nav{top:30px}.gsc-intro-nav__logo img{max-width:92px;max-height:36px}.gsc-intro-brand img{max-width:250px;max-height:80px}.gsc-contact-panel{padding:24px 18px;margin-top:34px}.gsc-contact-links a{flex-direction:column;gap:2px}.gsc-mobile-cta{position:fixed;z-index:70;left:10px;right:10px;bottom:max(10px,env(safe-area-inset-bottom));display:grid;grid-template-columns:1.5fr 1fr;gap:8px;padding:6px;border:1px solid rgba(212,175,106,.35);background:rgba(7,12,22,.94);backdrop-filter:blur(14px);border-radius:12px}.gsc-mobile-cta a{min-height:44px;display:flex;align-items:center;justify-content:center;border-radius:8px;background:linear-gradient(180deg,var(--gold),var(--bronze));color:#1a1206;font-weight:700;font-size:12px;letter-spacing:.08em}.gsc-mobile-cta a+ a{background:#10274a;color:var(--white);border:1px solid var(--line)}.gsc-intro-footer{padding-bottom:100px}}
+
+/* GSC mobile readability hardening */
+@media(max-width:640px){
+  .gsc-intro{font-size:15px;line-height:1.65}
+  .gsc-intro-sec{padding:clamp(60px,18vw,92px) 0}
+  .gsc-intro-h2{font-size:clamp(30px,9vw,42px);line-height:1.12}
+  .gsc-intro-lead{font-size:clamp(18px,5.4vw,23px);line-height:1.5}
+  .gsc-intro-btn{min-height:48px;padding:0 20px;font-size:12px}
+  .gsc-intro-nav__links a{min-height:52px;display:flex;align-items:center}
+  .gsc-contactbar a,.gsc-mobile-cta a{-webkit-tap-highlight-color:transparent}
+}

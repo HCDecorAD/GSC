@@ -1,8 +1,8 @@
 (function(){'use strict';
 var dict={
 "Nơi tuổi vàng bắt đầu một chương mới.":"Where golden years begin a new chapter.",
-"KHÁM PHÁ DỰ ÁN":"EXPLORE THE PROJECT","Dự án":"Project","Masterplan":"Masterplan","Không gian sống":"Living","Wellness":"Wellness","Tiện ích":"Amenities","Vị trí":"Location","Khám phá":"Explore",
-"MỘT CHƯƠNG MỚI CHO TUỔI VÀNG":"A NEW CHAPTER FOR GOLDEN YEARS","Tổng diện tích":"Total site area","Tháp":"Towers","Tầng / tháp":"Floors / tower","Quy mô tầng":"Floor configuration",
+"KHÁM PHÁ DỰ ÁN":"EXPLORE THE PROJECT","TRẢI NGHIỆM DIGITAL TWIN":"EXPERIENCE DIGITAL TWIN","Dự án":"Project","Masterplan":"Masterplan","Không gian sống":"Living","Wellness":"Wellness","Tiện ích":"Amenities","Vị trí":"Location","Khám phá":"Explore",
+"MỘT CHƯƠNG MỚI CHO TUỔI VÀNG":"A NEW CHAPTER FOR GOLDEN YEARS","Tổng diện tích":"Total site area","Tháp":"Towers","Tầng / tháp":"Floors / tower","Quy mô tầng":"Floor configuration","khoảng 10 km":"approx. 10 km","khoảng 30 km":"approx. 30 km","khoảng 80 km":"approx. 80 km","Tổng diện tích":"Total site area","Tháp":"Towers","Tầng / tháp":"Floors / tower","Quy mô tầng":"Floor configuration",
 "SỐNG KHÔNG CHỈ LÀ Ở":"LIVING IS MORE THAN RESIDING","HỆ SINH THÁI WELLNESS":"WELLNESS ECOSYSTEM","TIỆN ÍCH DỰ ÁN":"PROJECT AMENITIES","VỊ TRÍ KẾT NỐI":"CONNECTED LOCATION","KHÁM PHÁ GSC":"EXPLORE GSC",
 "KHÁM PHÁ TOÀN CẢNH":"EXPLORE DIGITAL TWIN","KHÁM PHÁ DIGITAL TWIN →":"EXPLORE DIGITAL TWIN →","LIÊN HỆ":"CONTACT","Chăm sóc":"Care","Đời sống":"Lifestyle","Vận động & thư giãn":"Active & Relaxation","Thiên nhiên & tâm linh":"Nature & Spirituality",
 "Sống":"Live","Kết nối":"Connect","Tận hưởng":"Enjoy","A DAY AT GSC":"A DAY AT GSC","MỖI NGÀY LÀ MỘT TRẢI NGHIỆM MỚI":"EVERY DAY, A NEW EXPERIENCE",

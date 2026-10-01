@@ -7,9 +7,9 @@ cd /d "%ROOT%"
 if not exist "%QA%" mkdir "%QA%"
 echo [GSC] Parallel QA started %date% %time%
 
-start "" /b powershell -NoProfile -ExecutionPolicy Bypass -File "%SCRIPTS%qa-html.ps1" ^> "%QA%\html.log" 2^>^&1
-start "" /b powershell -NoProfile -ExecutionPolicy Bypass -File "%SCRIPTS%qa-assets.ps1" ^> "%QA%\assets.log" 2^>^&1
-start "" /b cmd /c "git status --short > "%QA%\git.log" 2>&1"
+start "" /b cmd /c "powershell -NoProfile -ExecutionPolicy Bypass -File ""%SCRIPTS%qa-html.ps1"" > ""%QA%\html.log"" 2>&1"
+start "" /b cmd /c "powershell -NoProfile -ExecutionPolicy Bypass -File ""%SCRIPTS%qa-assets.ps1"" > ""%QA%\assets.log"" 2>&1"
+git status --short > "%QA%\git.log" 2>&1
 
 timeout /t 5 /nobreak >nul
 echo [GSC] QA reports

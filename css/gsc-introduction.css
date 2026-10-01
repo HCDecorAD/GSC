@@ -1,7 +1,7 @@
 /* GSC Introduction — all selectors namespaced gsc-intro-* */
 .gsc-intro-body{margin:0;background:#070c16}
 .gsc-intro{--navy:#0b1424;--ink:#070c16;--deep:#101b30;--bronze:#a9793f;--gold:#d4af6a;--white:#f3ecdf;--mute:rgba(243,236,223,.66);--line:rgba(212,175,106,.28);
---serif:"Cormorant Garamond","Playfair Display",Georgia,"Times New Roman",serif;--sans:"Helvetica Neue",Helvetica,Arial,sans-serif;
+--serif:"UTM Avo","UTMAvo",Arial,sans-serif;--sans:Arial,"Helvetica Neue",Helvetica,sans-serif;
 --pad:clamp(20px,5vw,72px);color:var(--white);font-family:var(--sans);font-size:16px;line-height:1.7;background:var(--ink);overflow-x:hidden;-webkit-font-smoothing:antialiased}
 .gsc-intro *,.gsc-intro *::before,.gsc-intro *::after{box-sizing:border-box}
 .gsc-intro :where(h1,h2,h3,p,ul,dl,dd,figure){margin:0;padding:0}

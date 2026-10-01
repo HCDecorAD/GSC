@@ -131,6 +131,26 @@
     w.addEventListener('resize', function () { if (w.innerWidth > 1024) set(false); });
   }
 
+
+  function initTheme() {
+    var btn=d.querySelector('[data-gsc-theme-toggle]');
+    if(!btn)return;
+    var key='gsc-theme', saved=null;
+    try{saved=w.localStorage.getItem(key);}catch(e){}
+    var preferred=saved || (w.matchMedia&&w.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');
+    function setTheme(theme,persist){
+      var light=theme==='light';
+      d.documentElement.setAttribute('data-gsc-theme',light?'light':'dark');
+      btn.setAttribute('aria-pressed',light?'true':'false');
+      btn.querySelector('span').textContent=light?'☀':'☾';
+      btn.querySelector('b').textContent=light?'SÁNG':'TỐI';
+      var meta=d.querySelector('meta[name="theme-color"]');if(meta)meta.setAttribute('content',light?'#f7f3ea':'#070c16');
+      if(persist){try{w.localStorage.setItem(key,light?'light':'dark');}catch(e){}}
+    }
+    setTheme(preferred,false);
+    btn.addEventListener('click',function(){setTheme(d.documentElement.getAttribute('data-gsc-theme')==='light'?'dark':'light',true);});
+  }
+
   function apply(o) {
     if (o.logo) G.setLogo(o.logo, o.logoAlt);
     Object.keys(o.assets || {}).forEach(function (k) {
@@ -150,7 +170,7 @@
     cfg.onAction = o.onAction || null;
     apply(o);
     root.addEventListener('click', onClick);
-    initNav(); initMenu(); initReveal(); initParallax();
+    initNav(); initMenu(); initTheme(); initReveal(); initParallax();
     /* Optional JSON config (only over http/https; fetch of file:// is blocked by browsers) */
     var url = o.configUrl || 'config/gsc-intro-assets.json';
     if (o.configUrl !== false && /^https?:$/.test(w.location.protocol) && w.fetch) {

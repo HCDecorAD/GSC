@@ -1,0 +1,4 @@
+$ErrorActionPreference='Stop'
+$root=(Resolve-Path (Join-Path $PSScriptRoot '..')).Path;$pages=@('project.html','residences.html','wellness.html','lifestyle.html','amenities.html','location.html','gallery.html','insights.html','contact.html');$bad=0
+foreach($p in $pages){$t=[IO.File]::ReadAllText((Join-Path $root $p));$canon=[regex]::Match($t,'<link rel="canonical" href="([^"]+)"').Groups[1].Value;$blocks=[regex]::Matches($t,'<script type="application/ld\+json">([\s\S]*?)</script>');$types=@();$web=$null;foreach($b in $blocks){try{$j=$b.Groups[1].Value|ConvertFrom-Json;$types+=[string]$j.'@type';if($j.'@type' -eq 'WebPage'){$web=$j}}catch{$bad++}};$ok=($types -contains 'BreadcrumbList') -and ($types -contains 'WebPage') -and $web.url -eq $canon -and $web.inLanguage -eq 'vi';"SCHEMA $p types=$($types -join ',') $(if($ok){'PASS'}else{'FAIL'})";if(!$ok){$bad++}}
+"SCHEMA_QA total=$($pages.Count) failed=$bad";if($bad){exit 56}

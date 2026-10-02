@@ -15,6 +15,7 @@ for %%F in (
   qa-gate-wiring.ps1
   qa-ai-media-transaction.ps1
   qa-ai-media-ownership.ps1
+  qa-ai-media-manifest.ps1
   qa-release-status.ps1
   qa-release-execution.ps1
   gsc-public-evidence.bat
@@ -32,6 +33,12 @@ if errorlevel 1 (
 )
 
 powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0qa-ai-media-ownership.ps1"
+if errorlevel 1 (
+  set "RC=!ERRORLEVEL!"
+  exit /b !RC!
+)
+
+powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0qa-ai-media-manifest.ps1"
 if errorlevel 1 (
   set "RC=!ERRORLEVEL!"
   exit /b !RC!

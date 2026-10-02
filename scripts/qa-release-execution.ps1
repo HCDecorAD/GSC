@@ -3,6 +3,7 @@ $release=[IO.File]::ReadAllText((Join-Path $PSScriptRoot 'gsc-website-release.ba
 $required=@(
  'qa-ai-media-transaction.ps1',
  'qa-ai-media-mapping.ps1',
+ 'qa-ai-media-manifest.ps1',
  'qa-ai-media-ownership.ps1',
  'qa-release-status.ps1',
  'qa-gate-wiring.ps1',

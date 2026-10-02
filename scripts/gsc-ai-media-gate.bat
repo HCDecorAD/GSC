@@ -9,6 +9,10 @@ powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0qa-ai-media-manifest.p
 set "RC=!ERRORLEVEL!"
 if not "!RC!"=="0" exit /b !RC!
 
+powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0qa-ai-media-mapping.ps1"
+set "RC=!ERRORLEVEL!"
+if not "!RC!"=="0" exit /b !RC!
+
 powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0qa-ai-media-intake.ps1"
 set "RC=!ERRORLEVEL!"
 if not "!RC!"=="0" exit /b !RC!

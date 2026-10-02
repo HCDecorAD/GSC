@@ -1,12 +1,12 @@
 {
-  "version": 1,
-  "policy": "AI Concept Visualization - no text, logo, signage, UI or website mockup",
+  "version": 2,
+  "policy": "AI Concept Visualization - scene only; no text, logo, signage, UI or website mockup",
   "slots": {
-    "seniorliving": "assets/gsc-ai/seniorliving.jpg",
-    "healthcare": "assets/gsc-ai/healthcare.jpg",
-    "active": "assets/gsc-ai/active.jpg",
-    "community": "assets/gsc-ai/community.jpg",
-    "daily": "assets/gsc-ai/daily.jpg",
-    "location": "assets/gsc-ai/location.jpg"
+    "seniorliving": {"path":"assets/gsc-ai/seniorliving.jpg","scene_only":true,"no_text_ui":true,"approved":false},
+    "healthcare": {"path":"assets/gsc-ai/healthcare.jpg","scene_only":true,"no_text_ui":true,"approved":false},
+    "active": {"path":"assets/gsc-ai/active.jpg","scene_only":true,"no_text_ui":true,"approved":false},
+    "community": {"path":"assets/gsc-ai/community.jpg","scene_only":true,"no_text_ui":true,"approved":false},
+    "daily": {"path":"assets/gsc-ai/daily.jpg","scene_only":true,"no_text_ui":true,"approved":false},
+    "location": {"path":"assets/gsc-ai/location.jpg","scene_only":true,"no_text_ui":true,"approved":false}
   }
 }

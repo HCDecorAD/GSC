@@ -6,6 +6,7 @@ $required=@(
  'qa-ai-media-manifest.ps1',
  'qa-ai-media-ownership.ps1',
  'qa-release-status.ps1',
+ 'qa-ai-media-status.ps1',
  'qa-gate-wiring.ps1',
  'qa-release-execution.ps1'
 )

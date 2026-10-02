@@ -13,6 +13,7 @@ for %%F in (
   qa-flagship.ps1
   qa-responsive.ps1
   qa-gate-wiring.ps1
+  qa-ai-media-transaction.ps1
   gsc-public-evidence.bat
 ) do (
   if not exist "%~dp0%%F" (
@@ -20,6 +21,9 @@ for %%F in (
     exit /b 60
   )
 )
+
+powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0qa-ai-media-transaction.ps1"
+if errorlevel 1 exit /b %ERRORLEVEL%
 
 powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0qa-gate-wiring.ps1"
 if errorlevel 1 exit /b %ERRORLEVEL%

@@ -26,3 +26,11 @@ $robots=[IO.File]::ReadAllText((Join-Path $root 'robots.txt'))
 $robotsOk=($robots -match '(?im)^User-agent:\s*\*$' -and $robots -match '(?im)^Allow:\s*/$' -and $robots -match '(?im)^Sitemap:\s*https://gscsenior\.hcdecorhub\.com/sitemap\.xml$')
 Write-Host "ROBOTS_QA sitemapProduction=$(if($robotsOk){'PASS'}else{'FAIL'})"
 if(!$robotsOk){exit 75}
+
+# Home canonical is intentionally enforced here even though index.html is a large embedded Digital Twin.
+# This keeps the SEO TODO release-visible until it is patched through a safe local/raw-file workflow.
+$homePath=Join-Path $root 'index.html'
+$home=[IO.File]::ReadAllText($homePath)
+$homeCanonicalOk=$home -match '<link[^>]+rel=["'']canonical["''][^>]+href=["'']https://gscsenior\.hcdecorhub\.com/["'']'
+Write-Host "HOME_CANONICAL_QA production=$(if($homeCanonicalOk){'PASS'}else{'FAIL'})"
+if(!$homeCanonicalOk){exit 76}

@@ -12,6 +12,10 @@ call :sourcebat "PUBLIC_CONCEPT" "%~dp0gsc-public-concept-gate.bat"
 call :sourceps "FLAGSHIP" "%~dp0qa-flagship.ps1"
 call :sourceps "RESPONSIVE" "%~dp0qa-responsive.ps1"
 
+powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0qa-ai-media-mapping.ps1"
+set "MAPPING_RC=!ERRORLEVEL!"
+if "!MAPPING_RC!"=="0" (echo [PASS] MEDIA_MAPPING_CONSISTENCY) else (echo [FAIL] MEDIA_MAPPING_CONSISTENCY rc=!MAPPING_RC!)
+
 call "%~dp0gsc-public-evidence.bat"
 set "PUBLIC_RC=!ERRORLEVEL!"
 if "!PUBLIC_RC!"=="0" (echo [PASS] PUBLIC_DEPLOYMENT) else (echo [NOT_CONFIRMED] PUBLIC_DEPLOYMENT rc=!PUBLIC_RC!)

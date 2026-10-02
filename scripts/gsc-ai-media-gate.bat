@@ -5,6 +5,10 @@ set "QA=%ROOT%\.qa"
 cd /d "%ROOT%"
 if not exist "%QA%" mkdir "%QA%"
 
+powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0qa-ai-media-manifest.ps1"
+set "RC=!ERRORLEVEL!"
+if not "!RC!"=="0" exit /b !RC!
+
 powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0qa-ai-media-intake.ps1"
 set "RC=!ERRORLEVEL!"
 if not "!RC!"=="0" exit /b !RC!

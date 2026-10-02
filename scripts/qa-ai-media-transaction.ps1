@@ -3,6 +3,8 @@ $p=Join-Path $PSScriptRoot 'gsc-ai-media-import.bat'
 $t=[IO.File]::ReadAllText($p)
 $checks=[ordered]@{
  backup=$t.Contains('copy /y "%CFG%" "%BAK%"')
+ backupRc=$t.Contains('set "BACKUP_RC=!ERRORLEVEL!"')
+ backupFailFast=$t.Contains('AI MEDIA IMPORT BLOCKED - BACKUP FAILED')
  map=$t.Contains('map-ai-media.ps1')
  maprc=$t.Contains('set "MAP_RC=!ERRORLEVEL!"')
  gate=$t.Contains('gsc-ai-media-gate.bat')

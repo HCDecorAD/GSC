@@ -1,4 +1,6 @@
 @echo off
+powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0qa-ai-media-intake.ps1"
+if errorlevel 1 exit /b %ERRORLEVEL%
 setlocal
 set "ROOT=%~dp0.."
 set "QA=%ROOT%\.qa"

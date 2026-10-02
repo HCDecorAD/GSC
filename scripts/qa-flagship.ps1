@@ -13,6 +13,7 @@ $checks=@(
  @{n='ai-not-completed';ok=$html.Contains('không được trình bày như ảnh công trình đã hoàn thành')},
  @{n='location-reference';ok=$html.Contains('Các khoảng cách trên là thông tin tham khảo') -and $html.Contains('thời gian di chuyển thực tế phụ thuộc tuyến đường và điều kiện giao thông')},
  @{n='healthcare-direction-copy';ok=$html.Contains('Các tiện ích chăm sóc được định hướng trong khuôn viên dự án.')},
- @{n='healthcare-group-label';ok=$html.Contains('Chăm sóc <small>· định hướng</small>')}
+ @{n='healthcare-group-label';ok=$html.Contains('Chăm sóc <small>· định hướng</small>')},
+ @{n='ai-a11y-concept-labels';ok=([regex]::Matches($html,'aria-label="Hình minh họa ý tưởng AI')).Count -eq 6}
 )
 $bad=@($checks|?{-not $_.ok});"FLAGSHIP_QA failed=$($bad.Count)";$bad|%{"FLAGSHIP_FAIL "+$_.n};if($bad.Count){exit 48}

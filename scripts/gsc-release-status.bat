@@ -11,6 +11,7 @@ call :run "OFFICIAL_PAGES" "%~dp0gsc-site-pages-gate.bat"
 call :run "PUBLIC_CONCEPT" "%~dp0gsc-public-concept-gate.bat"
 call :runps "FLAGSHIP" "%~dp0qa-flagship.ps1"
 call :runps "RESPONSIVE" "%~dp0qa-responsive.ps1"
+call :run "PUBLIC_DEPLOYMENT" "%~dp0gsc-public-evidence.bat"
 
 call "%~dp0gsc-ai-media-gate.bat"
 set "MEDIA_RC=!ERRORLEVEL!"

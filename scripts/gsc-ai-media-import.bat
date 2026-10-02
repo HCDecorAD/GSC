@@ -8,6 +8,11 @@ echo ============================================================
 echo GSC AI MEDIA TRANSACTIONAL IMPORT
 echo ============================================================
 copy /y "%CFG%" "%BAK%" >nul
+set "BACKUP_RC=!ERRORLEVEL!"
+if not "!BACKUP_RC!"=="0" (
+  echo [GSC] AI MEDIA IMPORT BLOCKED - BACKUP FAILED rc=!BACKUP_RC!
+  exit /b !BACKUP_RC!
+)
 powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0map-ai-media.ps1"
 set "MAP_RC=!ERRORLEVEL!"
 if not "!MAP_RC!"=="0" (

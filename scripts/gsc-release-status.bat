@@ -26,10 +26,12 @@ if "!MEDIA_RC!"=="0" (echo [PASS] AI_MEDIA) else (echo [PENDING] AI_MEDIA rc=!ME
 
 echo ------------------------------------------------------------
 if "!SOURCE_FAIL!"=="0" (echo [GSC] SOURCE QA PASS) else (echo [GSC] SOURCE QA FAIL)
+if "!MAPPING_RC!"=="0" (echo [GSC] MEDIA MAPPING CONSISTENCY PASS) else (echo [GSC] MEDIA MAPPING CONSISTENCY FAIL)
 if "!PUBLIC_RC!"=="0" (echo [GSC] PUBLIC DEPLOYMENT PASS) else (echo [GSC] PUBLIC DEPLOYMENT NOT CONFIRMED)
 if "!MEDIA_RC!"=="0" (echo [GSC] AI MEDIA PASS) else (echo [GSC] AI MEDIA PENDING)
 echo ============================================================
 if not "!SOURCE_FAIL!"=="0" exit /b 61
+if not "!MAPPING_RC!"=="0" exit /b !MAPPING_RC!
 if not "!PUBLIC_RC!"=="0" exit /b !PUBLIC_RC!
 if not "!MEDIA_RC!"=="0" exit /b !MEDIA_RC!
 exit /b 0

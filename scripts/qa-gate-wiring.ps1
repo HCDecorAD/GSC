@@ -7,4 +7,11 @@ $siteReq=@('gsc-seo-pages-gate.bat','gsc-site-architecture-gate.bat','qa-content
 $bad=0
 foreach($x in $releaseReq){if(!$release.Contains($x)){Write-Host "RELEASE_WIRING FAIL $x";$bad++}else{Write-Host "RELEASE_WIRING PASS $x"}}
 foreach($x in $siteReq){if(!$site.Contains($x)){Write-Host "SITE_WIRING FAIL $x";$bad++}else{Write-Host "SITE_WIRING PASS $x"}}
-Write-Host "GATE_WIRING failed=$bad";if($bad){exit 62}
+Write-Host "GATE_WIRING failed=$bad"
+
+$posPublic=$release.IndexOf('gsc-public-evidence.bat')
+$posMedia=$release.LastIndexOf('gsc-ai-media-gate.bat')
+$orderOk=($posPublic -ge 0 -and $posMedia -gt $posPublic)
+Write-Host "RELEASE_ORDER public-before-media=$(if($orderOk){'PASS'}else{'FAIL'})"
+if(!$orderOk){$bad++}
+if($bad){exit 62}

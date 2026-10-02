@@ -10,6 +10,7 @@ $checks=@(
  @{n='project-status';ok=$html.Contains('Đang trong giai đoạn phát triển dự án') -and $html.Contains('Tiến độ thực tế cần xác nhận theo thông tin cập nhật')},
  @{n='healthcare-direction';ok=$html.Contains('Các tiện ích chăm sóc được định hướng trong khuôn viên dự án.')},
  @{n='healthcare-license-disclosure';ok=$html.Contains('không phải xác nhận cơ sở y tế đã được cấp phép hoặc đang vận hành')},
- @{n='ai-not-completed';ok=$html.Contains('không được trình bày như ảnh công trình đã hoàn thành')}
+ @{n='ai-not-completed';ok=$html.Contains('không được trình bày như ảnh công trình đã hoàn thành')},
+ @{n='location-reference';ok=$html.Contains('Các khoảng cách trên là thông tin tham khảo') -and $html.Contains('thời gian di chuyển thực tế phụ thuộc tuyến đường và điều kiện giao thông')}
 )
 $bad=@($checks|?{-not $_.ok});"FLAGSHIP_QA failed=$($bad.Count)";$bad|%{"FLAGSHIP_FAIL "+$_.n};if($bad.Count){exit 48}

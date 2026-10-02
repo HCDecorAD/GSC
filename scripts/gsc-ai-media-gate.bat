@@ -12,4 +12,6 @@ if not "%RC%"=="0" (
  exit /b %RC%
 )
 echo [GSC] AI MEDIA 6/6 PASS
+powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0qa-ai-media-policy.ps1"
+if errorlevel 1 exit /b %ERRORLEVEL%
 exit /b 0

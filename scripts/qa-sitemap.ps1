@@ -21,3 +21,8 @@ $duplicates=@($actual | Group-Object | Where-Object {$_.Count -gt 1})
 $ok=($actual.Count -eq 11 -and $missing.Count -eq 0 -and $extra.Count -eq 0 -and $duplicates.Count -eq 0)
 Write-Host "SITEMAP_QA count=$($actual.Count) missing=$($missing.Count) extra=$($extra.Count) duplicates=$($duplicates.Count) $(if($ok){'PASS'}else{'FAIL'})"
 if(!$ok){exit 74}
+
+$robots=[IO.File]::ReadAllText((Join-Path $root 'robots.txt'))
+$robotsOk=($robots -match '(?im)^User-agent:\s*\*$' -and $robots -match '(?im)^Allow:\s*/$' -and $robots -match '(?im)^Sitemap:\s*https://gscsenior\.hcdecorhub\.com/sitemap\.xml$')
+Write-Host "ROBOTS_QA sitemapProduction=$(if($robotsOk){'PASS'}else{'FAIL'})"
+if(!$robotsOk){exit 75}

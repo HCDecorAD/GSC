@@ -9,6 +9,8 @@ call "%~dp0gsc-seo-pages-gate.bat"
 if errorlevel 1 exit /b %ERRORLEVEL%
 
 call "%~dp0gsc-site-architecture-gate.bat"
+if errorlevel 1 exit /b !ERRORLEVEL!
+powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0qa-sitemap.ps1"
 if errorlevel 1 exit /b %ERRORLEVEL%
 
 for %%Q in (

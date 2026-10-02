@@ -31,9 +31,6 @@ if errorlevel 1 exit /b %ERRORLEVEL%
 call "%~dp0gsc-site-pages-gate.bat"
 if errorlevel 1 exit /b %ERRORLEVEL%
 
-call "%~dp0gsc-ai-media-gate.bat"
-if errorlevel 1 exit /b %ERRORLEVEL%
-
 call "%~dp0gsc-public-concept-gate.bat"
 if errorlevel 1 exit /b %ERRORLEVEL%
 
@@ -44,6 +41,10 @@ powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0qa-responsive.ps1"
 if errorlevel 1 exit /b %ERRORLEVEL%
 
 call "%~dp0gsc-public-evidence.bat"
+if errorlevel 1 exit /b %ERRORLEVEL%
+
+rem AI media is intentionally the final full-release blocker.
+call "%~dp0gsc-ai-media-gate.bat"
 if errorlevel 1 exit /b %ERRORLEVEL%
 
 echo ============================================================

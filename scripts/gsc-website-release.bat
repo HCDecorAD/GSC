@@ -13,6 +13,7 @@ for %%F in (
   qa-flagship.ps1
   qa-responsive.ps1
   qa-gate-wiring.ps1
+  gsc-public-evidence.bat
 ) do (
   if not exist "%~dp0%%F" (
     echo [GSC] RELEASE PREFLIGHT FAIL missing %%F
@@ -36,6 +37,9 @@ powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0qa-flagship.ps1"
 if errorlevel 1 exit /b %ERRORLEVEL%
 
 powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0qa-responsive.ps1"
+if errorlevel 1 exit /b %ERRORLEVEL%
+
+call "%~dp0gsc-public-evidence.bat"
 if errorlevel 1 exit /b %ERRORLEVEL%
 
 echo ============================================================

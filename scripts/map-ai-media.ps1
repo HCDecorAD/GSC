@@ -13,8 +13,12 @@ $c=Get-Content $configPath -Raw|ConvertFrom-Json
 try {
   foreach($p in $m.slots.PSObject.Properties){
     if(!($c.assets.PSObject.Properties.Name -contains $p.Name)){throw "unknown slot $($p.Name)"}
-    $c.assets.($p.Name)=[string]$p.Value
-    Write-Host "AUTO_MAP $($p.Name) -> $($p.Value)"
+    $meta=$p.Value
+    if(!($meta.scene_only -eq $true -and $meta.no_text_ui -eq $true -and $meta.approved -eq $true)){throw "unapproved slot $($p.Name)"}
+    $rel=[string]$meta.path
+    if([string]::IsNullOrWhiteSpace($rel)){throw "empty path $($p.Name)"}
+    $c.assets.($p.Name)=$rel
+    Write-Host "AUTO_MAP $($p.Name) -> $rel"
   }
   $json=$c|ConvertTo-Json -Depth 20
   [IO.File]::WriteAllText($configPath,$json,(New-Object Text.UTF8Encoding($false)))

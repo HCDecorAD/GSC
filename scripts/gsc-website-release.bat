@@ -19,6 +19,7 @@ for %%F in (
   qa-ai-media-mapping.ps1
   qa-release-status.ps1
   qa-release-execution.ps1
+  qa-ai-media-status.ps1
   gsc-public-evidence.bat
 ) do (
   if not exist "%~dp0%%F" (
@@ -46,6 +47,12 @@ if errorlevel 1 (
 )
 
 powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0qa-ai-media-mapping.ps1"
+if errorlevel 1 (
+  set "RC=!ERRORLEVEL!"
+  exit /b !RC!
+)
+
+powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0qa-ai-media-status.ps1"
 if errorlevel 1 (
   set "RC=!ERRORLEVEL!"
   exit /b !RC!

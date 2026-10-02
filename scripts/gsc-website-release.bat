@@ -1,5 +1,5 @@
 @echo off
-setlocal
+setlocal EnableDelayedExpansion
 set "ROOT=%~dp0.."
 cd /d "%ROOT%"
 echo ============================================================
@@ -24,32 +24,59 @@ for %%F in (
 )
 
 powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0qa-ai-media-transaction.ps1"
-if errorlevel 1 exit /b %ERRORLEVEL%
+if errorlevel 1 (
+  set "RC=!ERRORLEVEL!"
+  exit /b !RC!
+)
 
 powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0qa-release-status.ps1"
-if errorlevel 1 exit /b %ERRORLEVEL%
+if errorlevel 1 (
+  set "RC=!ERRORLEVEL!"
+  exit /b !RC!
+)
 
 powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0qa-gate-wiring.ps1"
-if errorlevel 1 exit /b %ERRORLEVEL%
+if errorlevel 1 (
+  set "RC=!ERRORLEVEL!"
+  exit /b !RC!
+)
 
 call "%~dp0gsc-site-pages-gate.bat"
-if errorlevel 1 exit /b %ERRORLEVEL%
+if errorlevel 1 (
+  set "RC=!ERRORLEVEL!"
+  exit /b !RC!
+)
 
 call "%~dp0gsc-public-concept-gate.bat"
-if errorlevel 1 exit /b %ERRORLEVEL%
+if errorlevel 1 (
+  set "RC=!ERRORLEVEL!"
+  exit /b !RC!
+)
 
 powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0qa-flagship.ps1"
-if errorlevel 1 exit /b %ERRORLEVEL%
+if errorlevel 1 (
+  set "RC=!ERRORLEVEL!"
+  exit /b !RC!
+)
 
 powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0qa-responsive.ps1"
-if errorlevel 1 exit /b %ERRORLEVEL%
+if errorlevel 1 (
+  set "RC=!ERRORLEVEL!"
+  exit /b !RC!
+)
 
 call "%~dp0gsc-public-evidence.bat"
-if errorlevel 1 exit /b %ERRORLEVEL%
+if errorlevel 1 (
+  set "RC=!ERRORLEVEL!"
+  exit /b !RC!
+)
 
 rem AI media is intentionally the final full-release blocker.
 call "%~dp0gsc-ai-media-gate.bat"
-if errorlevel 1 exit /b %ERRORLEVEL%
+if errorlevel 1 (
+  set "RC=!ERRORLEVEL!"
+  exit /b !RC!
+)
 
 echo ============================================================
 echo [GSC] WEBSITE RELEASE PASS

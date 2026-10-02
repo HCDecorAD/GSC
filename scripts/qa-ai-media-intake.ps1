@@ -4,7 +4,9 @@ $m=Get-Content (Join-Path $root 'config/gsc-ai-media-manifest.json') -Raw|Conver
 $bad=0
 Add-Type -AssemblyName System.Drawing
 foreach($p in $m.slots.PSObject.Properties){
- $slot=$p.Name;$rel=[string]$p.Value;$full=Join-Path $root ($rel -replace '/','\')
+ $slot=$p.Name;$meta=$p.Value;$rel=[string]$meta.path
+ if(!($meta.scene_only -eq $true -and $meta.no_text_ui -eq $true -and $meta.approved -eq $true)){Write-Host "MEDIA_INTAKE $slot FAIL_APPROVAL scene_only=$($meta.scene_only) no_text_ui=$($meta.no_text_ui) approved=$($meta.approved)";$bad++;continue}
+ $full=Join-Path $root ($rel -replace '/','\')
  if(!(Test-Path $full)){Write-Host "MEDIA_INTAKE $slot MISSING $rel";$bad++;continue}
  $fi=Get-Item $full
  if($fi.Length -lt 50000){Write-Host "MEDIA_INTAKE $slot FAIL_TOO_SMALL bytes=$($fi.Length)";$bad++;continue}

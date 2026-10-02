@@ -12,12 +12,16 @@ for %%F in (
   gsc-public-concept-gate.bat
   qa-flagship.ps1
   qa-responsive.ps1
+  qa-gate-wiring.ps1
 ) do (
   if not exist "%~dp0%%F" (
     echo [GSC] RELEASE PREFLIGHT FAIL missing %%F
     exit /b 60
   )
 )
+
+powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0qa-gate-wiring.ps1"
+if errorlevel 1 exit /b %ERRORLEVEL%
 
 call "%~dp0gsc-site-pages-gate.bat"
 if errorlevel 1 exit /b %ERRORLEVEL%

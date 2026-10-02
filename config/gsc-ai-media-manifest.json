@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "policy": "AI Concept Visualization - no text, logo, signage, UI or website mockup",
+  "slots": {
+    "seniorliving": "assets/gsc-ai/seniorliving.jpg",
+    "healthcare": "assets/gsc-ai/healthcare.jpg",
+    "active": "assets/gsc-ai/active.jpg",
+    "community": "assets/gsc-ai/community.jpg",
+    "daily": "assets/gsc-ai/daily.jpg",
+    "location": "assets/gsc-ai/location.jpg"
+  }
+}

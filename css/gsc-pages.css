@@ -7,3 +7,8 @@
 .seo-related{margin:36px 0 0;padding:18px 20px;border-left:2px solid var(--gold);background:var(--panel);color:var(--muted);line-height:1.7}.seo-related a{color:var(--gold);font-weight:700;text-underline-offset:3px}
 
 .seo-faq{margin:64px 0 0}.seo-faq details{border-top:1px solid var(--line);padding:18px 0}.seo-faq details:last-child{border-bottom:1px solid var(--line)}.seo-faq summary{cursor:pointer;font:700 17px "UTM Avo",Arial;color:var(--text)}.seo-faq details p{max-width:820px;color:var(--muted);line-height:1.75}.seo-faq summary:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
+
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+}

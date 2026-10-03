@@ -15,3 +15,7 @@ $js=[IO.File]::ReadAllText((Join-Path $root 'js/gsc-pages.js'))
 $focusReturn=($js -match "if\(e\.key==='Escape'\)close\(true\)" -and $js -match 'menu\.focus\(\)')
 Write-Host "SITE_UX escape-focus-return $(if($focusReturn){'PASS'}else{'FAIL'})"
 if(!$focusReturn){exit 51}
+
+$desktopReset=($js -match "matchMedia\('\(max-width: 900px\)'\)" -and $js -match "addEventListener\?\.\('change'" -and $js -match 'if\(!e\.matches\)close\(\)')
+Write-Host "SITE_UX desktop-menu-reset $(if($desktopReset){'PASS'}else{'FAIL'})"
+if(!$desktopReset){exit 51}

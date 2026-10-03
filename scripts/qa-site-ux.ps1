@@ -10,3 +10,8 @@ $css=[IO.File]::ReadAllText((Join-Path $root 'css/gsc-pages.css'))
 $reducedMotion=($css -match '@media\s*\(prefers-reduced-motion:\s*reduce\)' -and $css -match 'scroll-behavior\s*:\s*auto')
 Write-Host "SITE_UX reduced-motion $(if($reducedMotion){'PASS'}else{'FAIL'})"
 if(!$reducedMotion){exit 51}
+
+$js=[IO.File]::ReadAllText((Join-Path $root 'js/gsc-pages.js'))
+$focusReturn=($js -match "if\(e\.key==='Escape'\)close\(true\)" -and $js -match 'menu\.focus\(\)')
+Write-Host "SITE_UX escape-focus-return $(if($focusReturn){'PASS'}else{'FAIL'})"
+if(!$focusReturn){exit 51}

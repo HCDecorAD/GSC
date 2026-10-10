@@ -545,7 +545,7 @@ if(window.visualViewport) visualViewport.addEventListener("resize",()=>{const v=
   <script>
   (()=>{const GSC_STABLE_UI_2026=true,n=x=>(x||"").replace(/\s+/g," ").trim().toUpperCase(),intro=document.getElementById("gscIntroStable"),modal=document.getElementById("gscIntroModal");
   function cleanup(){document.querySelectorAll("button,a").forEach(el=>{const t=n(el.textContent);if(t==="TOÀN CẢNH"||t==="ANIMATION"||t==="+")el.classList.add("gsc-clean-hide")});document.querySelectorAll("div,span,p").forEach(el=>{if(el.children.length)return;const t=n(el.textContent);if((t.includes("KÉO ĐỂ DI CHUYỂN")&&t.includes("ZOOM"))||(t.includes("CLICK HOTSPOT")&&t.includes("VIDEO")))el.classList.add("gsc-clean-hide")})}
-  intro.onclick=()=>modal.classList.add("on");modal.querySelector(".gscIntroClose").onclick=()=>modal.classList.remove("on");modal.querySelector(".gscIntroGo").onclick=()=>modal.classList.remove("on");modal.onclick=e=>{if(e.target===modal)modal.classList.remove("on")};
+  intro.onclick=()=>{window.location.href="https://gscsenior.hcdecorhub.com/gsc-introduction.html"};modal.querySelector(".gscIntroClose").onclick=()=>modal.classList.remove("on");modal.querySelector(".gscIntroGo").onclick=()=>modal.classList.remove("on");modal.onclick=e=>{if(e.target===modal)modal.classList.remove("on")};
   cleanup();new MutationObserver(cleanup).observe(document.body,{childList:true,subtree:true});
   })();
   </script>

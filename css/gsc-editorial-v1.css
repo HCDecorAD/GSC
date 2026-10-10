@@ -1,8 +1,9 @@
+@font-face{font-family:"UTM Times";src:url("../assets/fonts/UTMTimes-Regular.ttf") format("truetype");font-weight:400;font-style:normal;font-display:swap}@font-face{font-family:"UTM Times";src:url("../assets/fonts/UTMTimes-Bold.ttf") format("truetype");font-weight:700;font-style:normal;font-display:swap}
 /* GSC editorial v1: additive only, existing layouts untouched */
 .gsc-editorial-v1{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:clamp(24px,5vw,80px);align-items:center;max-width:1320px;margin:70px auto;padding:clamp(22px,4vw,60px);background:#f7f2e9;color:#152a2b;border-radius:20px;box-shadow:0 20px 55px rgba(10,30,40,.12)}
 .gsc-editorial-v1__image{min-height:370px;align-self:stretch;background:#c3b9a2 url('../assets/gsc-web/hero-blue-hour.png') center/cover no-repeat;border-radius:12px}
 .gsc-editorial-v1__copy{font-family:Arial,sans-serif;line-height:1.8}
-.gsc-editorial-v1__copy h2{font-family:Georgia,serif;font-size:clamp(30px,3.5vw,52px);line-height:1.14;font-weight:400;margin:12px 0 25px;color:#142a2b}
+.gsc-editorial-v1__copy h2{font-family:"UTM Times","Times New Roman",Times,serif;font-size:clamp(30px,3.5vw,52px);line-height:1.14;font-weight:400;margin:12px 0 25px;color:#142a2b}
 .gsc-editorial-v1__copy p{font-size:clamp(15px,1.2vw,18px);margin:0 0 18px;color:#243f42}
 .gsc-editorial-v1__copy p[lang=en]{font-style:italic;color:#5d6867}
 .gsc-editorial-v1__eyebrow{font-size:11px!important;letter-spacing:.24em;font-weight:700;color:#9b7c42!important}

@@ -91,3 +91,40 @@
   }
   if (d.readyState === 'loading') d.addEventListener('DOMContentLoaded', init); else init();
 })(window, document);
+
+/* GSC Luxury — nghiêng 3D nhẹ + đốm sáng theo con trỏ trên các khung ảnh */
+(function (w, d) {
+  'use strict';
+  if (!w.matchMedia || !w.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+  if (w.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var SEL = '.gsc-intro-fig, .gsc-intro-wide, .gsc-intro-strip, .gsc-intro-tile';
+  var cur = null, raf = 0, ev = null;
+
+  function apply() {
+    raf = 0;
+    if (!cur || !ev) return;
+    var r = cur.getBoundingClientRect();
+    var px = (ev.clientX - r.left) / r.width, py = (ev.clientY - r.top) / r.height;
+    var max = r.width > 900 ? 1.2 : 3.4;           /* ảnh càng lớn càng nghiêng ít */
+    cur.style.setProperty('--ry', ((px - 0.5) * 2 * max).toFixed(2) + 'deg');
+    cur.style.setProperty('--rx', ((0.5 - py) * 2 * max).toFixed(2) + 'deg');
+    cur.style.setProperty('--mx', (px * 100).toFixed(1) + '%');
+    cur.style.setProperty('--my', (py * 100).toFixed(1) + '%');
+  }
+  d.addEventListener('pointerover', function (e) {
+    var el = e.target.closest ? e.target.closest(SEL) : null;
+    if (!el || !el.classList.contains('is-loaded') || el === cur) return;
+    cur = el; el.classList.add('is-tilting');
+  }, { passive: true });
+  d.addEventListener('pointermove', function (e) {
+    if (!cur) return;
+    ev = e;
+    if (!raf) raf = w.requestAnimationFrame(apply);
+  }, { passive: true });
+  d.addEventListener('pointerout', function (e) {
+    if (!cur || (e.relatedTarget && cur.contains(e.relatedTarget))) return;
+    var el = cur; cur = null;
+    el.classList.remove('is-tilting');
+    el.style.setProperty('--rx', '0deg'); el.style.setProperty('--ry', '0deg');
+  }, { passive: true });
+})(window, document);

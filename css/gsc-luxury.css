@@ -206,3 +206,68 @@ html[data-gsc-theme="light"] .gsc-sparkle{mix-blend-mode:multiply;opacity:.55}
   .gsc-intro-btn::after{display:none}
   .gsc-sparkle{display:none}
 }
+
+/* =====================================================================
+   v2 — Cắt vùng ảnh cho từng khối + hiệu ứng rê chuột + tiêu đề vừa khung
+   ===================================================================== */
+
+/* Tiêu đề lớn: chữ Cormorant in hoa rộng hơn font cũ nên thu nhỏ để không tràn dòng */
+.gsc-intro-hero__title{font-size:clamp(30px,5.3vw,84px);line-height:1.04}
+.gsc-intro-huge{font-size:clamp(30px,5.4vw,84px);line-height:1.06}
+@media(max-width:640px){
+  .gsc-intro-hero__title{font-size:clamp(28px,8.2vw,40px)}
+  .gsc-intro-huge{font-size:clamp(28px,8.4vw,40px)}
+}
+
+/* Mỗi khối dùng một vùng khác nhau của phối cảnh có sẵn (thay bằng ảnh riêng khi có) */
+#gsc-intro-seniorliving .gsc-intro-fig{background-size:auto 112%;background-position:50% 28%}
+#gsc-intro-healthcare  .gsc-intro-fig{background-size:auto 150%;background-position:48% 92%}
+#gsc-intro-active      .gsc-intro-fig{background-size:auto 135%;background-position:56% 88%}
+#gsc-intro-community   .gsc-intro-fig{background-size:auto 170%;background-position:14% 78%}
+#gsc-intro-daily       .gsc-intro-fig{background-size:auto 150%;background-position:50% 94%}
+#gsc-intro-nature      .gsc-intro-fig{background-size:auto 125%;background-position:55% 70%}
+
+/* ---------- Hiệu ứng rê chuột cho mọi khung ảnh ---------- */
+.gsc-intro .gsc-intro-ph.is-loaded:is(.gsc-intro-fig,.gsc-intro-wide,.gsc-intro-strip,.gsc-intro-tile){
+  transition:opacity 1s ease,transform .7s cubic-bezier(.2,.7,.2,1),box-shadow .6s ease,filter .6s ease;
+  will-change:transform;
+}
+/* vệt sáng quét + đốm sáng theo con trỏ */
+.gsc-intro .gsc-intro-ph.is-loaded:is(.gsc-intro-fig,.gsc-intro-wide,.gsc-intro-strip,.gsc-intro-tile)::after{
+  content:"";position:absolute;inset:0;z-index:3;pointer-events:none;left:auto;bottom:auto;
+  background:
+    radial-gradient(circle at var(--mx,50%) var(--my,50%),rgba(255,241,201,.26),transparent 42%),
+    linear-gradient(115deg,transparent 32%,rgba(255,241,201,.30) 49%,rgba(255,255,255,.10) 53%,transparent 68%);
+  background-size:100% 100%,260% 100%;background-position:0 0,130% 0;background-repeat:no-repeat;
+  opacity:0;transition:opacity .5s ease,background-position 1.2s ease;
+}
+/* khung viền vàng bên trong mở rộng ra */
+.gsc-intro-fig::before,.gsc-intro-wide::before,.gsc-intro-strip::before{
+  transition:inset .6s cubic-bezier(.2,.7,.2,1),border-color .6s ease;
+}
+.gsc-intro-tile figcaption{transition:transform .5s cubic-bezier(.2,.7,.2,1),color .4s ease,letter-spacing .5s ease}
+
+@media (hover:hover) and (pointer:fine){
+  .gsc-intro .gsc-intro-ph.is-loaded:is(.gsc-intro-fig,.gsc-intro-wide,.gsc-intro-strip,.gsc-intro-tile):hover{
+    transform:perspective(1100px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) translateY(-8px) scale(1.022);
+    filter:saturate(1.14) brightness(1.08) contrast(1.03);
+    box-shadow:0 44px 90px rgba(0,0,0,.6),0 0 0 1px rgba(255,241,201,.7),0 0 54px rgba(227,192,122,.38);
+    z-index:4;
+  }
+  .gsc-intro .gsc-intro-ph.is-loaded:is(.gsc-intro-fig,.gsc-intro-wide,.gsc-intro-strip,.gsc-intro-tile).is-tilting{
+    transition:opacity 1s ease,transform .12s linear,box-shadow .6s ease,filter .6s ease;
+  }
+  .gsc-intro .gsc-intro-ph.is-loaded:is(.gsc-intro-fig,.gsc-intro-wide,.gsc-intro-strip,.gsc-intro-tile):hover::after{
+    opacity:1;background-position:0 0,-30% 0;
+  }
+  .gsc-intro-fig:hover::before,.gsc-intro-wide:hover::before,.gsc-intro-strip:hover::before{
+    inset:18px;border-color:rgba(255,241,201,.75);
+  }
+  .gsc-intro-tile:hover figcaption{transform:translateY(-8px);color:var(--gold-hi);letter-spacing:.04em}
+}
+html[data-gsc-theme="light"] .gsc-intro .gsc-intro-ph.is-loaded:is(.gsc-intro-fig,.gsc-intro-wide,.gsc-intro-strip,.gsc-intro-tile):hover{
+  box-shadow:0 34px 70px rgba(60,40,10,.35),0 0 0 1px rgba(138,100,32,.6),0 0 40px rgba(185,138,69,.3);
+}
+@media(prefers-reduced-motion:reduce){
+  .gsc-intro .gsc-intro-ph.is-loaded:is(.gsc-intro-fig,.gsc-intro-wide,.gsc-intro-strip,.gsc-intro-tile):hover{transform:none}
+}

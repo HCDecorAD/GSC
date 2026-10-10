@@ -11,15 +11,15 @@
     "overview": "assets/gsc-web/overview-aerial-day.png",
     "masterplan": "assets/gsc-real/home-embedded-2.png",
     "architecture": "assets/gsc-web/overview-aerial-day.png",
-    "seniorliving": "",
+    "seniorliving": "assets/gsc-web/overview-aerial-day.png",
     "wellness": "assets/gsc-web/wellness-pool.png",
-    "healthcare": "",
-    "active": "",
+    "healthcare": "assets/gsc-web/main-gate-koi.png",
+    "active": "assets/gsc-web/wellness-pool.png",
     "nature": "assets/gsc-web/main-gate-koi.png",
-    "community": "",
-    "daily": "",
+    "community": "assets/gsc-web/wellness-pool.png",
+    "daily": "assets/gsc-web/hero-blue-hour.png",
     "amenities": "assets/gsc-web/wellness-pool.png",
-    "location": "",
+    "location": "assets/gsc-real/home-embedded-2.png",
     "golden": "assets/gsc-web/hero-blue-hour.png"
   },
   "alts": {
@@ -27,7 +27,12 @@
     "overview": "Phối cảnh dự án GSC",
     "masterplan": "Mặt bằng tổng thể dự án GSC",
     "architecture": "Phối cảnh hai tháp GSC",
-    "location": "Bản đồ vị trí dự án GSC"
+    "location": "Bản đồ vị trí dự án GSC",
+    "seniorliving": "Phối cảnh hai tháp GSC Senior Living",
+    "healthcare": "Cổng chính và khu đón tiếp GSC",
+    "active": "Hồ bơi và hoạt động ngoài trời tại GSC",
+    "community": "Giàn hoa và không gian sinh hoạt cộng đồng tại GSC",
+    "daily": "Quảng trường và cảnh quan trung tâm GSC"
   },
   "videos": {
     "hero": {

@@ -69,13 +69,6 @@
       "x": 40,
       "y": 10.5,
       "enabled": true
-    },
-    "11": {
-      "id": 11,
-      "name": "Sân thượng",
-      "x": 61.5,
-      "y": 31,
-      "enabled": true
     }
   },
   "videos": {
@@ -118,10 +111,6 @@
     "10": {
       "name": "Bãi xe",
       "url": "https://drive.google.com/file/d/1-bqRC1kpnICxd8Yn6NquCGCt4dybqzYu/view?usp=sharing"
-    },
-    "11": {
-      "name": "Sân thượng",
-      "url": ""
     }
   },
   "pages": [

@@ -10,10 +10,10 @@ t('CNAME authority',()=>{
   assert.equal(fs.readFileSync('CNAME','utf8').trim(),'gscsenior.hcdecorhub.com');
 });
 
-t('11 hotspots enabled',()=>{
+t('10 hotspots enabled',()=>{
   const ids=Object.keys(cfg.hotspots||{});
-  assert.equal(ids.length,11);
-  for(let i=1;i<=11;i++){
+  assert.equal(ids.length,10);
+  for(let i=1;i<=10;i++){
     const h=cfg.hotspots[String(i)];
     assert.ok(h,'hotspot '+i);
     assert.equal(h.id,i);
@@ -22,13 +22,13 @@ t('11 hotspots enabled',()=>{
   }
 });
 
-t('videos 1-10 present and hotspot 11 intentionally has no video',()=>{
+t('videos 1-10 present',()=>{
   for(let i=1;i<=10;i++){
     const v=cfg.videos[String(i)];
     assert.ok(v?.url,'video '+i);
     assert.ok(v.url.startsWith('https://drive.google.com/file/d/'),'video '+i+' drive url');
   }
-  assert.equal(cfg.videos['11']?.url||'','');
+  assert.equal(Object.keys(cfg.videos).length,10);
 });
 
 t('required static pages exist',()=>{
@@ -41,4 +41,4 @@ t('seo/public control files exist',()=>{
   for(const f of ['robots.txt','sitemap.xml','404.html']) assert.equal(fs.existsSync(f),true,f);
 });
 
-console.log('GSC_E2E_SOURCE_PASS '+pass+'/5 hotspots=11 videos=10 hotspot11_video=none authority=github-pages');
+console.log('GSC_E2E_SOURCE_PASS '+pass+'/5 hotspots=10 videos=10 authority=github-pages');

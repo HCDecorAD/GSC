@@ -273,3 +273,30 @@ html[data-gsc-theme="light"] .gsc-intro .gsc-intro-ph.is-loaded:is(.gsc-intro-fi
 @media(prefers-reduced-motion:reduce){
   .gsc-intro .gsc-intro-ph.is-loaded:is(.gsc-intro-fig,.gsc-intro-wide,.gsc-intro-strip,.gsc-intro-tile):hover{transform:none}
 }
+
+/* ---------- Logo GSC vàng đỏ (PNG trong suốt, không khung trắng) ---------- */
+.gsc-intro-nav__logo img{height:46px;width:auto;max-width:none;max-height:none;filter:drop-shadow(0 2px 10px rgba(0,0,0,.35))}
+.gsc-intro-brand img{height:clamp(92px,11vw,138px);width:auto;max-width:none;max-height:none;filter:drop-shadow(0 8px 26px rgba(0,0,0,.5))}
+.gsc-intro-brand--c img{height:clamp(84px,9vw,120px)}
+.gsc-intro-brand{gap:10px}
+@media(max-width:640px){
+  .gsc-intro-nav__logo img{height:36px;max-width:none;max-height:none}
+  .gsc-intro-brand img{height:84px;max-width:none;max-height:none}
+  .gsc-intro-brand--c img{height:76px}
+}
+.gsc-intro-brand:not(.gsc-intro-brand--c){align-items:flex-start}
+.gsc-intro-brand img{align-self:flex-start;flex:none}
+.gsc-intro-brand--c img{align-self:center}
+.gsc-intro-hero .gsc-intro-brand span{color:#fff1c9;font-weight:600;letter-spacing:.36em;text-shadow:0 1px 14px rgba(0,0,0,.85),0 0 4px rgba(0,0,0,.6)}
+
+/* Giao diện Sáng: vùng có ảnh nền (hero, Golden Years) luôn dùng vàng sáng để đọc được */
+html[data-gsc-theme="light"] .gsc-intro-hero,
+html[data-gsc-theme="light"] .gsc-intro-golden{
+  --gold:#e3c07a;--gold-hi:#fff1c9;--gold-mid:#e6c47e;--gold-lo:#b98a45;--bronze:#b98a45;
+  --line:rgba(227,192,122,.30);
+  --foil:linear-gradient(100deg,#9b6f32 0%,#d9b36a 18%,#fff3cf 34%,#e6c47e 50%,#b98a45 66%,#f7e3b0 82%,#9b6f32 100%);
+}
+html[data-gsc-theme="light"] .gsc-intro-hero .gsc-intro-btn,
+html[data-gsc-theme="light"] .gsc-intro-golden .gsc-intro-btn{color:#2a1b06;border-color:rgba(255,241,201,.65)}
+html[data-gsc-theme="light"] .gsc-intro-hero .gsc-intro-btn--ghost,
+html[data-gsc-theme="light"] .gsc-intro-golden .gsc-intro-btn--ghost{color:#fff1c9;background:rgba(7,12,22,.38);border-color:#e6c47e}

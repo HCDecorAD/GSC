@@ -1,0 +1,208 @@
+/* =====================================================================
+   GSC Luxury layer — nạp SAU cùng (sau gsc-introduction / responsive / global-nav).
+   Chỉ ghi đè giao diện: font, vàng kim, ánh lấp lánh. Không đổi bố cục.
+   Gỡ bỏ: xoá 3 dòng link (font, gsc-luxury.css, gsc-luxury.js) trong gsc-introduction.html.
+   ===================================================================== */
+
+.gsc-intro{
+  /* Font sang trọng, đủ dấu tiếng Việt. UTM Times / UTM Avo là bản tự host dự phòng */
+  --lux-serif:"Cormorant Garamond","UTM Times","Times New Roman",Georgia,serif;
+  --lux-sans:"Montserrat","UTM Avo",Arial,sans-serif;
+  --serif:var(--lux-serif);
+  --utm-serif:var(--lux-serif);
+  --utm-sans:var(--lux-sans);
+  --sans:var(--lux-sans);
+
+  /* Bảng vàng kim */
+  --gold:#e3c07a;
+  --gold-hi:#fff1c9;
+  --gold-mid:#e6c47e;
+  --gold-lo:#b98a45;
+  --bronze:#b98a45;
+  --line:rgba(227,192,122,.30);
+  --foil:linear-gradient(100deg,#9b6f32 0%,#d9b36a 18%,#fff3cf 34%,#e6c47e 50%,#b98a45 66%,#f7e3b0 82%,#9b6f32 100%);
+  --glow:0 0 28px rgba(227,192,122,.28);
+
+  font-family:var(--lux-sans);
+  font-weight:400;
+  letter-spacing:.01em;
+  text-rendering:optimizeLegibility;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ---------- Typography ---------- */
+.gsc-intro-h2,.gsc-intro-huge,.gsc-intro-hero__title,.gsc-intro-lead,
+.gsc-intro-card h3,.gsc-intro-list1 li,.gsc-intro-tile figcaption,
+.gsc-intro-brand b,.gsc-intro-stats dd,.gsc-intro-facts b,.gsc-intro-road,
+.gsc-trust-grid h3,.gsc-trust-grid b,.gsc-dayline b,.gsc-intro-words li,
+.gsc-intro-story,.gsc-intro-agrp h3,.gsc-contact-panel h2,.gsc-intro-nav__logo{
+  font-family:var(--lux-serif);
+}
+.gsc-intro-h2{font-weight:600;letter-spacing:.035em;line-height:1.12}
+.gsc-intro-huge,.gsc-intro-hero__title{font-weight:600;letter-spacing:.03em}
+.gsc-intro-hero__title{text-shadow:0 2px 40px rgba(0,0,0,.45)}
+.gsc-intro-hero__vi{font-family:var(--lux-serif);font-style:italic;font-weight:500;letter-spacing:.04em}
+.gsc-intro-lead{font-weight:500;font-style:italic;letter-spacing:.02em}
+.gsc-intro-copy,.gsc-intro-note,.gsc-intro-card p,.gsc-trust-grid p,.gsc-faq-list details p,.gsc-intro-agrp li,.gsc-intro-list li{
+  font-family:var(--lux-sans);font-weight:400;line-height:1.85;letter-spacing:.015em;
+}
+.gsc-intro-kicker,.gsc-intro-brand span,.gsc-intro-slogan,.gsc-intro-stats dt,.gsc-intro-facts span,
+.gsc-intro-btn,.gsc-intro-nav__links a,.gsc-intro-nav__back,.gsc-contactbar,.gsc-intro-textlink,.gsc-footer-nav a,.gsc-social-row a{
+  font-family:var(--lux-sans);font-weight:500;
+}
+.gsc-intro-kicker{letter-spacing:.38em}
+.gsc-intro-list1 li,.gsc-intro-tile figcaption{font-weight:600}
+.gsc-faq-list summary{font-family:var(--lux-sans);font-weight:600}
+.gsc-intro-nav__logo b,.gsc-intro-brand b{font-weight:700}
+
+/* ---------- Chữ vàng kim (foil) có ánh quét ---------- */
+.gsc-intro-huge,
+.gsc-intro-stats dd,
+.gsc-intro-facts b,
+.gsc-intro-road,
+.gsc-intro-brand b,
+.gsc-trust-grid b,
+.gsc-dayline b,
+.gsc-intro-card h3,
+.gsc-intro-agrp h3{
+  background:var(--foil);
+  background-size:260% 100%;
+  -webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;color:transparent;
+  animation:gscFoil 9s linear infinite;
+}
+.gsc-intro-hero__title{
+  background:linear-gradient(100deg,#f3ecdf 0%,#f3ecdf 38%,#fff3cf 48%,#e6c47e 54%,#f3ecdf 64%,#f3ecdf 100%);
+  background-size:260% 100%;
+  -webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;color:transparent;
+  animation:gscFoil 11s linear infinite;
+}
+.gsc-intro-hero__vi,.gsc-intro-words li,.gsc-intro-story,.gsc-intro-kicker,.gsc-intro-textlink{color:var(--gold-mid)}
+.gsc-intro-words li:nth-child(even){color:var(--gold-hi)}
+@keyframes gscFoil{0%{background-position:100% 0}100%{background-position:-160% 0}}
+
+/* ---------- Nút vàng kim + vệt sáng quét ---------- */
+.gsc-intro-btn{
+  position:relative;overflow:hidden;isolation:isolate;
+  background:var(--foil);background-size:220% 100%;
+  color:#2a1b06;border:1px solid rgba(255,241,201,.65);
+  box-shadow:0 8px 28px rgba(185,138,69,.28),inset 0 1px 0 rgba(255,255,255,.55);
+  letter-spacing:.24em;font-weight:600;
+  transition:background-position .8s ease,transform .35s ease,box-shadow .35s ease;
+}
+.gsc-intro-btn::after{
+  content:"";position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(110deg,transparent 35%,rgba(255,255,255,.65) 50%,transparent 65%);
+  transform:translateX(-120%);
+}
+.gsc-intro-btn:hover{filter:none;transform:translateY(-2px);background-position:100% 0;box-shadow:0 12px 36px rgba(227,192,122,.45),inset 0 1px 0 rgba(255,255,255,.7)}
+.gsc-intro-btn:hover::after{transform:translateX(120%);transition:transform .9s ease}
+.gsc-intro-btn--ghost{
+  background:rgba(7,12,22,.35);color:var(--gold-hi);
+  -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);
+  border:1px solid var(--gold-mid);box-shadow:inset 0 0 0 1px rgba(227,192,122,.12);
+}
+.gsc-intro-btn--ghost:hover{background:rgba(227,192,122,.14);box-shadow:var(--glow),inset 0 0 0 1px rgba(227,192,122,.3)}
+
+/* ---------- Đường kẻ & thẻ ---------- */
+.gsc-intro-hero__body::before{background:linear-gradient(180deg,transparent,var(--gold-hi),var(--gold-lo));box-shadow:var(--glow)}
+.gsc-intro-agrp h3{border-bottom:0;position:relative;padding-bottom:16px}
+.gsc-intro-agrp h3::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:linear-gradient(90deg,var(--gold-hi),var(--gold-lo) 40%,transparent)}
+.gsc-intro-card,.gsc-trust-grid article{position:relative;overflow:hidden;transition:background .5s,box-shadow .5s}
+.gsc-intro-card::before,.gsc-trust-grid article::before{
+  content:"";position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .6s;
+  background:radial-gradient(60% 80% at 50% 0%,rgba(227,192,122,.16),transparent 70%);
+}
+.gsc-intro-card:hover::before,.gsc-trust-grid article:hover::before{opacity:1}
+.gsc-intro-card:hover{box-shadow:inset 0 0 0 1px rgba(227,192,122,.35)}
+.gsc-intro-stats>div,.gsc-intro-facts li{position:relative}
+
+/* ---------- Khung ảnh: viền vàng mảnh + ánh sáng ---------- */
+.gsc-intro-fig.is-loaded,.gsc-intro-wide.is-loaded,.gsc-intro-strip.is-loaded,.gsc-intro-tile.is-loaded{
+  box-shadow:0 30px 70px rgba(0,0,0,.45),0 0 0 1px rgba(227,192,122,.28);
+}
+.gsc-intro-fig,.gsc-intro-wide,.gsc-intro-strip{position:relative}
+.gsc-intro-fig::before,.gsc-intro-wide::before,.gsc-intro-strip::before{
+  content:"";position:absolute;inset:10px;z-index:2;pointer-events:none;
+  border:1px solid rgba(255,241,201,.32);
+  -webkit-mask:linear-gradient(135deg,#000 0,#000 18%,transparent 18%,transparent 82%,#000 82%);mask:linear-gradient(135deg,#000 0,#000 18%,transparent 18%,transparent 82%,#000 82%);
+}
+.gsc-intro-ph.is-loaded:hover{filter:saturate(1.08) brightness(1.05)}
+
+/* ---------- Nền các khối: chiều sâu thay vì phẳng ---------- */
+.gsc-intro-overview,.gsc-intro-well,.gsc-intro-amen,.gsc-intro-feat{
+  background:radial-gradient(80% 60% at 85% 0%,rgba(227,192,122,.07),transparent 60%),linear-gradient(180deg,#0b1424,#0a1220);
+}
+.gsc-intro-arch,.gsc-intro-feat--rev,.gsc-intro-exp{
+  background:radial-gradient(70% 55% at 10% 0%,rgba(227,192,122,.06),transparent 60%),linear-gradient(180deg,#101b30,#0d1729);
+}
+.gsc-intro-final{
+  position:relative;overflow:hidden;
+  background:radial-gradient(70% 70% at 50% 0%,rgba(227,192,122,.22),transparent 62%),radial-gradient(90% 70% at 50% 0%,#1d2b48 0%,#070c16 72%);
+}
+.gsc-intro-final::before,.gsc-intro-final::after{
+  content:"";position:absolute;left:50%;width:min(520px,70vw);height:1px;transform:translateX(-50%);
+  background:linear-gradient(90deg,transparent,var(--gold-hi),transparent);opacity:.7;
+}
+.gsc-intro-final::before{top:0}.gsc-intro-final::after{bottom:0}
+
+/* ---------- Thanh trên cùng & menu ---------- */
+.gsc-contactbar{background:linear-gradient(90deg,#050b16,#0b1628,#050b16);border-bottom:1px solid rgba(227,192,122,.3);letter-spacing:.06em}
+.gsc-contactbar b{color:var(--gold-hi)}
+.gsc-intro-nav.is-solid{background:rgba(6,11,22,.82);-webkit-backdrop-filter:blur(16px) saturate(1.3);backdrop-filter:blur(16px) saturate(1.3);box-shadow:0 10px 40px rgba(0,0,0,.35)}
+.gsc-intro-nav__links a{letter-spacing:.2em;font-size:11px}
+.gsc-intro-nav__links a:hover,.gsc-intro-nav__links a[aria-current="true"],.gsc-intro-nav__links a[aria-current="page"]{color:var(--gold-hi);border-color:var(--gold-mid)}
+.gsc-lang__btn.is-active{background:var(--foil);color:#241705}
+
+/* ---------- Đường dạo / timeline ---------- */
+.gsc-dayline li{transition:background .4s,padding-left .4s}
+.gsc-dayline li:hover{background:linear-gradient(90deg,rgba(227,192,122,.08),transparent);padding-left:12px}
+
+/* ---------- Lớp hạt lấp lánh (do gsc-luxury.js chèn) ---------- */
+.gsc-sparkle{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1;mix-blend-mode:screen}
+.gsc-intro-hero .gsc-sparkle{z-index:2}
+.gsc-intro-hero__shade{z-index:1}
+.gsc-intro-hero__body{z-index:2}
+.gsc-intro-golden .gsc-sparkle{z-index:1}
+.gsc-intro-final .gsc-sparkle{z-index:0}
+.gsc-intro-final .gsc-intro-wrap{position:relative;z-index:1}
+
+/* ---------- Giao diện Sáng: vàng đồng đậm để đủ tương phản ---------- */
+html[data-gsc-theme="light"] .gsc-intro{
+  --gold:#8a6420;--gold-hi:#6f4e14;--gold-mid:#8a6420;--gold-lo:#6f4e14;--bronze:#8a6420;
+  --line:rgba(138,100,32,.28);
+  --foil:linear-gradient(100deg,#6f4e14 0%,#a97c2c 30%,#d1a550 48%,#a97c2c 62%,#6f4e14 100%);
+}
+html[data-gsc-theme="light"] .gsc-intro-hero__title{
+  background:linear-gradient(100deg,#f3ecdf 0%,#f3ecdf 38%,#fff3cf 48%,#e6c47e 54%,#f3ecdf 64%,#f3ecdf 100%);
+  background-size:260% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+}
+html[data-gsc-theme="light"] .gsc-intro-overview,
+html[data-gsc-theme="light"] .gsc-intro-well,
+html[data-gsc-theme="light"] .gsc-intro-amen,
+html[data-gsc-theme="light"] .gsc-intro-feat,
+html[data-gsc-theme="light"] .gsc-intro-arch,
+html[data-gsc-theme="light"] .gsc-intro-feat--rev,
+html[data-gsc-theme="light"] .gsc-intro-exp{background:linear-gradient(180deg,#f7f3ea,#efe9dc)}
+html[data-gsc-theme="light"] .gsc-intro-card,
+html[data-gsc-theme="light"] .gsc-trust-grid article{background:#fbf8f1}
+html[data-gsc-theme="light"] .gsc-intro-final{background:radial-gradient(70% 70% at 50% 0%,rgba(185,138,69,.2),transparent 62%),#f1ebdd}
+html[data-gsc-theme="light"] .gsc-intro-btn{color:#fff8e6;border-color:#6f4e14}
+html[data-gsc-theme="light"] .gsc-intro-btn--ghost{color:#6f4e14;background:rgba(255,255,255,.5)}
+html[data-gsc-theme="light"] .gsc-sparkle{mix-blend-mode:multiply;opacity:.55}
+
+/* ---------- Mobile: giảm hiệu ứng nặng ---------- */
+@media(max-width:640px){
+  .gsc-intro-kicker{letter-spacing:.28em}
+  .gsc-intro-fig::before,.gsc-intro-wide::before,.gsc-intro-strip::before{inset:7px}
+  .gsc-intro-nav__links a{font-family:var(--lux-serif);letter-spacing:.04em;font-size:24px}
+}
+
+/* ---------- Tôn trọng người dùng giảm chuyển động ---------- */
+@media(prefers-reduced-motion:reduce){
+  .gsc-intro-huge,.gsc-intro-stats dd,.gsc-intro-facts b,.gsc-intro-road,.gsc-intro-brand b,
+  .gsc-trust-grid b,.gsc-dayline b,.gsc-intro-card h3,.gsc-intro-agrp h3,.gsc-intro-hero__title{animation:none!important}
+  .gsc-intro-btn::after{display:none}
+  .gsc-sparkle{display:none}
+}

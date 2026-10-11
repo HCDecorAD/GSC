@@ -212,6 +212,9 @@
 
     if (!isHome) {
       root.classList.add('gsc-sh-on');
+      /* áp theme ngay (các trang cũ không tự đặt theme) và nạp bụi vàng cho hero các trang con */
+      var th = curTheme(); root.setAttribute('data-theme', th); root.setAttribute('data-gsc-theme', th);
+      if (!d.body.classList.contains('gsc-intro-body') && d.querySelector('.seo-hero')) { var sc = d.createElement('script'); sc.src = 'js/gsc-luxury.js?v=1'; sc.defer = true; d.body.appendChild(sc); }
       var header = buildHeader(), footer = buildFooter();
       body.insertBefore(header, body.firstChild);
       /* footer: đặt ở cuối thân trang, trước các <script> cuối */

@@ -114,9 +114,35 @@
       '<a class="zl" href="' + CFG.zalo + '" target="_blank" rel="noopener" aria-label="Zalo">' + ICON.zalo + '<em data-k="zl">' + t.zl + '</em></a></div>');
   }
 
+  function buildHomeBar() {
+    return el('<a class="gsc-sh-homebar" href="gsc-introduction.html" aria-label="GSC Senior Living &amp; Wellness"><img src="' + CFG.logo + '" alt="GSC"><span>SENIOR LIVING &amp; WELLNESS</span></a>');
+  }
+
+  /* Trang chủ: 1 nút X duy nhất. Khi video/viewer đã có X riêng thì ẩn X "đóng video" chung để không chồng nhau. */
+  function watchCloseButtons() {
+    var uni = d.getElementById('gscVideoUniversalClose');
+    if (!uni) return;
+    function vis(e) { if (!e) return false; var r = e.getBoundingClientRect(), c = w.getComputedStyle(e); return r.width > 20 && r.height > 20 && c.display !== 'none' && c.visibility !== 'hidden'; }
+    function check() {
+      var own = ['#viewer .x', '#modal .x', '#pageModal .x'].some(function (q) { var n = d.querySelector(q); return n && vis(n) && vis(n.closest('#viewer,#modal,#pageModal')); });
+      root.classList.toggle('gsc-has-own-x', own);
+    }
+    new MutationObserver(function () { w.requestAnimationFrame(check); }).observe(d.body, { subtree: true, childList: true, attributes: true, attributeFilter: ['style', 'class'] });
+    d.addEventListener('click', function () { setTimeout(check, 60); }, true);
+    w.setInterval(check, 800); check();
+  }
+
+  /* Trang chủ: thay khung logo nền đen ở sidebar bằng logo vàng đỏ trong suốt + dòng chữ thương hiệu */
+  function upgradeSidebarLogo() {
+    var box = d.querySelector('aside .logo'); if (!box || box.querySelector('.gsc-sh-tag')) return;
+    var img = box.querySelector('img'); if (img) { img.src = CFG.logo; img.alt = 'GSC'; }
+    box.classList.add('gsc-sh-logo');
+    var t = d.createElement('div'); t.className = 'gsc-sh-tag'; t.textContent = 'SENIOR LIVING & WELLNESS'; box.appendChild(t);
+  }
+
   function buildHomeCard() {
-    return el('<aside class="gsc-sh-homecard" aria-label="Liên hệ GSC"><h3 data-k="contact">' + L().contact + ' GSC</h3>' +
-      '<a href="' + CFG.tel + '">' + CFG.phone + '</a><a href="mailto:' + CFG.email + '">' + CFG.email + '</a><small>' + CFG.address + '</small></aside>');
+    return el('<div class="gsc-sh-homecard" role="complementary" aria-label="Liên hệ GSC"><h3 data-k="contact">' + L().contact + ' GSC</h3>' +
+      '<a href="' + CFG.tel + '">' + CFG.phone + '</a><a href="mailto:' + CFG.email + '">' + CFG.email + '</a><small>' + CFG.address + '</small></div>');
   }
 
   /* ---------- theme ---------- */
@@ -184,7 +210,10 @@
         if (a) { e.preventDefault(); e.stopImmediatePropagation(); footer.scrollIntoView({ behavior: 'smooth' }); }
       }, true);
     } else {
+      body.appendChild(buildHomeBar());
       body.appendChild(buildHomeCard());
+      upgradeSidebarLogo();
+      watchCloseButtons();
     }
     body.appendChild(buildFab());
   }

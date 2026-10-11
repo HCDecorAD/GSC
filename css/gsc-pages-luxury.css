@@ -1,0 +1,177 @@
+/* =====================================================================
+   GSC Pages Luxury — đồng bộ giao diện các trang con với trang Giới thiệu:
+   cùng font (Cormorant Garamond / Montserrat), vàng foil, canh giữa, thẻ kính, nút vàng.
+   Chỉ có hiệu lực khi shell hoạt động (html.gsc-sh-on). Tải sau CSS riêng của từng trang.
+   ===================================================================== */
+html.gsc-sh-on{
+  --lx-serif:"Cormorant Garamond","UTM Times","Times New Roman",Georgia,serif;
+  --lx-sans:"Montserrat","UTM Avo",Arial,sans-serif;
+  --lx-ink:#07101e;--lx-ink2:#0b1628;--lx-text:#f3ecdf;--lx-mute:#b4bcc8;
+  --lx-gold:#e6c47e;--lx-gold-hi:#fff1c9;--lx-gold-lo:#b68a43;--lx-line:rgba(230,196,126,.28);
+  --lx-foil:linear-gradient(100deg,#b68a43 0%,#f3d99b 22%,#fff1c9 40%,#e6c47e 58%,#b68a43 78%,#f3d99b 100%);
+  --lx-card:linear-gradient(160deg,rgba(255,255,255,.06),rgba(255,255,255,.015));
+}
+html.gsc-sh-on[data-theme="light"],html.gsc-sh-on[data-gsc-theme="light"]{
+  --lx-ink:#f7f3ea;--lx-ink2:#efe8d8;--lx-text:#182335;--lx-mute:#566174;
+  --lx-gold:#9a6f24;--lx-gold-hi:#7a5516;--lx-gold-lo:#c79a4a;--lx-line:rgba(160,120,50,.34);
+  --lx-card:linear-gradient(160deg,#ffffff,#fbf7ee);
+}
+
+/* ---------- nền + chữ ---------- */
+html.gsc-sh-on body:not(.gsc-intro-body){
+  background:
+    radial-gradient(900px 480px at 85% -5%,rgba(230,196,126,.08),transparent 60%),
+    radial-gradient(800px 460px at 0% 40%,rgba(60,100,170,.10),transparent 60%),
+    var(--lx-ink);
+  color:var(--lx-text);font-family:var(--lx-sans);-webkit-font-smoothing:antialiased;
+}
+html.gsc-sh-on[data-theme="light"] body:not(.gsc-intro-body),html.gsc-sh-on[data-gsc-theme="light"] body:not(.gsc-intro-body){background:var(--lx-ink)}
+html.gsc-sh-on :is(h1,h2,h3){font-family:var(--lx-serif);font-weight:600;letter-spacing:.02em}
+
+/* ---------- HERO ---------- */
+html.gsc-sh-on .seo-hero{
+  position:relative;overflow:hidden;min-height:clamp(420px,72vh,720px);
+  display:grid;place-items:center;text-align:center;
+  padding:clamp(70px,9vw,130px) clamp(20px,6vw,90px);
+  background:
+    radial-gradient(70% 70% at 50% 55%,rgba(5,10,20,.30),rgba(5,10,20,.78) 100%),
+    linear-gradient(0deg,var(--lx-ink) 0%,rgba(7,16,30,.25) 55%,rgba(7,16,30,.55) 100%),
+    var(--hero) center/cover;
+}
+html.gsc-sh-on[data-theme="light"] .seo-hero,html.gsc-sh-on[data-gsc-theme="light"] .seo-hero{
+  background:
+    radial-gradient(70% 70% at 50% 55%,rgba(5,10,20,.35),rgba(5,10,20,.80) 100%),
+    linear-gradient(0deg,var(--lx-ink) 0%,rgba(7,16,30,.2) 40%,rgba(7,16,30,.55) 100%),
+    var(--hero) center/cover;
+}
+html.gsc-sh-on .seo-hero>div{position:relative;z-index:2;max-width:940px;margin:0 auto;text-align:center}
+html.gsc-sh-on .seo-kicker{
+  display:block;margin:0 0 20px;font:600 11px/1.4 var(--lx-sans);letter-spacing:.38em;text-transform:uppercase;
+  color:#fff1c9;text-shadow:0 1px 10px rgba(0,0,0,.9),0 0 3px rgba(0,0,0,.8);
+}
+html.gsc-sh-on .seo-hero h1{
+  max-width:none;margin:0 auto 18px;font:600 clamp(34px,6vw,84px)/1.06 var(--lx-serif);letter-spacing:.06em;text-transform:uppercase;
+  background:var(--lx-foil);background-size:260% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:#e6c47e;
+  filter:drop-shadow(0 4px 22px rgba(0,0,0,.55));animation:gscPgFoil 9s linear infinite;
+}
+@keyframes gscPgFoil{0%{background-position:100% 0}100%{background-position:-160% 0}}
+html.gsc-sh-on .seo-hero p:not(.seo-kicker){
+  max-width:720px;margin:0 auto;font:400 clamp(15px,1.6vw,19px)/1.85 var(--lx-sans);color:#f3ecdf;text-shadow:0 2px 14px rgba(0,0,0,.8);
+}
+html.gsc-sh-on .gsc-sparkle{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1}
+
+/* ---------- NỘI DUNG ---------- */
+html.gsc-sh-on .seo-main{max-width:1180px;text-align:center}
+html.gsc-sh-on .seo-main h2{
+  font:600 clamp(28px,3.8vw,50px)/1.15 var(--lx-serif);margin:0 auto 22px;color:var(--lx-text);letter-spacing:.02em;
+}
+html.gsc-sh-on .seo-main h2::after{ /* ornament kim cương dưới tiêu đề */
+  content:"";display:block;width:84px;height:9px;margin:18px auto 0;
+  background:
+    linear-gradient(90deg,transparent,var(--lx-gold)) left center/34px 1px no-repeat,
+    linear-gradient(90deg,var(--lx-gold),transparent) right center/34px 1px no-repeat;
+  position:relative;
+}
+html.gsc-sh-on .seo-main :is(.seo-lead,section>p,.seo-main>p){margin-left:auto;margin-right:auto;text-align:center}
+html.gsc-sh-on .seo-lead,html.gsc-sh-on .seo-main p{color:var(--lx-mute);font:400 clamp(14.5px,1.35vw,17px)/1.9 var(--lx-sans)}
+html.gsc-sh-on .seo-main section{margin-top:clamp(40px,6vw,72px)}
+
+/* thẻ */
+html.gsc-sh-on .seo-grid{gap:clamp(14px,2vw,26px);background:none;border:0;margin:clamp(30px,4vw,52px) 0}
+html.gsc-sh-on .seo-card{
+  position:relative;overflow:hidden;padding:clamp(26px,3vw,40px) clamp(20px,2.4vw,30px);text-align:center;
+  background:var(--lx-card);border:1px solid var(--lx-line);
+  transition:transform .4s cubic-bezier(.2,.8,.2,1),border-color .35s,box-shadow .4s;
+}
+html.gsc-sh-on .seo-card::before{content:"";position:absolute;left:0;right:0;top:0;height:2px;background:var(--lx-foil);opacity:.0;transition:opacity .35s}
+html.gsc-sh-on .seo-card:hover{transform:translateY(-8px);border-color:var(--lx-gold);box-shadow:0 22px 50px rgba(0,0,0,.35),0 0 30px rgba(230,196,126,.12)}
+html.gsc-sh-on .seo-card:hover::before{opacity:1}
+html.gsc-sh-on .seo-card h3{font:600 clamp(22px,2.2vw,28px)/1.2 var(--lx-serif);letter-spacing:.04em;color:var(--lx-gold-hi);margin:0 0 12px}
+html.gsc-sh-on[data-theme="light"] .seo-card h3,html.gsc-sh-on[data-gsc-theme="light"] .seo-card h3{color:var(--lx-gold)}
+html.gsc-sh-on .seo-card p{font-size:14.5px;line-height:1.8;margin:0}
+html.gsc-sh-on .seo-card b{color:var(--lx-gold)}
+html.gsc-sh-on .seo-card a{color:var(--lx-gold);text-underline-offset:4px}
+
+/* số liệu */
+html.gsc-sh-on .seo-facts{gap:clamp(14px,2vw,26px);background:none;justify-content:center}
+html.gsc-sh-on .seo-facts div{text-align:center;background:var(--lx-card);border:1px solid var(--lx-line);padding:30px 22px}
+html.gsc-sh-on .seo-facts b{font:600 clamp(28px,3.4vw,44px)/1.1 var(--lx-serif);background:var(--lx-foil);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:var(--lx-gold)}
+
+/* liên quan / FAQ / ghi chú */
+html.gsc-sh-on .seo-related{
+  text-align:center;border:0;border-top:1px solid var(--lx-line);border-bottom:1px solid var(--lx-line);background:none;padding:22px 18px;margin:44px auto 0;max-width:820px;
+}
+html.gsc-sh-on .seo-related a{color:var(--lx-gold)}
+html.gsc-sh-on .seo-faq{text-align:center}
+html.gsc-sh-on .seo-faq details{border-color:var(--lx-line)}
+html.gsc-sh-on .seo-faq summary{font:600 clamp(18px,1.8vw,22px)/1.4 var(--lx-serif);text-align:center;color:var(--lx-text);list-style:none}
+html.gsc-sh-on .seo-faq summary::-webkit-details-marker{display:none}
+html.gsc-sh-on .seo-faq details[open] summary{color:var(--lx-gold)}
+html.gsc-sh-on .seo-faq details p{margin:12px auto 0;max-width:760px;text-align:center}
+html.gsc-sh-on .concept{border:0;padding:0;text-align:center;margin:20px auto 0;max-width:720px;color:var(--lx-mute);font-size:12px;letter-spacing:.04em}
+
+/* CTA + nút */
+html.gsc-sh-on .seo-cta{
+  position:relative;text-align:center;padding:clamp(40px,6vw,76px) clamp(20px,4vw,48px);border:1px solid var(--lx-line);
+  background:radial-gradient(80% 120% at 50% 0%,rgba(230,196,126,.12),transparent 70%),var(--lx-card);
+}
+html.gsc-sh-on .seo-cta h2{
+  margin:0 auto 26px;font:600 clamp(24px,3.4vw,44px)/1.15 var(--lx-serif);letter-spacing:.12em;text-transform:uppercase;
+  background:var(--lx-foil);background-size:260% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:var(--lx-gold);animation:gscPgFoil 9s linear infinite;
+}
+html.gsc-sh-on .seo-cta h2::after{display:none}
+html.gsc-sh-on .seo-btn{
+  position:relative;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;min-height:52px;margin:8px 6px;padding:0 32px;
+  font:600 12px/1 var(--lx-sans);letter-spacing:.24em;text-transform:uppercase;text-decoration:none;color:#1a1205;
+  background:var(--lx-foil);background-size:220% 100%;border:1px solid #f3d99b;
+  box-shadow:0 8px 26px rgba(230,196,126,.22),inset 0 1px 0 rgba(255,255,255,.6);
+  transition:background-position .8s ease,transform .3s,box-shadow .3s;
+}
+html.gsc-sh-on .seo-btn:hover{background-position:100% 0;transform:translateY(-3px);box-shadow:0 14px 36px rgba(230,196,126,.4)}
+html.gsc-sh-on .seo-btn.alt{background:transparent;color:var(--lx-gold-hi);border:1px solid var(--lx-gold);box-shadow:none}
+html.gsc-sh-on[data-theme="light"] .seo-btn.alt,html.gsc-sh-on[data-gsc-theme="light"] .seo-btn.alt{color:var(--lx-gold)}
+html.gsc-sh-on .seo-btn.alt:hover{background:rgba(230,196,126,.14);box-shadow:0 10px 28px rgba(230,196,126,.2)}
+
+/* khối editorial (thẻ kem cũ) → kính tối đồng bộ */
+html.gsc-sh-on .gsc-editorial-v1{
+  background:var(--lx-card);color:var(--lx-text);border:1px solid var(--lx-line);border-radius:0;box-shadow:0 26px 70px rgba(0,0,0,.35);
+  text-align:center;
+}
+html.gsc-sh-on .gsc-editorial-v1__image{border-radius:0;border:1px solid var(--lx-line)}
+html.gsc-sh-on .gsc-editorial-v1__copy{font-family:var(--lx-sans);text-align:center}
+html.gsc-sh-on .gsc-editorial-v1__copy h2{font:600 clamp(28px,3.3vw,46px)/1.15 var(--lx-serif);color:var(--lx-text);letter-spacing:.02em}
+html.gsc-sh-on .gsc-editorial-v1__copy h2::after{display:none}
+html.gsc-sh-on .gsc-editorial-v1__copy p{color:var(--lx-mute);font-size:clamp(14.5px,1.2vw,16.5px)}
+html.gsc-sh-on .gsc-editorial-v1__copy p[lang=en]{color:var(--lx-mute);opacity:.85}
+html.gsc-sh-on .gsc-editorial-v1__eyebrow{color:var(--lx-gold)!important;letter-spacing:.34em}
+html.gsc-sh-on .gsc-editorial-v1__copy small{color:var(--lx-mute);opacity:.8}
+
+/* ---------- Các trang cũ: Tổng quan / Kiến trúc / Khám phá ---------- */
+html.gsc-sh-on body:not(.gsc-intro-body)>main{color:var(--lx-text);text-align:center}
+html.gsc-sh-on body>main h1{
+  font:600 clamp(32px,5vw,68px)/1.08 var(--lx-serif);letter-spacing:.06em;text-transform:uppercase;margin:clamp(30px,5vw,60px) auto 18px;
+  background:var(--lx-foil);background-size:260% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:var(--lx-gold);animation:gscPgFoil 9s linear infinite;
+}
+html.gsc-sh-on body>main section{border-bottom:1px solid var(--lx-line);padding:30px 0}
+html.gsc-sh-on body>main section:not(.gsc-editorial-v1) h2{font:600 clamp(26px,3vw,40px)/1.15 var(--lx-serif);color:var(--lx-text);margin:0 0 14px}
+html.gsc-sh-on body>main p{color:var(--lx-mute);font:400 clamp(14.5px,1.3vw,17px)/1.9 var(--lx-sans)}
+html.gsc-sh-on body>main a{color:var(--lx-gold);text-underline-offset:4px}
+html.gsc-sh-on .intro{display:block;text-align:center}
+html.gsc-sh-on .intro h1{font:600 clamp(32px,5vw,68px)/1.08 var(--lx-serif)}
+html.gsc-sh-on .intro p{margin-left:auto;margin-right:auto;max-width:720px}
+html.gsc-sh-on .scene{border:1px solid var(--lx-gold);border-radius:0;box-shadow:0 26px 70px rgba(0,0,0,.4),0 0 40px rgba(230,196,126,.10)}
+html.gsc-sh-on .hotspot{
+  border:1px solid var(--lx-gold);border-radius:999px;background:rgba(7,16,30,.9);color:var(--lx-gold-hi);
+  font:600 clamp(10px,.9vw,13px)/1 var(--lx-sans);letter-spacing:.1em;text-transform:uppercase;
+}
+html.gsc-sh-on .hotspot:before{background:var(--lx-foil);color:#1a1205}
+html.gsc-sh-on .hotspot:hover,html.gsc-sh-on .hotspot:focus-visible{background:var(--lx-foil);color:#1a1205;outline:2px solid var(--lx-gold-hi);outline-offset:3px}
+html.gsc-sh-on .hint{text-align:center;color:var(--lx-mute)}
+html.gsc-sh-on .cards a{
+  background:var(--lx-card);border:1px solid var(--lx-line);border-radius:0;text-align:center;color:var(--lx-text);
+  font:600 13px/1.4 var(--lx-sans);letter-spacing:.12em;text-transform:uppercase;transition:transform .35s,border-color .3s,box-shadow .35s;
+}
+html.gsc-sh-on .cards a:hover{transform:translateY(-6px);border-color:var(--lx-gold);box-shadow:0 18px 40px rgba(0,0,0,.35)}
+
+@media(prefers-reduced-motion:reduce){html.gsc-sh-on .seo-hero h1,html.gsc-sh-on .seo-cta h2,html.gsc-sh-on body>main h1{animation:none}}
+@media(max-width:700px){html.gsc-sh-on .seo-hero{min-height:62vh}html.gsc-sh-on .seo-btn{width:100%;margin:8px 0}}

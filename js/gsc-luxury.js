@@ -8,7 +8,8 @@
   var TARGETS = [
     { sel: '.gsc-intro-hero', count: 46, size: 1.9 },
     { sel: '.gsc-intro-golden', count: 34, size: 1.7 },
-    { sel: '.gsc-intro-final', count: 40, size: 1.8 }
+    { sel: '.gsc-intro-final', count: 40, size: 1.8 },
+    { sel: '.seo-hero', count: 40, size: 1.8 }
   ];
   var small = w.innerWidth < 700;
   var dpr = Math.min(w.devicePixelRatio || 1, 2);

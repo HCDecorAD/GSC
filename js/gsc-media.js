@@ -13,7 +13,7 @@
   function paint(el, url, alt) {
     var img = new Image();
     img.onload = function () {
-      el.style.backgroundImage = bg(url);
+      el.style.backgroundImage = bg(url); el.setAttribute('data-gsc-src', url);
       el.classList.remove('is-error'); el.classList.add('is-loaded');
       if (alt) { el.setAttribute('role', 'img'); el.setAttribute('aria-label', alt); }
     };

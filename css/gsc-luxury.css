@@ -222,12 +222,12 @@ html[data-gsc-theme="light"] .gsc-sparkle{mix-blend-mode:multiply;opacity:.55}
 }
 
 /* Mỗi khối dùng một vùng khác nhau của phối cảnh có sẵn (thay bằng ảnh riêng khi có) */
-#gsc-intro-seniorliving .gsc-intro-fig{background-size:auto 112%;background-position:50% 28%}
-#gsc-intro-healthcare  .gsc-intro-fig{background-size:auto 150%;background-position:48% 92%}
-#gsc-intro-active      .gsc-intro-fig{background-size:auto 135%;background-position:56% 88%}
-#gsc-intro-community   .gsc-intro-fig{background-size:auto 170%;background-position:14% 78%}
-#gsc-intro-daily       .gsc-intro-fig{background-size:auto 150%;background-position:50% 94%}
-#gsc-intro-nature      .gsc-intro-fig{background-size:auto 125%;background-position:55% 70%}
+#gsc-intro-seniorliving .gsc-intro-fig[data-gsc-src$=".png"]{background-size:auto 112%;background-position:50% 28%}
+#gsc-intro-healthcare  .gsc-intro-fig[data-gsc-src$=".png"]{background-size:auto 150%;background-position:48% 92%}
+#gsc-intro-active      .gsc-intro-fig[data-gsc-src$=".png"]{background-size:auto 135%;background-position:56% 88%}
+#gsc-intro-community   .gsc-intro-fig[data-gsc-src$=".png"]{background-size:auto 170%;background-position:14% 78%}
+#gsc-intro-daily       .gsc-intro-fig[data-gsc-src$=".png"]{background-size:auto 150%;background-position:50% 94%}
+#gsc-intro-nature      .gsc-intro-fig[data-gsc-src$=".png"]{background-size:auto 125%;background-position:55% 70%}
 
 /* ---------- Hiệu ứng rê chuột cho mọi khung ảnh ---------- */
 .gsc-intro .gsc-intro-ph.is-loaded:is(.gsc-intro-fig,.gsc-intro-wide,.gsc-intro-strip,.gsc-intro-tile){
@@ -300,3 +300,23 @@ html[data-gsc-theme="light"] .gsc-intro-hero .gsc-intro-btn,
 html[data-gsc-theme="light"] .gsc-intro-golden .gsc-intro-btn{color:#2a1b06;border-color:rgba(255,241,201,.65)}
 html[data-gsc-theme="light"] .gsc-intro-hero .gsc-intro-btn--ghost,
 html[data-gsc-theme="light"] .gsc-intro-golden .gsc-intro-btn--ghost{color:#fff1c9;background:rgba(7,12,22,.38);border-color:#e6c47e}
+
+/* ===== v3: canh giữa toàn bộ text ở trang Giới thiệu ===== */
+.gsc-intro .gsc-intro-sec,.gsc-intro .gsc-intro-sec :is(h1,h2,h3,p,dl,dt,dd,li,figcaption,small),
+.gsc-intro .gsc-intro-hero__body,.gsc-intro .gsc-intro-sectionhead{text-align:center}
+.gsc-intro .gsc-intro-hero__body{align-items:center;margin-left:auto;margin-right:auto}
+.gsc-intro .gsc-intro-brand{justify-content:center;align-items:center;flex-direction:column;text-align:center}
+.gsc-intro .gsc-intro-actions,.gsc-intro .gsc-intro-sectionhead,.gsc-intro .gsc-intro-words,.gsc-intro .gsc-intro-facts{justify-content:center}
+.gsc-intro .gsc-intro-lead,.gsc-intro .gsc-intro-copy,.gsc-intro .gsc-intro-note{margin-left:auto;margin-right:auto}
+.gsc-intro .gsc-intro-list1,.gsc-intro .gsc-intro-list{list-style:none;padding-left:0}
+.gsc-intro .gsc-intro-list1 li::before,.gsc-intro .gsc-intro-list li::before{display:none}
+.gsc-intro .gsc-intro-stats{justify-items:center}
+.gsc-intro .gsc-intro-card{text-align:center}
+.gsc-intro .gsc-dayline li{text-align:center;justify-content:center}
+.gsc-intro .gsc-faq-list summary,.gsc-intro .gsc-section-head,.gsc-intro .gsc-section-head *{text-align:center}
+.gsc-intro .gsc-faq-list details p{margin-left:auto;margin-right:auto;text-align:center}
+html body .gsc-intro .gsc-intro-brand{align-items:center!important;justify-content:center!important;flex-direction:column!important;text-align:center!important}
+html body .gsc-intro .gsc-intro-brand img{margin-left:auto;margin-right:auto}
+
+.gsc-intro .gsc-intro-brand span{margin-top:10px}
+.gsc-intro-ph.is-loaded:not([data-gsc-src$=".png"]){background-size:cover;background-position:center}

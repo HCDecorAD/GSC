@@ -140,6 +140,33 @@
     var t = d.createElement('div'); t.className = 'gsc-sh-tag'; t.textContent = 'SENIOR LIVING & WELLNESS'; box.appendChild(t);
   }
 
+  /* Trang chủ: ghi chú Zoom, dải sáng quét, rê sidebar -> sáng hotspot, tự nhấp nháy lần lượt gợi ý bấm */
+  function enhanceHotspots() {
+    var view = d.getElementById('view');
+    if (view && !view.querySelector('.gsc-sh-sweep')) { var sw = d.createElement('div'); sw.className = 'gsc-sh-sweep'; sw.setAttribute('aria-hidden', 'true'); view.appendChild(sw); }
+    d.body.appendChild(el('<div class="gsc-sh-zoomnote" role="note"><i aria-hidden="true">👆</i><span><b>Zoom</b> bấm điểm cần xem</span></div>'));
+
+    function hs(n) { return d.getElementById('hs' + n); }
+    d.querySelectorAll('aside .nav').forEach(function (b) {
+      var m = /focusSpot\((\d+)\)/.exec(b.getAttribute('onclick') || ''); if (!m) return;
+      b.addEventListener('mouseenter', function () { var h = hs(m[1]); if (h) h.classList.add('is-hl'); });
+      b.addEventListener('mouseleave', function () { var h = hs(m[1]); if (h) h.classList.remove('is-hl'); });
+    });
+
+    if (w.matchMedia && w.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var n = 0, stop = false, timer = 0;
+    function tick() {
+      if (stop || d.hidden) { timer = w.setTimeout(tick, 1500); return; }
+      var prev = hs(n); if (prev) prev.classList.remove('is-hl');
+      n = n % 10 + 1;
+      var h = hs(n); if (h && !root.classList.contains('gsc-has-own-x') && !d.body.classList.contains('project-focus')) { h.classList.add('is-hl'); w.setTimeout(function () { h.classList.remove('is-hl'); }, 1100); }
+      timer = w.setTimeout(tick, 1500);
+    }
+    /* dừng gợi ý khi người dùng bắt đầu tương tác thật */
+    ['pointerdown', 'wheel', 'keydown'].forEach(function (ev) { d.addEventListener(ev, function () { stop = true; for (var i = 1; i <= 10; i++) { var h = hs(i); if (h) h.classList.remove('is-hl'); } }, { once: true, passive: true }); });
+    timer = w.setTimeout(tick, 2600);
+  }
+
   function buildHomeCard() {
     return el('<div class="gsc-sh-homecard" role="complementary" aria-label="Liên hệ GSC"><h3 data-k="contact">' + L().contact + ' GSC</h3>' +
       '<a href="' + CFG.tel + '">' + CFG.phone + '</a><a href="mailto:' + CFG.email + '">' + CFG.email + '</a><small>' + CFG.address + '</small></div>');
@@ -214,6 +241,7 @@
       body.appendChild(buildHomeCard());
       upgradeSidebarLogo();
       watchCloseButtons();
+      enhanceHotspots();
     }
     body.appendChild(buildFab());
   }

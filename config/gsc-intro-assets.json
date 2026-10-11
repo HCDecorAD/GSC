@@ -11,16 +11,40 @@
     "overview": "assets/gsc-web/overview-aerial-day.png",
     "masterplan": "assets/gsc-real/home-embedded-2.png",
     "architecture": "assets/gsc-web/overview-aerial-day.png",
-    "seniorliving": "assets/gsc-web/overview-aerial-day.png",
-    "wellness": "assets/gsc-web/wellness-pool.png",
-    "healthcare": "assets/gsc-web/main-gate-koi.png",
-    "active": "assets/gsc-web/wellness-pool.png",
-    "nature": "assets/gsc-web/main-gate-koi.png",
-    "community": "assets/gsc-web/wellness-pool.png",
-    "daily": "assets/gsc-web/hero-blue-hour.png",
+    "seniorliving": {
+      "webp": "assets/gsc-web/life/life-senior-living.webp",
+      "src": "assets/gsc-web/overview-aerial-day.png"
+    },
+    "wellness": {
+      "webp": "assets/gsc-web/life/life-aqua-wellness.webp",
+      "src": "assets/gsc-web/wellness-pool.png"
+    },
+    "healthcare": {
+      "webp": "assets/gsc-web/life/life-healthcare.webp",
+      "src": "assets/gsc-web/main-gate-koi.png"
+    },
+    "active": {
+      "webp": "assets/gsc-web/life/life-active-taichi.webp",
+      "src": "assets/gsc-web/wellness-pool.png"
+    },
+    "nature": {
+      "webp": "assets/gsc-web/life/life-gardening.webp",
+      "src": "assets/gsc-web/main-gate-koi.png"
+    },
+    "community": {
+      "webp": "assets/gsc-web/life/life-chess-community.webp",
+      "src": "assets/gsc-web/wellness-pool.png"
+    },
+    "daily": {
+      "webp": "assets/gsc-web/life/life-daily-cafe.webp",
+      "src": "assets/gsc-web/hero-blue-hour.png"
+    },
     "amenities": "assets/gsc-web/wellness-pool.png",
     "location": "assets/gsc-real/home-embedded-2.png",
-    "golden": "assets/gsc-web/hero-blue-hour.png"
+    "golden": {
+      "webp": "assets/gsc-web/life/life-golden-couple.webp",
+      "src": "assets/gsc-web/hero-blue-hour.png"
+    }
   },
   "alts": {
     "hero": "Phối cảnh tổng thể dự án GSC",

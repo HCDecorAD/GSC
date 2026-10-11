@@ -19,7 +19,7 @@
       ['residences.html', 'Không gian sống', 'Residences'],
       ['wellness.html', 'Wellness & Care', 'Wellness & Care'],
       ['lifestyle.html', 'Lifestyle', 'Lifestyle'],
-      ['amenities.html', 'Tiện ích', 'Amenities'],
+      ['gsc-amenities.html', 'Tiện ích', 'Amenities'],
       ['location.html', 'Vị trí', 'Location'],
       ['gallery.html', 'Gallery', 'Gallery'],
       ['insights.html', 'Insights', 'Insights'],
@@ -176,7 +176,7 @@
   function curTheme() {
     return root.getAttribute('data-theme') || root.getAttribute('data-gsc-theme') ||
       (function () { try { return w.localStorage.getItem('gsc-theme'); } catch (e) { return null; } })() ||
-      (w.matchMedia && w.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+      'dark';
   }
   function setTheme(v) {
     root.setAttribute('data-theme', v); root.setAttribute('data-gsc-theme', v);

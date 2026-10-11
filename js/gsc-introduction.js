@@ -137,7 +137,7 @@
     if(!btn)return;
     var key='gsc-theme', saved=null;
     try{saved=w.localStorage.getItem(key);}catch(e){}
-    var preferred=saved || (w.matchMedia&&w.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');
+    var preferred=saved || 'dark';
     function setTheme(theme,persist){
       var light=theme==='light';
       d.documentElement.setAttribute('data-gsc-theme',light?'light':'dark');

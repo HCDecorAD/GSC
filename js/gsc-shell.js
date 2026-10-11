@@ -6,11 +6,11 @@
   var root = d.documentElement;
   var CFG = {
     logo: 'assets/gsc-web/gsc-logo-gold-red.png',
-    phone: '093 268 0592', tel: 'tel:+84932680592',
-    email: 'Kathy.nguyen171@gmail.com',
-    address: 'Vinhomes Grand Park, Nguyễn Xiển, Phường Long Thạnh Mỹ, Thủ Đức, TP.HCM',
+    phone: '0932 358 371', tel: 'tel:+84932358371',
+    email: 'Nhung@slm.com.vn',
+    address: 'Vinhomes Central Park, Park 7, 208 Nguyễn Hữu Cảnh, P.22, Bình Thạnh, TP.HCM',
     fb: 'https://www.facebook.com/profile.php?id=100083708970226',
-    zalo: 'https://zalo.me/0932680592',
+    zalo: 'https://zalo.me/0932358371',
     tiktok: 'https://www.tiktok.com/@amo_3651',
     youtube: 'https://www.youtube.com/@AMO-NGUYEN',
     menu: [

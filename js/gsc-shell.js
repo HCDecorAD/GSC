@@ -49,6 +49,7 @@
   var ICON = {
     fb: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 22v-8.2h2.8l.5-3.3h-3.3V8.4c0-.9.4-1.7 1.8-1.7h1.6V3.8S15.6 3.5 14.3 3.5c-2.7 0-4.4 1.6-4.4 4.5v2.5H7.2v3.3h2.7V22z"/></svg>',
     zalo: '<svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 6C13.5 6 6 13 6 21.6c0 4.6 2.2 8.7 5.6 11.5-.2 2.2-.9 4.3-2 6.1 3-.2 5.7-1.4 7.8-3 2.1.7 4.3 1 6.6 1 10.5 0 18-7 18-15.6S34.500 6 24 6z" fill="none" stroke="#fff" stroke-width="2.4"/><text x="24" y="26.5" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="11.5" fill="#fff" stroke="none">Zalo</text></svg>',
+    web: '<svg viewBox="0 0 24 24" aria-hidden="true" style="fill:none;stroke:currentColor;stroke-width:1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.600 2.600 3.800 5.600 3.800 9s-1.200 6.400-3.800 9c-2.600-2.600-3.800-5.600-3.800-9S9.400 5.600 12 3z"/></svg>',
     tiktok: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.6 3c.3 2.2 1.6 3.6 3.9 3.8v3a7 7 0 0 1-3.9-1.2v6.2c0 3.2-2.4 5.6-5.6 5.6S5.500 18.100 5.500 15s2.600-5.800 6-5.600v3.100c-1.600-.3-3 .9-3 2.500a2.600 2.600 0 0 0 5.200 0V3z"/></svg>',
     youtube: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.600 7.200a2.500 2.500 0 0 0-1.800-1.800C18.200 5 12 5 12 5s-6.200 0-7.800.4A2.500 2.500 0 0 0 2.400 7.200C2 8.800 2 12 2 12s0 3.200.4 4.800a2.500 2.500 0 0 0 1.800 1.800C5.800 19 12 19 12 19s6.200 0 7.800-.4a2.500 2.500 0 0 0 1.800-1.800c.4-1.600.4-4.800.4-4.800s0-3.200-.4-4.800zM10 15V9l5.200 3z"/></svg>',
     phone: '<svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.500 1.500a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>',
@@ -92,11 +93,7 @@
       '<div class="gsc-sh-footer__orn" aria-hidden="true"><i></i><b></b><i></i></div></div>' +
       '<div class="gsc-sh-footer__grid">' +
       '<div><h3 data-k="about">' + t.about + '</h3><p data-k="blurb">' + t.blurb + '</p>' +
-      '<div class="gsc-sh-social">' +
-      '<a href="' + CFG.fb + '" target="_blank" rel="noopener" aria-label="Facebook">' + ICON.fb + '</a>' +
-      '<a href="' + CFG.zalo + '" target="_blank" rel="noopener" aria-label="Zalo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3C6.800 3 3 6.500 3 10.800c0 2.300 1.100 4.400 2.800 5.800-.1 1.100-.5 2.100-1 3 1.500-.1 2.800-.7 3.900-1.500 1 .3 2.100.5 3.300.5 5.200 0 9-3.500 9-7.800S17.200 3 12 3zm-3 5h3.500l-3.200 4.200H12v1.300H7.300l3.200-4.200H9zm5.500 1.800h1.300v3.700h-1.300z"/></svg></a>' +
-      '<a href="' + CFG.tiktok + '" target="_blank" rel="noopener" aria-label="TikTok">' + ICON.tiktok + '</a>' +
-      '<a href="' + CFG.youtube + '" target="_blank" rel="noopener" aria-label="YouTube">' + ICON.youtube + '</a></div></div>' +
+      '<div class="gsc-sh-social"><a href="https://www.slm.com.vn" target="_blank" rel="noopener" aria-label="www.slm.com.vn">' + ICON.web + '</a></div></div>' +
       '<div><h3 data-k="explore">' + t.explore + '</h3><ul class="gsc-sh-footer__links">' + links + '</ul></div>' +
       '<div><h3 data-k="contact">' + t.contact + '</h3><div class="gsc-sh-contact">' +
       '<a href="' + CFG.tel + '">' + ICON.phone + '<div><span data-k="hot">' + t.hot + '</span><b>' + CFG.phone + '</b></div></a>' +

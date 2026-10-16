@@ -93,13 +93,14 @@
       '<div class="gsc-sh-footer__orn" aria-hidden="true"><i></i><b></b><i></i></div></div>' +
       '<div class="gsc-sh-footer__grid">' +
       '<div><h3 data-k="about">' + t.about + '</h3><p data-k="blurb">' + t.blurb + '</p>' +
-      '<div class="gsc-sh-social"><a href="https://www.slm.com.vn" target="_blank" rel="noopener" aria-label="www.slm.com.vn">' + ICON.web + '</a></div></div>' +
+      '</div>' +
       '<div><h3 data-k="explore">' + t.explore + '</h3><ul class="gsc-sh-footer__links">' + links + '</ul></div>' +
       '<div><h3 data-k="contact">' + t.contact + '</h3><div class="gsc-sh-contact">' +
       '<a href="' + CFG.tel + '">' + ICON.phone + '<div><span data-k="hot">' + t.hot + '</span><b>' + CFG.phone + '</b></div></a>' +
       '<a href="mailto:' + CFG.email + '">' + ICON.mail + '<div><span data-k="mail">' + t.mail + '</span><b>' + CFG.email + '</b></div></a>' +
       '<a href="https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(CFG.address) + '" target="_blank" rel="noopener">' + ICON.pin + '<div><span data-k="office">' + t.office + '</span><small>' + CFG.address + '</small></div></a>' +
       '</div></div></div>' +
+      '<div class="gsc-sh-social gsc-sh-social--center"><a href="https://www.slm.com.vn" target="_blank" rel="noopener" aria-label="www.slm.com.vn">' + ICON.web + '</a></div>' +
       '<div class="gsc-sh-footer__bar"><span>© GSC Senior Living &amp; Wellness · <span data-k="note">' + t.note + '</span></span><a href="#" data-top data-k="top">' + t.top + '</a></div>' +
       '</footer>');
   }
@@ -107,7 +108,6 @@
   function buildFab() {
     var t = L();
     return el('<div class="gsc-sh-fab" aria-label="Liên hệ nhanh">' +
-      '<a class="fb" href="' + CFG.fb + '" target="_blank" rel="noopener" aria-label="Facebook">' + ICON.fb + '<em data-k="fbl">' + t.fbl + '</em></a>' +
       '<a class="zl" href="' + CFG.zalo + '" target="_blank" rel="noopener" aria-label="Zalo">' + ICON.zalo + '<em data-k="zl">' + t.zl + '</em></a></div>');
   }
 

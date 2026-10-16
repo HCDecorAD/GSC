@@ -164,6 +164,12 @@ html.gsc-sh-on [id]{scroll-margin-top:calc(var(--sh-h) + 8px)}
 }
 .gsc-sh-social a:hover{background:linear-gradient(180deg,#f3d99b,#c79a4a);color:#1a1205;border-color:#e6c47e;transform:translateY(-3px);box-shadow:0 10px 24px rgba(230,196,126,.28)}
 .gsc-sh-social svg{width:19px;height:19px;fill:currentColor}
+/* Icon web căn giữa footer, có hiệu ứng chớp sáng */
+.gsc-sh-social--center{justify-content:center;margin:26px 0 8px}
+.gsc-sh-social--center a{position:relative;overflow:hidden;width:48px;height:48px;animation:gscShGlow 3.2s ease-in-out infinite}
+.gsc-sh-social--center a::after{content:"";position:absolute;top:-20%;bottom:-20%;left:-60%;width:40%;background:linear-gradient(100deg,transparent,rgba(255,241,201,.85),transparent);transform:skewX(-20deg);animation:gscShGlint 3.2s ease-in-out infinite;pointer-events:none}
+@keyframes gscShGlint{0%,55%{left:-60%}100%{left:130%}}
+@keyframes gscShGlow{0%,100%{box-shadow:0 0 0 0 rgba(230,196,126,0)}50%{box-shadow:0 0 18px 4px rgba(230,196,126,.45)}}
 
 .gsc-sh-footer__bar{
   max-width:1240px;margin:0 auto;padding:22px clamp(20px,4vw,48px) calc(26px + env(safe-area-inset-bottom));
@@ -213,7 +219,7 @@ html.gsc-sh-on [id]{scroll-margin-top:calc(var(--sh-h) + 8px)}
 }
 @keyframes gscShPing{0%,62%{transform:scale(1);opacity:0}66%{opacity:.9}100%{transform:scale(1.7);opacity:0}}
 @media(max-width:520px){.gsc-sh-fab a{width:42px;height:42px}.gsc-sh-fab em{display:none}}
-@media(prefers-reduced-motion:reduce){.gsc-sh-fab a,.gsc-sh-fab a::before,.gsc-sh-footer::after{animation:none}}
+@media(prefers-reduced-motion:reduce){.gsc-sh-fab a,.gsc-sh-fab a::before,.gsc-sh-footer::after,.gsc-sh-social--center a,.gsc-sh-social--center a::after{animation:none}}
 
 /* ---- trang giới thiệu: hero chừa chỗ cho header cố định ---- */
 html.gsc-sh-on .gsc-intro-hero__body{padding-top:calc(var(--sh-h) + 12px)}
